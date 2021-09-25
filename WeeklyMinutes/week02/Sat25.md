@@ -44,7 +44,7 @@
 
     Agile Process and Work Structure 
 
-    Team Contract, Assigning roles and Rotation roster for meeting minutes
+    Team Contract, Assigning roles and meeting minutes
 
     Group Brainstorming
 
@@ -85,7 +85,7 @@ We made an overall lead, the **Project Lead**, to monitor the project as a whole
 
 For the decision making process we will work as a team to solve any issue however if not possible the hierarchy of the leads will cause Manpreet to take the decision and then if not possible then the mentor (a third party) would have to step in.
 
-###  (Lead (Team Lead and Research Lead))
+###  Manpreet (Lead (Team Lead and Research Lead))
 #### Description:
 	• Update everyone through different platforms on due dates, plans and meetings etc
 	• Assign roles/tasks
@@ -97,7 +97,7 @@ For the decision making process we will work as a team to solve any issue howeve
     • Set up documentation and tasks for submission and records
 	• Make sure all tasks are up-to standards for the expectation of criteria and ourselves
 
-### (GitLab Repository Lead (Development lead)) 
+### Zihao (GitHub Repository Lead (Development lead)) 
 #### Description:
 	• In-charge of confirming merge requests
 	• Keep up-to-date with everyone's code
@@ -115,7 +115,7 @@ For the decision making process we will work as a team to solve any issue howeve
 	• Make sure there is an even workload
 	• Update board and tasks for changes
 	
-### (Meeting Minutes Officer (Secretary))
+### Arya (Meeting Minutes Officer (Secretary))
 This person will be recording the meeting minutes.
 
 This week Manpreet completed it.
@@ -129,7 +129,7 @@ This week Manpreet completed it.
 	• Write out meeting minutes draft and have it ready to be reviewed by the team
 	• Update Timeline of tasks
 
-### (Prototype Lead)
+### Arya (Prototype Lead)
 #### This role would involve:
 	• Assign roles/tasks
 	• Keep up-to-date with everyone and the project timeline
