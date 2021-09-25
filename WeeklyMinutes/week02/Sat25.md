@@ -85,7 +85,7 @@ We made an overall lead, the **Project Lead**, to monitor the project as a whole
 
 For the decision making process we will work as a team to solve any issue however if not possible the hierarchy of the leads will cause Manpreet to take the decision and then if not possible then the mentor (a third party) would have to step in.
 
-###  (Lead (Team Lead + Research Lead))
+###  (Lead (Team Lead and Research Lead))
 #### Description:
 	• Update everyone through different platforms on due dates, plans and meetings etc
 	• Assign roles/tasks
@@ -94,8 +94,9 @@ For the decision making process we will work as a team to solve any issue howeve
 	• If someone is lagging behind help/push them
 	• Make sure everything is organised and prepped for each meeting
 	• Take meeting notes and keep the meeting going
-    • Set up documentation and tasks
+    • Set up documentation and tasks for submission and records
 	• Make sure all tasks are up-to standards for the expectation of criteria and ourselves
+
 ### (GitLab Repository Lead (Development lead)) 
 #### Description:
 	• In-charge of confirming merge requests
@@ -103,6 +104,7 @@ For the decision making process we will work as a team to solve any issue howeve
 	• If someone is lagging behind help them or push them
 	• Make sure everything is organised in the repository and prepped for each meeting
 	• Update Leader/Leads on what is happening
+
 ### (Issues Board Lead (Task Lead and Development sub-Lead)) 
 #### Description:
 	• Assign roles/tasks
@@ -111,7 +113,7 @@ For the decision making process we will work as a team to solve any issue howeve
 	• Make sure everything is organised on the board and prepped for each meeting
 	• Update Leader/Leads on what is happening
 	• Make sure there is an even workload
-	• Update board and Gantt chart for changes 
+	• Update board and tasks for changes
 	
 ### (Meeting Minutes Officer (Secretary))
 This person will be recording the meeting minutes.
@@ -125,7 +127,16 @@ This week Manpreet completed it.
 	• Update Leader/Leads on what is happening
 	• Make meetings to Report issues and updates with Leader/Leads
 	• Write out meeting minutes draft and have it ready to be reviewed by the team
-	• Update Gantt Chart
+	• Update Timeline of tasks
+
+### (Prototype Lead)
+#### This role would involve:
+	• Assign roles/tasks
+	• Keep up-to-date with everyone and the project timeline
+	• Make sure everything is organised and prepped for each meeting
+	• Update Leader/Leads on what is happening
+	• Make meetings to Report issues and updates with Leader/Leads
+	• Determine process of completion and updation of prototypes
 	
 ## Team Contract
 The team also signed off on a contract to confirm how the team would work and what their personal commitments to the team were.
