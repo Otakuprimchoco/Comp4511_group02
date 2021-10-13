@@ -30,7 +30,7 @@
 
     Lo-fi discussion(sketch).
 
-### Tasks to do next meeting:
+### Tasks to do next meeting [ALL THINGS DUE IN D2]:
 
     • Finalise the individual product description statement
 
@@ -39,3 +39,6 @@
     • Modify Lo-fi based on the changes made during the meeting
 
     • Draw lofi on paper
+    
+    • Review final architecture diagram
+    
