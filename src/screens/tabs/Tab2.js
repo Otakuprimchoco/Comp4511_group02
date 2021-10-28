@@ -1,21 +1,30 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { useIsFocused } from '@react-navigation/native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-import { styles } from '../../styles/styles.js'
 
-Tab2 = () => {
+const Tab1 = ( { navigation } ) => {
+  return (
+    <View style={styles.container}>
+      <Text>Tab 2</Text>
+      <Button
+        title="Click Here"
+        onPress={() => alert( 'Clicked' )}
+      />
+    </View>
+  );
 
-  const isFocused = useIsFocused();
-
-  console.log(isFocused);
-
-  return <View style={styles.center}>
-    <Text style={styles.title}>Tab 2</Text>
-  </View>
 
 }
 
 
 
-export default Tab2;
+export default Tab1;
+
+const styles = StyleSheet.create( {
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#8fcbbc'
+  },
+} );
