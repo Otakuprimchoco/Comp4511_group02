@@ -16,5 +16,5 @@ Please write down your change log before push
 
 Log format: Date[MM-DD]-[Author]-[Conclusion of what u have change]
 
-10-22 Carter [Set up Blank APP] \n
+10-22 Carter [Set up Blank APP] <br />
 10-28 Carter [Set up Basic_Nav] -- React Bottom Tab V5, need to wrap another navigator for login page
