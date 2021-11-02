@@ -1,69 +1,88 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Tab1 from '../screens/tabs/Tab1';
 import Tab2 from '../screens/tabs/Tab2';
 import Tab3 from '../screens/tabs/Tab3';
+
 
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false }}
+        <StatusBar backgroundColor='black' barStyle='light-content' />,
+        <Tab.Navigator
+            screenOptions={{ headerShown: false, }}
             tabBarOptions={{
+                headerShown: false,
                 showLabel: false,
-                style: {
-                    position: 'absolute',
-                    bottom: 25,
-                    left: 20,
-                    right: 20,
-                    evevation: 0,
-                    backgroundColor: '#ffffff',
-                    borderRadius: 15,
-                    height: 90,
-                    ...styles.shadow
-
-                }
+                activeTintColor: 'white',
+                inactiveTintColor: 'white',
+                activeBackgroundColor: 'darkcyan',
+                inactiveBackgroundColor: '#8fcbbc',
+                statusBarStyle: 'light-content',
             }}
         >
             <Tab.Screen
-                name="Tab1"
+                name="Events"
                 component={Tab1}
                 options={{
                     tabBarIcon: ( { focused } ) => (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image
-                                source={require( '../../assets/icons/home.png' )}
+                                source={require( '../../assets/icons/Event.png' )}
                                 resizeMode="contain"
                                 style={{
                                     width: 20,
                                     height: 20,
-                                    tintColor: focused ? '#e32f45' : '#748c94',
+                                    tintColor: focused ? 'white' : 'white',
                                 }}
                             />
+
                             <Text
-                                style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 10 }}>
+                                style={{ color: focused ? 'white' : 'white', fontSize: 10 }}>
                                 HOME
                             </Text>
+
                         </View>
                     ),
                 }} />
-            <Tab.Screen name="Tab2" component={Tab2} options={{
+            <Tab.Screen name="Groups" component={Tab2} options={{
                 tabBarIcon: ( { focused } ) => (
                     <View style={{ alignItems: "center", justifyContent: "center" }}>
                         <Image
-                            source={require( '../../assets/icons/home.png' )}
+                            source={require( '../../assets/icons/Groups.png' )}
                             resizeMode="contain"
                             style={{
                                 width: 20,
                                 height: 20,
-                                tintColor: focused ? '#e32f45' : '#748c94',
+                                tintColor: focused ? 'white' : 'white',
                             }}
                         />
                         <Text
-                            style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 10 }}>
-                            HOME
+                            style={{ color: focused ? 'white' : 'white', fontSize: 10 }}>
+                            Groups
+                        </Text>
+                    </View>
+                ),
+            }} />
+
+            <Tab.Screen name="Chat" component={Tab3} options={{
+                tabBarIcon: ( { focused } ) => (
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Image
+                            source={require( '../../assets/icons/Chat.png' )}
+                            resizeMode="contain"
+                            style={{
+                                width: 20,
+                                height: 20,
+                                tintColor: focused ? 'white' : 'white',
+                            }}
+                        />
+                        <Text
+                            style={{ color: focused ? 'white' : 'white', fontSize: 10 }}>
+                            Chat
                         </Text>
                     </View>
                 ),
