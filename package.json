@@ -8,9 +8,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@expo-google-fonts/roboto": "^0.2.0",
+    "@react-native-masked-view/masked-view": "^0.2.6",
+=======
     "@freakycoder/react-native-bounceable": "^0.2.5",
     "@freakycoder/react-native-header-view": "^1.2.0",
     "@react-native-masked-view/masked-view": "github:react-native-masked-view/masked-view",
+>>>>>>> Coding
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/core": "^6.1.0",
     "@react-navigation/drawer": "^6.1.8",
@@ -20,6 +25,7 @@
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
     "expo": "~43.0.0",
+    "expo-font": "~10.0.3",
     "expo-status-bar": "~1.1.0",
     "formik": "^2.2.9",
     "install": "^0.13.0",
@@ -29,9 +35,12 @@
     "react-native": "0.64.2",
     "react-native-action-button": "^2.8.5",
     "react-native-appearance": "^0.3.4",
+<<<<<<< HEAD
+=======
     "react-native-apple-header": "^0.1.1",
     "react-native-classic-header": "^0.1.7",
     "react-native-elegant-header": "^0.1.0",
+>>>>>>> Coding
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-gorgeous-header": "^0.1.0",
@@ -40,11 +49,12 @@
     "react-native-paper": "^4.9.2",
     "react-native-profile-header": "^0.1.1",
     "react-native-reanimated": "^2.2.3",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.8.0",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.8.0",
     "react-native-tab-view": "^3.1.1",
     "react-native-vector-icons": "^9.0.0",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "expo-image-picker": "~11.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
