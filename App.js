@@ -1,36 +1,16 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import LoadService from './app/services/LoadService';
+import { StyleSheet, Text, View } from 'react-native';
+import Tabs from './src/navigation/tabs';
 
-export default class App extends React.Component {
-  state = {
-    loaded: false
-  }
-  constructor() {
-    super();
-    LoadService.load(v => this.setState({loaded: true}));
-  }
+import { NavigationContainer } from '@react-navigation/native';
 
-  render() {
-    return (
-      <View style={styles.container}>
-        {this.state.loaded ? (
-          <Text>Open up App.js to start working on your app!</Text>
-        ) : (
-          <Image style={{width: 100, height: 100,}} source={require('./assets/logos/logo.png')} />
-        )}
-      </View>
-    );
-  }
-  
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
