@@ -2,6 +2,21 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {
+  useFonts,
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic,
+} from '@expo-google-fonts/roboto';
 
 function DiscoverGroupsScreen() {
   return (
@@ -28,7 +43,7 @@ function Tabs({startingpage}) {
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
         tabBarLabelStyle: {fontSize: 12,},
-        tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
+        tabBarIndicatorStyle: {fontFamily: 'Roboto_700Bold', backgroundColor: '#EDE98C'},
         tabBarStyle: { backgroundColor: '#66B2B2' },
         tabBarAllowFontScaling: true,
       }}
@@ -47,9 +62,22 @@ function Tabs({startingpage}) {
   );
 }
 export default function GroupSubNavigation({startingpage}) {
-return (
+  
+  let [fontsLoaded] = useFonts({
+    Roboto_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return (
       <NavigationContainer>
         <Tabs startingpage={startingpage}/>
       </NavigationContainer>
     );
+  } else {
+    return (
+      <NavigationContainer>
+        <Tabs startingpage={startingpage}/>
+      </NavigationContainer>
+    );
+    }
 }
