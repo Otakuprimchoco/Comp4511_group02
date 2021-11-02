@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
 import { StyleSheet, Text, View, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Tab1 from '../screens/tabs/Tab1';
 import Tab2 from '../screens/tabs/Tab2';
