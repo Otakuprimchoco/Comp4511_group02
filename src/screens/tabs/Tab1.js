@@ -1,12 +1,18 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Header, Icon } from 'react-native-elements';
 import { ModernHeader } from "@freakycoder/react-native-header-view";
 import { ClassicHeader } from "@freakycoder/react-native-header-view";
-
+import Tab2 from './Tab2';
+import Tab3 from './Tab3';
 const Tab1 = ( { navigation } ) => {
+  const Tab = createMaterialTopTabNavigator();
   return (
-
+    <Tab.Navigator>
+      <Tab.Screen name="Tab2" component={Tab2} />
+      <Tab.Screen name="Tab3" component={Tab3} />
+    </Tab.Navigator>,
     <View style={styles.container}>
       <View>
 
