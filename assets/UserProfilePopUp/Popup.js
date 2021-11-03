@@ -128,7 +128,7 @@ class Popup extends Component {
 				>
 					<View style={styles.CrossHair}>
 						<TouchableOpacity  onPress={callback}>
-							<Icon name='times' type='font-awesome'/>
+							<Image source={require('../icons/closePopup.png')}/>
 						</TouchableOpacity>
 					</View>
 					<View style={{alignItems: 'center'}}>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 	CrossHair: {
 		alignItems: 'flex-end', 
 		paddingRight: 15,
-		paddingTop: 10,
+		paddingTop: 15,
 	},
 	Message: {
 		maxWidth: 329,
