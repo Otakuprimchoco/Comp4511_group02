@@ -43,7 +43,7 @@ const Tabs = () => {
 
                             <Text
                                 style={{ color: focused ? 'white' : 'white', fontSize: 10 }}>
-                                HOME
+                                Events
                             </Text>
 
                         </View>
