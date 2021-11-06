@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import LoadService from './app/services/LoadService';
+import LoadService from '../../app/services/LoadService';
 
 export default class SplashScreen {
   state = {

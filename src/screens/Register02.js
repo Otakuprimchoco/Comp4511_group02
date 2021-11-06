@@ -11,7 +11,7 @@ import {
   onBlur
 } from "react-native";
 import { Appbar } from 'react-native-paper';
-import InterestList from "./assets/LoginReg/SelectionList/InterestList";
+import InterestList from "../../assets/LoginReg/SelectionList/InterestList";
 
 export default function Register02() {
 
