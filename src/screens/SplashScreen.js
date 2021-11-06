@@ -18,7 +18,7 @@ export default class SplashScreen {
             {this.state.loaded ? (
             <Text>Open up App.js to start working on your app!</Text>
             ) : (
-            <Image style={{width: 100, height: 100,}} source={require('./assets/logos/logo.png')} />
+            <Image style={{width: 100, height: 100,}} source={require('../../assets/logos/logo.png')} />
             )}
         </View>
         );
