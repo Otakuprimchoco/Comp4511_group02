@@ -17,7 +17,7 @@ const App = () => {
 
     <View style={{ flex: 1 }}>
       <NavigationContainer  ref={ref}>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register01" component={Register01} />
           <Stack.Screen name="Register02" component={Register02} />
