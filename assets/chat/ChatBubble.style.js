@@ -2,48 +2,45 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+    container: {
+        // flex: 1,
+        backgroundColor: "#fff",
+        width: 375,
+    },
     item: {
-        marginVertical: moderateScale(7, 2),
-        flexDirection: 'row'
+        marginVertical: 1,
+        marginTop: 7,
+        marginBottom: 1,
     },
     itemIn: {
-        marginLeft: 20
+        marginLeft: 10,
     },
     itemOut: {
-        alignSelf: 'flex-end',
-        marginRight: 20
-    },
-    balloon: {
-        maxWidth: moderateScale(250, 2),
-        paddingHorizontal: moderateScale(10, 2),
-        paddingTop: moderateScale(5, 2),
-        paddingBottom: moderateScale(7, 2),
-        borderRadius: 20,
-    },
-    arrowContainer: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: -1,
-        flex: 1
-    },
-    arrowLeftContainer: {
-        justifyContent: 'flex-end',
-        alignItems: 'flex-start'
-    },
-
-    arrowRightContainer: {
-        justifyContent: 'flex-end',
+        marginRight: 10,
         alignItems: 'flex-end',
     },
-
-    arrowLeft: {
-        left: moderateScale(-6, 0.5),
+    balloon: {
+        maxWidth: 250,
+        paddingHorizontal: 10,
+        paddingTop: 5,
+        paddingBottom: 7,
+        borderRadius: 20,
     },
-
-    arrowRight: {
-        right: moderateScale(-6, 0.5),
+    balloonIn: {
+        backgroundColor: 'grey'
+    },
+    balloonOut: {
+        backgroundColor: '#B2D8D8'
+    },
+    textIn: {
+        paddingTop: 5, color: 'black'
+    },
+    textOut: {
+        paddingTop: 5, color: 'white'
+    },
+    timestamp: {
+        paddingHorizontal: 10,
+        paddingTop: 5,
+        paddingBottom: 7,
     }
 })
