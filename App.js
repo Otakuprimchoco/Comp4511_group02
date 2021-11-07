@@ -8,6 +8,7 @@ import Login from './src/screens/Login';
 import Register01 from './src/screens/Register01';
 import Register02 from './src/screens/Register02';
 import Profile from './src/screens/Profile';
+import Main from './src/navigation/tabs'
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -17,7 +18,9 @@ const App = () => {
 
     <View style={{ flex: 1 }}>
       <NavigationContainer  ref={ref}>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+          {/* The Main page navigation */}
+          <Stack.Screen name="Main" component={Main} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register01" component={Register01} />
           <Stack.Screen name="Register02" component={Register02} />
