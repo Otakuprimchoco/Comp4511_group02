@@ -3,25 +3,26 @@ import {
   View,
 } from 'react-native';
 import ChatBubble from './ChatBubble';
+import UserTyping from './UserTyping'
 
 export default function App() {
 
   const list = [
     {
-      i: 0,
+      key: 0,
       message: 'Hi there',
       outgoing: true,
       timestamp: '12:07pm'
     },
     {
-      i: 1,
-      message: 'Hi there mate good to see you out and about.',
+      key: 1,
+      message: 'Hi there, good to hear from you. How did you like the event?',
       outgoing: false,
       timestamp: '12:09pm'
     },
     {
-      i: 2,
-      message: 'How\'s it going?',
+      key: 2,
+      message: 'The event was great. Which booth did you attend?',
       outgoing: true,
       timestamp: '12:20pm'
     },
@@ -30,10 +31,11 @@ export default function App() {
   return (
     <View style={{backgroundColor: "#fff", width: 375,}}>
       {
-        list.map((l, i) => (
-          <ChatBubble i={i} message={l.message} outgoing={l.outgoing} timestamp={l.timestamp}/>
+        list.map((l) => (
+          <ChatBubble message={l.message} outgoing={l.outgoing} timestamp={l.timestamp}/>
         ))
       }
+      <UserTyping/>
     </View>
   );
 
