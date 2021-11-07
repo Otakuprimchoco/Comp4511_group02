@@ -11,9 +11,9 @@ import {
   onBlur
 } from "react-native";
 import { Appbar } from 'react-native-paper';
-import InterestList from "../../assets/LoginReg/SelectionList/InterestList";
+import InterestList from "../../assets/SelectionList/InterestList";
 
-export default function Register02() {
+export default function Register02({navigation}) {
 
   const _goBack = () => console.log('Went back');
 
@@ -34,7 +34,7 @@ export default function Register02() {
    <InterestList/>
    
    <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Profile')}>
           <Text style={styles.loginText}>Confirm</Text>
         </TouchableOpacity>
   </View>

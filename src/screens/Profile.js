@@ -13,7 +13,7 @@ import {
 import { Appbar, Switch } from 'react-native-paper';
 import {Avatar} from 'react-native-elements';
 import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent'
-import InterestList from "../../assets/LoginReg/SelectionList/InterestList";
+import InterestList from "../../assets/SelectionList/InterestList";
 export default function Profile() {
   const [role, setRole] = useState("");
   const [about, setAbout] = useState("");

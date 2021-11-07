@@ -11,14 +11,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
-        <Image style={styles.image} source={require("./assets/logos/logo.png")} />
+        <Image style={styles.image} source={require("../../assets/logos/logo.png")} />
       </View>
 
       <View style={styles.inputView}>
@@ -57,7 +57,7 @@ export default function Login() {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Profile')}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
       </View>
@@ -65,7 +65,7 @@ export default function Login() {
 
       <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
         <Text style={{fontWeight: 'bold', fontSize: 18,}}>New User? </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register01')}>
           <Text style={{fontWeight: 'bold', fontSize: 18, color: '#66B2B2',}}>Register Here</Text>
         </TouchableOpacity>
       </View>

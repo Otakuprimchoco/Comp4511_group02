@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 
-export default function Register01() {
+export default function Register01( {navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -127,7 +127,7 @@ export default function Register01() {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Register02')}>
           <Text style={styles.loginText}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -135,7 +135,7 @@ export default function Register01() {
 
       <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
         <Text style={{fontWeight: 'bold', fontSize: 18,}}>Already a User? </Text>
-        <TouchableOpacity>
+        <TouchableOpacity  onPress={() => navigation.navigate('Login')}>
           <Text style={{fontWeight: 'bold', fontSize: 18, color: '#66B2B2',}}>Login Here</Text>
         </TouchableOpacity>
       </View>
