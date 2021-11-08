@@ -21,10 +21,10 @@ const Tab1 = ( { navigation } ) => {
           barStyle="light-content" // or directly
 
           containerStyle={{
-            backgroundColor: 'darkcyan',
+            backgroundColor: '#8fcbbc',
             justifyContent: 'space-around',
           }}
-          leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+          leftComponent={{ icon: 'search', iconStyle: { color: '#fff' } }}
           centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
           rightComponent={{ icon: 'home', color: '#fff' }}
         />
@@ -50,6 +50,6 @@ const styles = StyleSheet.create( {
     flex: 1,
     alignItems: 'center',
 
-    backgroundColor: '#8fcbbc'
+    backgroundColor: 'white'
   },
 } );
