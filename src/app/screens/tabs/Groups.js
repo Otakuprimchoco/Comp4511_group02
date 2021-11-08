@@ -4,17 +4,14 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { Header, Icon } from 'react-native-elements';
 import { ModernHeader } from "@freakycoder/react-native-header-view";
 import { ClassicHeader } from "@freakycoder/react-native-header-view";
-import Tab2 from './Tab2';
-import Tab3 from './Tab3';
-const Tab1 = ( { navigation } ) => {
-  const Tab = createMaterialTopTabNavigator();
+import GroupSubNavigation from '../../navigation/GroupsSubNavigation'
+import { NavigationContainer } from '@react-navigation/native';
+
+
+const Tab = createMaterialTopTabNavigator();
+export default function GroupsLanding ( { navigation } ) {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Tab2" component={Tab2} />
-      <Tab.Screen name="Tab3" component={Tab3} />
-    </Tab.Navigator>,
     <View style={styles.container}>
-      <View>
 
         <Header
           statusBarProps={{ barStyle: 'light-content' }}
@@ -25,11 +22,10 @@ const Tab1 = ( { navigation } ) => {
             justifyContent: 'space-around',
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+          centerComponent={{ text: 'TAB 2', style: { color: '#fff' } }}
           rightComponent={{ icon: 'home', color: '#fff' }}
         />
-      </View>
-
+      <GroupSubNavigation/>
       <Text>Tab1</Text>
       <Button
         title="Click Here"
@@ -42,14 +38,11 @@ const Tab1 = ( { navigation } ) => {
 }
 
 
-
-export default Tab1;
-
 const styles = StyleSheet.create( {
   container: {
     flex: 1,
     alignItems: 'center',
-
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    // marginTop: 100
   },
 } );
