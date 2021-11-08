@@ -18,7 +18,7 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
-        <Image style={styles.image} source={require("../../assets/logos/logo.png")} />
+        <Image style={styles.image} source={require("../assets/logos/logo.png")} />
       </View>
 
       <View style={styles.inputView}>

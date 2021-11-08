@@ -32,7 +32,7 @@ const Tabs = () => {
                     tabBarIcon: ( { focused } ) => (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image
-                                source={require( '../../assets/icons/Event.png' )}
+                                source={require( '../assets/icons/Event.png' )}
                                 resizeMode="contain"
                                 style={{
                                     width: 20,
@@ -53,7 +53,7 @@ const Tabs = () => {
                 tabBarIcon: ( { focused } ) => (
                     <View style={{ alignItems: "center", justifyContent: "center" }}>
                         <Image
-                            source={require( '../../assets/icons/Groups.png' )}
+                            source={require( '../assets/icons/Groups.png' )}
                             resizeMode="contain"
                             style={{
                                 width: 20,
@@ -73,7 +73,7 @@ const Tabs = () => {
                 tabBarIcon: ( { focused } ) => (
                     <View style={{ alignItems: "center", justifyContent: "center" }}>
                         <Image
-                            source={require( '../../assets/icons/Chat.png' )}
+                            source={require( '../assets/icons/Chat.png' )}
                             resizeMode="contain"
                             style={{
                                 width: 20,
