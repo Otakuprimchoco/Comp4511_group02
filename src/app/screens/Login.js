@@ -57,7 +57,7 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Main')}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
       </View>

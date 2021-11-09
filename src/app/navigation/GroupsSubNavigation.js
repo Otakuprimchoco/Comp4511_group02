@@ -43,15 +43,13 @@ export default function GroupSubNavigation() {
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
           centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
+          rightComponent={{ icon: 'account-circle', type: 'material-community',  color: '#fff' }}
         />
       <Tab.Navigator
       initialRouteName="DiscoverGroups"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: {
-          
-          fontSize: 12,},
+        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,

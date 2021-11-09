@@ -8,6 +8,8 @@ import Register01 from './src/app/screens/Register01';
 import Register02 from './src/app/screens/Register02';
 import Profile from './src/app/screens/Profile';
 import Main from './src/app/navigation/tabs'
+import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
+import CreateGroup2 from './src/app/screens/groups/CreateGroup2'
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -17,13 +19,15 @@ const App = () => {
 
     <View style={{ flex: 1 }}>
       <NavigationContainer  ref={ref}>
-        <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
           {/* The Main page navigation */}
           <Stack.Screen name="Main" component={Main} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register01" component={Register01} />
           <Stack.Screen name="Register02" component={Register02} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="CreateGroup1" component={CreateGroup1} />
+          <Stack.Screen name="CreateGroup2" component={CreateGroup2} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
