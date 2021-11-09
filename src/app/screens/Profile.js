@@ -12,9 +12,9 @@ import {
 } from "react-native";
 import { Appbar, Switch } from 'react-native-paper';
 import {Avatar} from 'react-native-elements';
-import ImagePickerExample from '../assets/ChangePhoto/ChangePhotoComponent'
+import ImagePickerExample from  '../assets/ChangePhoto/ChangePhotoComponent'
 import InterestList from "../assets/SelectionList/InterestList";
-export default function Profile() {
+export default function Profile({navigation}) {
   const [role, setRole] = useState("");
   const [about, setAbout] = useState("");
   const [name, setName] = useState("");
@@ -168,7 +168,7 @@ export default function Profile() {
           </TouchableOpacity>
         </View>
         <View style={{alignItems: 'center'}}>
-          <TouchableOpacity style={styles.loginBtn}>
+          <TouchableOpacity style={styles.loginBtn} onPress={navigation.navigate("Login")}>
             <Text style={styles.loginText}>Logout</Text>
           </TouchableOpacity>
         </View>
