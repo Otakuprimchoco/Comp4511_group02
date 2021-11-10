@@ -1,7 +1,7 @@
 //Tutorial from https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React from 'react';
 import { View, StyleSheet, FlatList, } from 'react-native';
-
+import { Header } from 'react-native-elements';
 import {
   Container,
   Card,
@@ -15,6 +15,8 @@ import {
   TextSection,
 } from '../Chats/MessageStyles';
 
+import Chatroom from './UserChatScreen';
+import { createStackNavigator } from '@react-navigation/stack';
 const Messages = [
   {
     id: '1',
@@ -57,11 +59,36 @@ const Messages = [
       'Hey there, this is my test for a post of my social app in React Native.',
   },
 ];
+const Stack = createStackNavigator();
 
 const MessagesScreen = ( { navigation } ) => {
   return (
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }}>
+      <Stack.Screen
+        name="Chat"
+        component={Chatroom}
+        options={( { route } ) => ( {
+          title: route.params.userName,
+          headerBackTitleVisible: false,
+        } )}
+      />
+    </Stack.Navigator>,
     <View style={styles.container}>
 
+      <Header
+        statusBarProps={{ barStyle: 'light-content' }}
+        barStyle="light-content" // or directly
+
+        containerStyle={{
+          backgroundColor: '#8fcbbc',
+          justifyContent: 'space-around',
+        }}
+        leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+        centerComponent={{ text: 'Chats', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
+      />
       <Container>
         <FlatList
           data={Messages}

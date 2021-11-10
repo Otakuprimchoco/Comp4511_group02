@@ -3,10 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { StyleSheet, Text, View, Image, Header, TouchableOpacity, StatusBar } from 'react-native';
 import Tab1 from '../screens/tabs/Events';
-import GroupsLanding from '../screens/tabs/Groups';
-import ChatsLanding from '../screens/tabs/Chats';
+import ChatsLanding from '../screens/Chats/Chats';
 import GroupsSubNavigation from './GroupsSubNavigation'
-import ChatSubNavigation from './ChatSubNavigation'
 
 
 
