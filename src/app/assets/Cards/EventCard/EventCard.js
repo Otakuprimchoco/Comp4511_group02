@@ -16,28 +16,25 @@ const EventCard = ({i, name, subtitle, state}) => {
   
   return (
     <View>
-        <ListItem key={i} bottomDivider>
+      <ListItem key={i} bottomDivider button>
         <ListItem.Content>
-            <View>
             <ListItem.Title style={styles.titleView}>{name}</ListItem.Title>
-            </View>
-            <View>
             <ListItem.Subtitle  style={styles.subtitleView}>{subtitle}</ListItem.Subtitle>
-            </View>
         </ListItem.Content>
-        <View>
-            <ListItem.Chevron color="black" size='26' iconStyle={styles.iconView}/>
+        
+        <View style={{justifyContent: 'center'}}>
+            <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
             {liked ? (
-            <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
+              <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
                 <Icon name='heart' type='font-awesome' color='#F97171'/>
             </TouchableOpacity>
             ) : (
-            <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
+              <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
             <Icon name='heart-o' type='font-awesome'/>
             </TouchableOpacity>
             )}
         </View>
-        </ListItem>
+      </ListItem>
     </View>
   )
 }

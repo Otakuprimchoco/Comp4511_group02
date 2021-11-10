@@ -27,7 +27,8 @@ export default function CreateGroup2({route, navigation}) {
             backgroundColor: '#8fcbbc',
             justifyContent: 'space-around',
           }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
+            onPress: () => {navigation.pop()} }}
           centerComponent={{ text: groupName, style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
           rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
         />

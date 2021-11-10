@@ -3,12 +3,13 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     subtitleView: {
         fontSize: 12,
+        paddingTop: 2
     },
     titleView: {
         fontSize: 16,
-        paddingBottom: 15,
+        // paddingBottom: 15,
     },
     iconView: {
-        paddingBottom: 10,
+        paddingBottom: 2,
     },
   });
