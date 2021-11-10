@@ -5,13 +5,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import ChatScreen from '../screens/Chats/Chats'
 
-function DiscoverGroupsScreen () {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
-    </View>
-  );
-}
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -47,7 +41,7 @@ export default function ChatSubNavigation () {
         />
         <Tab.Screen
           name="Friend List"
-          component={DiscoverGroupsScreen}
+          component={ChatScreen}
           options={{ tabBarLabel: 'Friend List', tabBarAccessibilityLabel: 'Friend List' }}
         />
       </Tab.Navigator>

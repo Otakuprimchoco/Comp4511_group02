@@ -1,12 +1,6 @@
+//Tutorial from https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React from 'react';
-import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Header, Icon } from 'react-native-elements';
-import { ModernHeader } from "@freakycoder/react-native-header-view";
-import { ClassicHeader } from "@freakycoder/react-native-header-view";
-import ChatSubNavigation from '../../navigation/ChatSubNavigation'
-
-import { NavigationContainer } from '@react-navigation/native';
+import { View, StyleSheet, FlatList, } from 'react-native';
 
 import {
   Container,
