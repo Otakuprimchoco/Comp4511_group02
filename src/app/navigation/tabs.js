@@ -2,10 +2,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { StyleSheet, Text, View, Image, Header, TouchableOpacity, StatusBar } from 'react-native';
-import Tab1 from '../screens/tabs/Tab1';
+import Tab1 from '../screens/tabs/Events';
 import GroupsLanding from '../screens/tabs/Groups';
-import Tab3 from '../screens/tabs/Tab3';
+import ChatsLanding from '../screens/tabs/Chats';
 import GroupsSubNavigation from './GroupsSubNavigation'
+import ChatSubNavigation from './ChatSubNavigation'
 
 
 
@@ -13,16 +14,16 @@ const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
     return (
-        
+
         <Tab.Navigator
-            screenOptions={{ 
+            screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: "white",
                 tabBarInactiveTintColor: "white",
                 tabBarActiveBackgroundColor: "darkcyan",
                 tabBarInactiveBackgroundColor: "#8fcbbc",
                 tabBarShowLabel: false,
-                tabBarStyle: [ { "display": "flex" }, null ]
+                tabBarStyle: [{ "display": "flex" }, null]
             }}
         >
             <Tab.Screen
@@ -70,7 +71,7 @@ const Tabs = () => {
                 headerShown: false
             }} />
 
-            <Tab.Screen name="Chat" component={Tab3} options={{
+            <Tab.Screen name="Chat" component={ChatsLanding} options={{
                 tabBarIcon: ( { focused } ) => (
                     <View style={{ alignItems: "center", justifyContent: "center" }}>
                         <Image
