@@ -1,13 +1,10 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Header, Icon } from 'react-native-elements';
-import { ModernHeader } from "@freakycoder/react-native-header-view";
-import { ClassicHeader } from "@freakycoder/react-native-header-view";
 
 
-
-export default function Tab3 ( { navigation } ) {
+export default function Tab1 ( { navigation } ) {
   const Tab = createMaterialTopTabNavigator();
   return (
     <View style={styles.container}>
@@ -21,13 +18,13 @@ export default function Tab3 ( { navigation } ) {
             backgroundColor: '#8fcbbc',
             justifyContent: 'space-around',
           }}
-          leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'TAB 3', style: { color: '#fff' } }}
+          leftComponent={{ icon: 'search', iconStyle: { color: '#fff' } }}
+          centerComponent={{ text: 'TAB 1', style: { color: '#fff' } }}
           rightComponent={{ icon: 'home', color: '#fff' }}
         />
       </View>
 
-      <Text>Tab3</Text>
+      <Text>Tab1</Text>
       <Button
         title="Click Here"
         onPress={() => alert( 'Clicked' )}
@@ -37,8 +34,6 @@ export default function Tab3 ( { navigation } ) {
 
 
 }
-
-
 
 const styles = StyleSheet.create( {
   container: {

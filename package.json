@@ -40,9 +40,10 @@
     "react-native-elegant-header": "^0.1.0",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-gifted-chat": "^0.16.3",
     "react-native-gorgeous-header": "^0.1.0",
     "react-native-modern-header": "^1.0.2",
-    "react-native-pager-view": "^5.4.6",
+    "react-native-pager-view": "^5.4.9",
     "react-native-paper": "^4.9.2",
     "react-native-profile-header": "^0.1.1",
     "react-native-reanimated": "^2.2.3",
@@ -53,6 +54,7 @@
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
     "serve": "^13.0.2",
+    "styled-components": "^5.3.3",
     "switch-button-react-native": "^1.0.3"
   },
   "devDependencies": {
