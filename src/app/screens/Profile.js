@@ -168,7 +168,7 @@ export default function Profile({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={{alignItems: 'center'}}>
-          <TouchableOpacity style={styles.loginBtn} onPress={navigation.navigate("Login")}>
+          <TouchableOpacity style={styles.loginBtn}>
             <Text style={styles.loginText}>Logout</Text>
           </TouchableOpacity>
         </View>
