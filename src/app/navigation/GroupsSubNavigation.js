@@ -19,14 +19,7 @@ import {
   Roboto_900Black_Italic,
 } from '@expo-google-fonts/roboto';
 import MyGroupsScreen from '../screens/groups/MyGroups'
-
-function DiscoverGroupsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Discover Groups!</Text>
-    </View>
-  );
-}
+import DiscoverGroupsScreen from '../screens/groups/DiscoverGroups'
 
 const Tab = createMaterialTopTabNavigator();
 

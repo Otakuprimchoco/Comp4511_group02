@@ -57,18 +57,13 @@ const list = [
   },
 ]
 
-export default function MyGroups({navigation}) {
+export default function DiscoverGroups({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={styles.createGroupContainer}>
-        <TouchableOpacity style={styles.createBtn} onPress={() => navigation.push("CreateGroup1")}>
-          <Text style={styles.createText}>Create Group</Text>
-        </TouchableOpacity>
-      </View>
-      
+           
       <View style={styles.groupsContainer}>
         <View style={{paddingBottom: 10, paddingLeft: 5}}>
-          <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Groups</Text>
+          <Text style={{fontSize: 14, fontWeight: 'bold'}}>New Groups for You</Text>
         </View>
         < ScrollView style={styles.groupsList}>
         {
@@ -86,7 +81,7 @@ export default function MyGroups({navigation}) {
             </ListItem>
           ))
         }
-      </ScrollView>
+        </ScrollView>
       </View>
     </View>
   );

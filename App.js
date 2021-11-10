@@ -19,7 +19,7 @@ const App = () => {
 
     <View style={{ flex: 1 }}>
       <NavigationContainer  ref={ref}>
-        <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
           {/* The Main page navigation */}
           <Stack.Screen name="Main" component={Main} />
           <Stack.Screen name="Login" component={Login} />
