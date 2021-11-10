@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  onBlur, SafeAreaView, ScrollView, Switch
+  onBlur, StyleSheet,
+  Text, TextInput, TouchableOpacity, View
 } from "react-native";
-import SwitchButton from 'switch-button-react-native'
-import GroupCard from '../../assets/Cards/GroupCard/GroupCard'
-import { ListItem, List, Icon, Header, Avatar } from 'react-native-elements'
-import profileIcon from '../../assets/icons/profileicon.png'
-import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
+import { Avatar, Header } from 'react-native-elements';
+import SwitchButton from 'switch-button-react-native';
+import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent';
 
 export default function CreateGroup1({navigation}) {
   const [name, setName] = useState("");
@@ -30,7 +22,8 @@ export default function CreateGroup1({navigation}) {
             backgroundColor: '#8fcbbc',
             justifyContent: 'space-around',
           }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
+            onPress: () => {navigation.pop()} }}
           centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
           rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
         />

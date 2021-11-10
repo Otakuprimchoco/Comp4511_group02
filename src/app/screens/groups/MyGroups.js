@@ -1,61 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  onBlur, SafeAreaView, ScrollView, Switch
+  ScrollView, StyleSheet,
+  Text, TouchableOpacity, View
 } from "react-native";
-import SwitchButton from 'switch-button-react-native'
-import GroupCard from '../../assets/Cards/GroupCard/GroupCard'
-import { ListItem, List, Icon } from 'react-native-elements'
-import profileIcon from '../../assets/icons/profileicon.png'
+import GroupCard from '../../assets/Cards/GroupCard/GroupCard';
 
-const list = [
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Public'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Private'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Public'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Private'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Public'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Private'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Public'
-  },
-  {
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Private'
-  },
-]
 
 export default function MyGroups({navigation}) {
   return (
@@ -73,17 +22,11 @@ export default function MyGroups({navigation}) {
         < ScrollView style={styles.groupsList}>
         {
           list.map((item, i) => (
-            <ListItem key={i} bottomDivider ViewComponent={TouchableOpacity}>
-              <Image style={styles.image} source={profileIcon} />
-              <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                  <ListItem.Subtitle  style={{fontSize: 12}}>{item.subtitleL}</ListItem.Subtitle>
-              </ListItem.Content>
-              <View style={{justifyContent: 'center'}}>
-                <ListItem.Chevron style={{paddingBottom: 5}}/>
-                <ListItem.Subtitle  style={{fontSize: 12}}>{item.subtitleR}</ListItem.Subtitle>
-              </View>
-            </ListItem>
+            <GroupCard 
+              key={i} name={item.name} 
+              subtitleL={item.subtitleL} subtitleR={item.subtitleR}
+              onPressFn={() => {navigation.navigate("GroupPage")}}
+              />
           ))
         }
       </ScrollView>
@@ -135,3 +78,54 @@ const styles = StyleSheet.create({
     height: 30,
   },
   });
+
+  const list = [
+    {
+      key: 0,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Public'
+    },
+    {
+      key: 1,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Private'
+    },
+    {
+      key: 2,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Public'
+    },
+    {
+      key: 3,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Private'
+    },
+    {
+      key: 4,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Public'
+    },
+    {
+      key: 5,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Private'
+    },
+    {
+      key: 6,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Public'
+    },
+    {
+      key: 7,
+      name: 'Group Name',
+      subtitleL: '# Members',
+      subtitleR: 'Private'
+    },
+  ]

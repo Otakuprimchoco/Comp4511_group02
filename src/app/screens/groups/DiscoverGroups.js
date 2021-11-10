@@ -16,41 +16,49 @@ import profileIcon from '../../assets/icons/profileicon.png'
 
 const list = [
   {
+    key: 0,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Public'
   },
   {
+    key: 1,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Private'
   },
   {
+    key: 2,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Public'
   },
   {
+    key: 3,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Private'
   },
   {
+    key: 4,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Public'
   },
   {
+    key: 5,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Private'
   },
   {
+    key: 6,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Public'
   },
   {
+    key: 7,
     name: 'Group Name',
     subtitleL: '# Members',
     subtitleR: 'Private'
@@ -68,17 +76,11 @@ export default function DiscoverGroups({navigation}) {
         < ScrollView style={styles.groupsList}>
         {
           list.map((item, i) => (
-            <ListItem key={i} bottomDivider ViewComponent={TouchableOpacity}>
-              <Image style={styles.image} source={profileIcon} />
-              <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                  <ListItem.Subtitle  style={{fontSize: 12}}>{item.subtitleL}</ListItem.Subtitle>
-              </ListItem.Content>
-              <View style={{justifyContent: 'center'}}>
-                <ListItem.Chevron style={{paddingBottom: 5}}/>
-                <ListItem.Subtitle  style={{fontSize: 12}}>{item.subtitleR}</ListItem.Subtitle>
-              </View>
-            </ListItem>
+            <GroupCard 
+              key={i} name={item.name} 
+              subtitleL={item.subtitleL} subtitleR={item.subtitleR}
+              onPressFn={() => {navigation.push("GroupPage")}}
+              />
           ))
         }
         </ScrollView>

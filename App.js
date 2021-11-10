@@ -10,6 +10,7 @@ import Profile from './src/app/screens/Profile';
 import Main from './src/app/navigation/tabs'
 import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
 import CreateGroup2 from './src/app/screens/groups/CreateGroup2'
+import GroupPage from './src/app/screens/groups/GroupPage'
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="CreateGroup1" component={CreateGroup1} />
           <Stack.Screen name="CreateGroup2" component={CreateGroup2} />
+          <Stack.Screen name="GroupPage" component={GroupPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
