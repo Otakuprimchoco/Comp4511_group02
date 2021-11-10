@@ -3,64 +3,60 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TextInput,
-  Button,
   TouchableOpacity,
-  onBlur, SafeAreaView, ScrollView, Switch
+  onBlur
 } from "react-native";
 import SwitchButton from 'switch-button-react-native'
-import GroupCard from '../../assets/Cards/GroupCard/GroupCard'
-import { ListItem, List, Icon, Header, Avatar } from 'react-native-elements'
-import profileIcon from '../../assets/icons/profileicon.png'
-import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
+import { Header, Avatar } from 'react-native-elements'
+import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent'
 
-export default function CreateGroup1({navigation}) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [isPrivate, setIsPrivate] = useState(true);
+export default function CreateGroup1 ( { navigation } ) {
+  const [name, setName] = useState( "" );
+  const [description, setDescription] = useState( "" );
+  const [isPrivate, setIsPrivate] = useState( true );
 
   return (
     <View style={styles.container}>
       <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          barStyle="light-content" // or directly
+        statusBarProps={{ barStyle: 'light-content' }}
+        barStyle="light-content" // or directly
 
-          containerStyle={{
-            backgroundColor: '#8fcbbc',
-            justifyContent: 'space-around',
-          }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-        />
-      <View style={{alignItems: 'center', justifyContent: 'center', padding: 10}}>
-            <Avatar rounded size="large" source={{uri: 'https://picsum.photos/id/237/200/300'}}/>
+        containerStyle={{
+          backgroundColor: '#8fcbbc',
+          justifyContent: 'space-around',
+        }}
+        leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+        centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
+      />
+      <View style={{ alignItems: 'center', justifyContent: 'center', padding: 10 }}>
+        <Avatar rounded size="large" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
       </View>
-            <ImagePickerExample></ImagePickerExample>
+      <ImagePickerExample></ImagePickerExample>
       <View style={styles.inputView}>
-        <View style={{flexDirection: 'row', paddingBottom: 5}}>
-          <Text style={{fontWeight: 'bold', fontSize: 14,}}>Group Name</Text>
-          <Text style={{color: 'red'}}> *</Text>
+        <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 14, }}>Group Name</Text>
+          <Text style={{ color: 'red' }}> *</Text>
         </View>
         <TextInput
           style={styles.nameInput}
           placeholder="Enter your group name"
           placeholderTextColor="#003f5c"
-          onChangeText={(name) => setName(name)}
+          onChangeText={( name ) => setName( name )}
           value={name}
           onBlur={onBlur}
         />
-        <View style={{flexDirection: 'row', paddingBottom: 5}}>
-          <Text style={{fontWeight: 'bold', fontSize: 14,}}>About Group</Text>
-          <Text style={{color: 'red'}}> *</Text>
+        <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 14, }}>About Group</Text>
+          <Text style={{ color: 'red' }}> *</Text>
         </View>
         <TextInput
           style={styles.descriptionInput}
           placeholder="Enter a group description"
           placeholderTextColor="#003f5c"
-          placeholderStyle={{colour: 'red'}}
-          onChangeText={(description) => setDescription(description)}
+          placeholderStyle={{ colour: 'red' }}
+          onChangeText={( description ) => setDescription( description )}
           value={description}
           onBlur={onBlur}
           multiline={true}
@@ -69,14 +65,14 @@ export default function CreateGroup1({navigation}) {
       {isPrivate}
       <View style={styles.buttonContainer}>
         <SwitchButton
-          onValueChange={(val) => setIsPrivate(val==='Private')}
-          text1 = 'Private'
-          text2 = 'Public'
+          onValueChange={( val ) => setIsPrivate( val === 'Private' )}
+          text1='Private'
+          text2='Public'
           useNativeDriver={true}
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate("CreateGroup2", {groupName: name})}>
+        <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate( "CreateGroup2", { groupName: name } )}>
           <Text style={styles.nextText}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -85,7 +81,7 @@ export default function CreateGroup1({navigation}) {
 }
 
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     flex: 1
   },
@@ -129,4 +125,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  });
+} );

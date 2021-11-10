@@ -15,8 +15,8 @@ import {
   TextSection,
 } from '../Chats/MessageStyles';
 
-import Chatroom from './UserChatScreen';
-import { createStackNavigator } from '@react-navigation/stack';
+
+
 const Messages = [
   {
     id: '1',
@@ -59,22 +59,11 @@ const Messages = [
       'Hey there, this is my test for a post of my social app in React Native.',
   },
 ];
-const Stack = createStackNavigator();
+
 
 const MessagesScreen = ( { navigation } ) => {
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen
-        name="Chat"
-        component={Chatroom}
-        options={( { route } ) => ( {
-          title: route.params.userName,
-          headerBackTitleVisible: false,
-        } )}
-      />
-    </Stack.Navigator>,
+
     <View style={styles.container}>
 
       <Header
@@ -94,7 +83,7 @@ const MessagesScreen = ( { navigation } ) => {
           data={Messages}
           keyExtractor={item => item.id}
           renderItem={( { item } ) => (
-            <Card onPress={() => navigation.navigate( 'Chat', { userName: item.userName } )}>
+            <Card onPress={() => navigation.navigate( 'ChatRoom', { userName: item.userName } )}>
               <UserInfo>
                 <UserImgWrapper>
                   <UserImg source={item.userImg} />

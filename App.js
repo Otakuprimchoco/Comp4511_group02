@@ -10,15 +10,16 @@ import Profile from './src/app/screens/Profile';
 import Main from './src/app/navigation/tabs'
 import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
 import CreateGroup2 from './src/app/screens/groups/CreateGroup2'
+import ChatRoom from './src/app/screens/Chats/UserChatScreen'
 
 const Stack = createStackNavigator();
 const App = () => {
-  const ref = React.useRef(null);
+  const ref = React.useRef( null );
 
   return (
 
     <View style={{ flex: 1 }}>
-      <NavigationContainer  ref={ref}>
+      <NavigationContainer ref={ref}>
         <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
           {/* The Main page navigation */}
           <Stack.Screen name="Main" component={Main} />
@@ -28,6 +29,7 @@ const App = () => {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="CreateGroup1" component={CreateGroup1} />
           <Stack.Screen name="CreateGroup2" component={CreateGroup2} />
+          <Stack.Screen name="ChatRoom" component={ChatRoom} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

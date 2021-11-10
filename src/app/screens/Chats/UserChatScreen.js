@@ -1,14 +1,16 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import {View, ScrollView, Text, Button, StyleSheet} from 'react-native';
-import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ChatScreen = () => {
-  const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    setMessages([
+
+const ChatScreen = () => {
+  const [messages, setMessages] = useState( [] );
+
+  useEffect( () => {
+    setMessages( [
       {
         _id: 1,
         text: 'Hello developer',
@@ -29,22 +31,22 @@ const ChatScreen = () => {
           avatar: 'https://placeimg.com/140/140/any',
         },
       },
-    ]);
-  }, []);
+    ] );
+  }, [] );
 
-  const onSend = useCallback((messages = []) => {
-    setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages),
+  const onSend = useCallback( ( messages = [] ) => {
+    setMessages( ( previousMessages ) =>
+      GiftedChat.append( previousMessages, messages ),
     );
-  }, []);
+  }, [] );
 
-  const renderSend = (props) => {
+  const renderSend = ( props ) => {
     return (
       <Send {...props}>
         <View>
           <MaterialCommunityIcons
             name="send-circle"
-            style={{marginBottom: 5, marginRight: 5}}
+            style={{ marginBottom: 5, marginRight: 5 }}
             size={32}
             color="#2e64e5"
           />
@@ -53,7 +55,7 @@ const ChatScreen = () => {
     );
   };
 
-  const renderBubble = (props) => {
+  const renderBubble = ( props ) => {
     return (
       <Bubble
         {...props}
@@ -72,7 +74,7 @@ const ChatScreen = () => {
   };
 
   const scrollToBottomComponent = () => {
-    return(
+    return (
       <FontAwesome name='angle-double-down' size={22} color='#333' />
     );
   }
@@ -80,7 +82,7 @@ const ChatScreen = () => {
   return (
     <GiftedChat
       messages={messages}
-      onSend={(messages) => onSend(messages)}
+      onSend={( messages ) => onSend( messages )}
       user={{
         _id: 1,
       }}
@@ -95,10 +97,11 @@ const ChatScreen = () => {
 
 export default ChatScreen;
 
-const styles = StyleSheet.create({
+
+const styles = StyleSheet.create( {
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+} );
