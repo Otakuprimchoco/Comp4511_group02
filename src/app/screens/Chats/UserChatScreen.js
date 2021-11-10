@@ -1,3 +1,4 @@
+//Learn from tutorial https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';

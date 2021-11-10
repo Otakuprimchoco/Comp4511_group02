@@ -1,4 +1,4 @@
-//Tutorial from https://www.youtube.com/watch?v=bGGeD5RkdzQ
+//Learn from tutorial https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React from 'react';
 import { View, StyleSheet, FlatList, } from 'react-native';
 import { Header } from 'react-native-elements';

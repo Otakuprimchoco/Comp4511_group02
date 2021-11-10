@@ -23,17 +23,29 @@ const App = () => {
 
     <View style={{ flex: 1 }}>
       <NavigationContainer ref={ref}>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+
+        <Stack.Navigator initialRouteName="Login" >
           {/* The Main page navigation */}
-          <Stack.Screen name="Main" component={Main} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register01" component={Register01} />
-          <Stack.Screen name="Register02" component={Register02} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="CreateGroup1" component={CreateGroup1} />
-          <Stack.Screen name="CreateGroup2" component={CreateGroup2} />
-          <Stack.Screen name="ChatRoom" component={ChatRoom} />
-          <Stack.Screen name="GroupPage" component={GroupPage} />
+          <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} />
+          <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+          <Stack.Screen options={{ headerShown: false }} name="Register01" component={Register01} />
+          <Stack.Screen options={{ headerShown: false }} name="Register02" component={Register02} />
+          <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} />
+          <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
+          <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
+          <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
+            options={( { route } ) => ( {
+              title: route.params.userName,
+              headerBackTitleVisible: false,
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerStyle: {
+                backgroundColor: '#8fcbbc',
+              },
+            } )} />
+          <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
 
         </Stack.Navigator>
       </NavigationContainer>
