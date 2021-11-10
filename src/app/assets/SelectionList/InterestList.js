@@ -78,6 +78,18 @@ export default class InterestList extends React.Component {
             }}
           />
         </View>
+                {/* Allows to fetch the selected items with an id and label, in a json format */}
+                <View style={styles.buttonContainer}>
+          <View>
+            <Button
+            // remove this button later, its only for testing
+              title="JSONify selected"
+              onPress={() => {
+                Alert.alert('Selected items:', JSON.stringify(this.tag.itemsSelected));
+              }}
+            />
+          </View>
+        </View>
         <View style={styles.buttonContainer}>
           {/* Place the button component here -> name: "Confirm" */}
         </View>
@@ -89,14 +101,14 @@ export default class InterestList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#FFF',
+    backgroundColor: '#FFF',
     marginTop: 50,
-    // margin: 15,
-    // backgroundColor: "white"
+    margin: 15,
+    backgroundColor: "white"
   },
   titleHeader: {
     backgroundColor:"#B2D8D8", 
-    marginTop: 0, 
+    marginTop: 30, 
     padding: 5,
   },
   labelText: {
@@ -105,7 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   searchContainer:{
-    backgroundColor: "transparent", 
+    backgroundColor: "white", 
     marginTop: 40, 
     borderBottomWidth: 0, 
     borderTopWidth: 0
@@ -129,7 +141,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10, 
     paddingTop: 10, 
     marginTop: 30, 
-    marginLeft: 10,
     borderRadius: 10
-  }
+  }, 
+  buttonContainer: {
+    padding: 1,
+  },
+  buttonInner: {
+    marginBottom: 15,
+  },
 });
