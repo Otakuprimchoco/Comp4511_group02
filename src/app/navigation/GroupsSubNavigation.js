@@ -23,7 +23,7 @@ import DiscoverGroupsScreen from '../screens/groups/DiscoverGroups'
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function GroupSubNavigation() {
+export default function GroupSubNavigation({navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <Header
@@ -36,7 +36,7 @@ export default function GroupSubNavigation() {
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
           centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'account-circle', type: 'material-community',  color: '#fff' }}
+          rightComponent={{ icon: 'account-circle', type: 'material-community',  color: '#fff', onPress: () => navigation.push('Profile') }}
         />
       <Tab.Navigator
       initialRouteName="DiscoverGroups"

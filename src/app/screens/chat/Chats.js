@@ -13,7 +13,7 @@ import {
   PostTime,
   MessageText,
   TextSection,
-} from '../Chats/MessageStyles';
+} from './MessageStyles';
 
 
 

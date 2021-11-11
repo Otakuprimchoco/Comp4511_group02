@@ -99,12 +99,12 @@ export default class InterestList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    marginTop: 50,
-    margin: 15,
-    backgroundColor: "white"
+  container: {   // Do not set containers with BG colour, margins from within a component (Cameron)
+    // flex: 1,
+    // backgroundColor: '#FFF',
+    // marginTop: 50,
+    // margin: 15,
+    // backgroundColor: "white"
   },
   titleHeader: {
     backgroundColor:"#B2D8D8", 
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   searchContainer:{
-    backgroundColor: "white", 
+    backgroundColor: "transparent", 
     marginTop: 40, 
     borderBottomWidth: 0, 
     borderTopWidth: 0

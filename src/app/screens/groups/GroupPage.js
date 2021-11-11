@@ -5,46 +5,17 @@ import {
 } from "react-native";
 import { Header, Icon } from 'react-native-elements';
 import EventCard from "../../assets/Cards/EventCard/EventCard";
-import sampleUserPhoto from '../../assets/sampleUserAssets/sample_groupPageHeaderPhoto2.png';
-// import FollowGroupIcon from "../../assets/icons/followGroup.png"
-// import UnfollowGroupIcon from "../../assets/icons/unfollowGroup.png"
-// import { Svg } from 'react-native-svg'
+import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
 import AboutGroupPopup from "../../assets/popups/AboutGroupPopup";
+import SubButton from "../../assets/buttons/SubButton";
+import data from '../../assets/sampleUserData/sample_groupPageData'
 
 
-const data = {
-  1: {
-    'groupId': 1,
-    'groupName': 'UNSW Engineering Society',
-    'description': "Founded in 2011, the UNSW Engineering Society (EngSoc) is the leading engineering society officially endorsed by the UNSW Faculty of Engineering, as well as Arc (UNSW’s umbrella student organisation).",
-    'numMembers': 1456,
-    'isFollowing': true,
-    'memberList': [
-      'Dennis Miller',
-      'Alton Salazar',
-      'Steph Miller',
-      'Tony Alvarez',
-      'Rob Maxwell'
-    ],
-    'events': [
-      {
-        name: 'UNSW Engineering Career Fair',
-        timeToEvent: '2 hours',
-        isLiked: true
-      },
-      {
-        name: 'Student Career Fair 2021',
-        timeToEvent: '5 days',
-        isLiked: false
-      }
-    ]
-  }
-}
 
 export default function GroupPage({navigation, groupId}) {
   const groupData = data[1]
   const [isFollowing, setIsFollowing] = useState(true);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
   const [isAboutPopupVisible, setIsAboutPopupVisible] = useState(false);
 
   return (
@@ -76,7 +47,7 @@ export default function GroupPage({navigation, groupId}) {
           <Icon name='ios-share' color='white' size={30} style={styles.headerIcon}/>
           {
             isOwner ?
-              <Icon name={'settings'} color='white' size={30}/>
+              <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
               :
               <Icon name={'info'} color='white' size={30} onPress={() => {setIsAboutPopupVisible(true)}}/>
           }
@@ -100,19 +71,11 @@ export default function GroupPage({navigation, groupId}) {
         <View style={styles.followButtonContainer}>
           {
             isFollowing ?
-            <TouchableOpacity onPress={() => setIsFollowing(false)}>
-              <View style={styles.unfollowButton} >
-                <Text style={styles.followButtonText}>{"Unfollow Group"}</Text>
-                <Icon name={'remove-circle'} color='white' size={20} style={styles.followButtonIcon}/>
-              </View>
-            </TouchableOpacity>
+            <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'} 
+              onPressFn={() => {setIsFollowing(false)}}/>
             :
-            <TouchableOpacity onPress={() => setIsFollowing(true)}>
-              <View style={styles.followButton}>
-                <Text style={styles.followButtonText}>{"Follow Group"}</Text>
-                <Icon name={'add-circle'} color='white' size={20} style={styles.followButtonIcon}/>
-              </View>
-            </TouchableOpacity>
+            <SubButton text={"Follow Group"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+              onPressFn={() => {setIsFollowing(true)}}/>
           }
 
         </View>
@@ -225,37 +188,12 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   followButton: {
-    width: 135,
-    height: 30,
     backgroundColor: '#66B2B2',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5, 
-    flexDirection: 'row'
   },
   unfollowButton: {
-    width: 135,
-    height: 30,
     backgroundColor: '#A6A6A6',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5, 
-    flexDirection: 'row'
   },
-  followButtonText: {
-    fontSize: 13,
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    color: 'white',
-    paddingLeft: 2,
-    paddingRight: 5,
-    width: 100
-  },
-  followButtonIcon: {
-    // marginRight: 4,
-  }
-
-  });
+});
 
 
   

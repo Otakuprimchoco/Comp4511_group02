@@ -5,7 +5,9 @@ import {
 } from "react-native";
 import { Avatar, Header } from 'react-native-elements';
 import SwitchButton from 'switch-button-react-native';
+import MainButton from "../../assets/buttons/MainButton";
 import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent';
+import ButtonSlider from "../../assets/FormInput/ButtonSlider";
 
 
 export default function CreateGroup1 ( { navigation } ) {
@@ -29,11 +31,14 @@ export default function CreateGroup1 ( { navigation } ) {
         centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
         rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
       />
-      <View style={{ alignItems: 'center', justifyContent: 'center', padding: 10 }}>
-        <Avatar rounded size="large" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
+      <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
+        <Avatar rounded size="xlarge" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
 
       </View>
-      <ImagePickerExample></ImagePickerExample>
+      <View style={{paddingTop: 10}}>
+
+        <ImagePickerExample></ImagePickerExample>
+      </View>
       <View style={styles.inputView}>
         <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
           <Text style={{ fontWeight: 'bold', fontSize: 14, }}>Group Name</Text>
@@ -41,7 +46,7 @@ export default function CreateGroup1 ( { navigation } ) {
         </View>
         <TextInput
           style={styles.nameInput}
-          placeholder="Enter your group name"
+          placeholder= "Enter your group name"
           placeholderTextColor="#003f5c"
           onChangeText={( name ) => setName( name )}
           value={name}
@@ -64,17 +69,10 @@ export default function CreateGroup1 ( { navigation } ) {
       </View>
       {isPrivate}
       <View style={styles.buttonContainer}>
-        <SwitchButton
-          onValueChange={( val ) => setIsPrivate( val === 'Private' )}
-          text1='Private'
-          text2='Public'
-          useNativeDriver={true}
-        />
+        <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate( "CreateGroup2", { groupName: name } )}>
-          <Text style={styles.nextText}>Next</Text>
-        </TouchableOpacity>
+        <MainButton text={"Next"} onPressFn={() => navigation.navigate( "CreateGroup2", { groupName: name } )}/>
       </View>
     </View>
   );
@@ -110,19 +108,5 @@ const styles = StyleSheet.create( {
   buttonContainer: {
     paddingBottom: 10,
     alignSelf: 'center'
-  },
-  nextBtn: {
-    width: 173,
-    height: 52,
-    borderRadius: 10,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#008080"
-  },
-  nextText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
   },
 } );

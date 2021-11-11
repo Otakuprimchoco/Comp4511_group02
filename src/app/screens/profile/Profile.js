@@ -12,8 +12,10 @@ import {
 } from "react-native";
 import { Appbar, Switch } from 'react-native-paper';
 import {Avatar} from 'react-native-elements';
-import ImagePickerExample from  '../assets/ChangePhoto/ChangePhotoComponent'
-import InterestList from "../assets/SelectionList/InterestList";
+import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
+import InterestList from "../../assets/SelectionList/InterestList";
+
+
 export default function Profile({navigation}) {
   const [role, setRole] = useState("");
   const [about, setAbout] = useState("");
@@ -23,7 +25,7 @@ export default function Profile({navigation}) {
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
 
-  const _goBack = () => console.log('Went back');
+  const _goBack = () => navigation.pop()//console.log('Went back');
 
   const _handleSearch = () => console.log('Searching');
 
