@@ -16,6 +16,8 @@ import ChatRoom from './src/app/screens/chat/UserChatScreen'
 import GroupPage from './src/app/screens/groups/GroupPage'
 import {AuthContext} from './src/app/services/Context'
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const Stack = createStackNavigator();
 const App = () => {
   const ref = React.useRef( null );
@@ -63,7 +65,7 @@ const App = () => {
   const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
 
   const authContext = useMemo(() => ({
-    signIn: (username, password) => {
+    signIn: async(username, password) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
       // console.log('user token: ', userToken);
@@ -71,12 +73,22 @@ const App = () => {
       userToken = null;
       if (username == 'User' && password == '123456') {
         userToken='fgkj';
+        try {
+          await AsyncStorage.setItem('userToken', userToken);
+        } catch(e) {
+          console.log(e);
+        }
       }
       dispatch({ type: 'LOGIN', id: username, token: userToken });
     },
-    signOut: () => {
+    signOut: async() => {
       // setUserToken(null);
       // setIsLoading(false);
+      try {
+        await AsyncStorage.removeItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
       dispatch({ type: 'LOGOUT' });
     },
     signUp: () => {
@@ -87,8 +99,14 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(async() => {
-      // setIsLoading(false);
-      dispatch({ type: 'RETRIEVE_TOKEN', token: 'fgkj' });
+      let userToken;
+      userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
     }, 1000);
   }, []);
 
