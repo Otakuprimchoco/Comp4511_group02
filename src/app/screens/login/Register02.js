@@ -11,7 +11,7 @@ import {
   onBlur
 } from "react-native";
 import { Appbar } from 'react-native-paper';
-import InterestList from '../../assets/SelectionList/InterestList';
+import InterestList from "../../assets/SelectionList/JustInterestList";
 
 export default function Register02({navigation}) {
 
@@ -31,7 +31,16 @@ export default function Register02({navigation}) {
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>
 
-   <InterestList/>
+    <View style={styles.question}>
+        <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>Please select atleast one interest</Text>
+          <Text style={{color: 'red'}}>*</Text>
+        </View>
+      </View>
+
+    <View style={{margin: 10}}>
+      <InterestList></InterestList>
+    </View>
    
    <View style={{alignItems: 'center'}}>
         <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Profile')}>
@@ -97,5 +106,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingLeft: 20,
     paddingTop: 5,
+    marginTop: 20,
   }
 });
