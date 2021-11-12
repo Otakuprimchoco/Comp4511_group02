@@ -128,7 +128,6 @@ export default function Profile({navigation}) {
           style={styles.TextInput}
           placeholder={about}
           placeholderTextColor="#003f5c"
-          secureTextEntry={true}
           onChangeText={(about) => setAbout(about)}
           value={about}
         />
