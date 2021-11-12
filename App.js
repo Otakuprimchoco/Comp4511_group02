@@ -7,15 +7,15 @@ import Login from './src/app/screens/login/Login';
 import Register01 from './src/app/screens/login/Register01';
 import Register02 from './src/app/screens/login/Register02';
 import Profile from './src/app/screens/profile/Profile';
-import Main from './src/app/navigation/tabs'
-import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
-import CreateGroup2 from './src/app/screens/groups/CreateGroup2'
-import GroupSettings from './src/app/screens/groups/GroupSettings'
+import Main from './src/app/navigation/tabs';
+import CreateGroup1 from './src/app/screens/groups/CreateGroup1';
+import CreateGroup2 from './src/app/screens/groups/CreateGroup2';
+import GroupSettings from './src/app/screens/groups/GroupSettings';
 
-import ChatRoom from './src/app/screens/chat/UserChatScreen'
-import GroupPage from './src/app/screens/groups/GroupPage'
-import {AuthContext} from './src/app/services/Context'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import ChatRoom from './src/app/screens/chat/UserChatScreen';
+import GroupPage from './src/app/screens/groups/GroupPage';
+import {AuthContext} from './src/app/services/Context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -71,7 +71,6 @@ const App = () => {
       const userToken = String(foundUser[0].userToken);
       const username = String(foundUser[0].email);
       try {
-        userToken='fgkj';
         await AsyncStorage.setItem('userToken', userToken);
       } catch(e) {
         console.log(e);
@@ -88,9 +87,17 @@ const App = () => {
       }
       dispatch({ type: 'LOGOUT' });
     },
-    signUp: () => {
+    signUp: async(foundUser) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
+      const userToken = String(foundUser[0].userToken);
+      const username = String(foundUser[0].email);
+      try {
+        await AsyncStorage.setItem('userToken', userToken);
+      } catch(e) {
+        console.log(e);
+      }
+      dispatch({ type: 'REGISTER', id: username, token: userToken });
     },
   }), []);
 

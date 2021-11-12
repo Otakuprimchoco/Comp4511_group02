@@ -12,15 +12,30 @@ import {
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 import InterestList from "../../assets/SelectionList/JustInterestList";
+import Users from '../../model/users';
 
 
 import { AuthContext } from "../../services/Context";
 
-export default function Register02({navigation}) {
+export default function Register02({route, navigation}) {
+
+  const { email, password, name, publicACC, student} = route.params;
 
   const {signUp } = useContext(AuthContext);
 
-  const _goBack = () => console.log('Went back');
+  const registerHandle = () => {
+    const id = Users.length + 1;
+    const userToken = 'userToken' + id;
+
+    Users.push({email: email, password: password, name: name, publicACC: publicACC, student: student, userToken: userToken, id: id});
+    console.log(Users);
+    const foundUser = Users.filter( item => {
+      return userToken == item.userToken && email == item.email && password == item.password;
+    });
+    signUp(foundUser);
+  };
+
+  const _goBack = () => console.log(email, password, name, publicACC, student);
 
   const _handleSearch = () => console.log('Searching');
 
@@ -48,7 +63,7 @@ export default function Register02({navigation}) {
     </View>
    
    <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}  onPress={() => {signUp()}}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => registerHandle()}>
           <Text style={styles.loginText}>Confirm</Text>
         </TouchableOpacity>
   </View>

@@ -9,7 +9,8 @@ import {
   Button,
   TouchableOpacity,
   onBlur,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 
@@ -21,6 +22,21 @@ export default function Register01( {navigation}) {
 
   const [publicACC, setPublicACC] = useState(true);
   const [student, setStudent] = useState(true);
+
+  const verifyToReg02 = () => {
+    if (email == 0 || password == 0 || confirmPassword == 0 || name == 0 ) {
+      Alert.alert('Invalid Input!', 'One or more required fields are empty.', [
+        {text: 'Okay'}
+      ]);
+    } else if (password != confirmPassword) {
+      Alert.alert('Invalid Input!', 'Passwords do not match.', [
+        {text: 'Okay'}
+      ]);
+    } else {
+      navigation.navigate('Register02', {email: email, password: password, name: name, publicACC: publicACC, student: student});
+    }
+    
+  };
 
 
   const _goBack = () => console.log('Went back');
@@ -131,7 +147,7 @@ export default function Register01( {navigation}) {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Register02')}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => verifyToReg02()}>
           <Text style={styles.loginText}>Next</Text>
         </TouchableOpacity>
       </View>

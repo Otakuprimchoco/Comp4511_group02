@@ -25,7 +25,6 @@ export default function Login({ navigation }) {
   const {signIn} = useContext(AuthContext);
 
   const loginHandle = (email, password) => {
-
     const foundUser = Users.filter( item => {
       return email == item.email && password == item.password;
     });
@@ -40,7 +39,7 @@ export default function Login({ navigation }) {
       setIsValidEmail(false);
       Alert.alert('Invalid User!', 'Email or password is incorrect.', [
         {text: 'Okay'}
-    ]);
+      ]);
     } else {
       signIn(foundUser);
     }
