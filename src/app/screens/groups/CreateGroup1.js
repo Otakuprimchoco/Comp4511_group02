@@ -21,11 +21,11 @@ export default function CreateGroup1 ( { navigation } ) {
         statusBarProps={{ barStyle: 'light-content' }}
         barStyle="light-content" // or directly
         containerStyle={{
-          backgroundColor: '#8fcbbc',
+          backgroundColor: '#66B2B2',
           justifyContent: 'space-around',
         }}
         leftComponent={{
-          icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' },
+          icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' },
           onPress: () => { navigation.pop() }
         }}
         centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
