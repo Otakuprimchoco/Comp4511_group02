@@ -18,6 +18,10 @@ export default function Login({ navigation }) {
 
   const {signIn} = useContext(AuthContext);
 
+  const loginHandle = (email, password) => {
+    signIn(email, password);
+  }
+
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
@@ -60,7 +64,7 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => {signIn()}}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => {loginHandle(email, password)}}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
       </View>
@@ -97,8 +101,7 @@ const styles = StyleSheet.create({
 
   TextInput: {
     height: 50,
-    flex: 1,
-    padding: 20,
+    paddingLeft: 20,
     borderWidth: 1,
     width: "100%",
     borderRadius: 10,

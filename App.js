@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useMemo, useReducer} from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,32 +19,80 @@ import {AuthContext} from './src/app/services/Context'
 const Stack = createStackNavigator();
 const App = () => {
   const ref = React.useRef( null );
-  const [userToken, setUserToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [userToken, setUserToken] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  const initialLoginState = {
+    isLoading: true,
+    userToken: null,
+    userName: null,
+  };
+
+  const loginReducer = (prevState, action) => {
+    switch( action.type ) {
+      case 'RETRIEVE_TOKEN': 
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGIN': 
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGOUT': 
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false,
+        };
+      case 'REGISTER': 
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+    }
+  };
+
+  const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
 
   const authContext = useMemo(() => ({
-    signIn: () => {
-      setUserToken('fgkj');
-      setIsLoading(false);
-      console.log('user token: ', userToken);
+    signIn: (username, password) => {
+      // setUserToken('fgkj');
+      // setIsLoading(false);
+      // console.log('user token: ', userToken);
+      let userToken;
+      userToken = null;
+      if (username == 'User' && password == '123456') {
+        userToken='fgkj';
+      }
+      dispatch({ type: 'LOGIN', id: username, token: userToken });
     },
     signOut: () => {
-      setUserToken(null);
-      setIsLoading(false);
+      // setUserToken(null);
+      // setIsLoading(false);
+      dispatch({ type: 'LOGOUT' });
     },
     signUp: () => {
-      setUserToken('fgkj');
-      setIsLoading(false);
+      // setUserToken('fgkj');
+      // setIsLoading(false);
     },
   }), []);
 
   useEffect(() => {
     setTimeout(async() => {
-      setIsLoading(false);
+      // setIsLoading(false);
+      dispatch({ type: 'RETRIEVE_TOKEN', token: 'fgkj' });
     }, 1000);
   }, []);
 
-  if( isLoading ) {
+  if( loginState.isLoading ) {
     return(
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
         <ActivityIndicator size="large"/>
@@ -59,7 +107,7 @@ const App = () => {
 
         
           {/* The Main page navigation */}
-          { (userToken != null) ?
+          { (loginState.userToken != null) ?
             (
               <Stack.Navigator initialRouteName="Profile" >
               <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} />
