@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,6 +18,8 @@ import InterestList from "../../assets/SelectionList/JustInterestList";
 import ToggleSwitch from 'rn-toggle-switch';
 import Constants from 'expo-constants';
 
+import { AuthContext } from "../../services/Context";
+
 export default function Profile({navigation}) {
   const [publicACC, setPublicACC] = useState(true);
   const [groupNotif, setGroupNotif] = useState(true);
@@ -30,6 +32,8 @@ export default function Profile({navigation}) {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [isSwitchOn2, setIsSwitchOn2] = React.useState(false);
   const [isSwitchOn3, setIsSwitchOn3] = React.useState(false);
+
+  const {signOut} = useContext(AuthContext);
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
@@ -212,7 +216,7 @@ export default function Profile({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={{margin: 20}}>
-          <TouchableOpacity style={styles.createBtn}>
+          <TouchableOpacity style={styles.createBtn} onPress={() => {signOut()}}>
             <Text style={styles.createText}>Logout</Text>
           </TouchableOpacity>
         </View>

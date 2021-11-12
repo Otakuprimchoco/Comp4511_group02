@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,12 @@ import {
 import { Appbar } from 'react-native-paper';
 import InterestList from "../../assets/SelectionList/JustInterestList";
 
+
+import { AuthContext } from "../../services/Context";
+
 export default function Register02({navigation}) {
+
+  const {signUp } = useContext(AuthContext);
 
   const _goBack = () => console.log('Went back');
 
@@ -43,7 +48,7 @@ export default function Register02({navigation}) {
     </View>
    
    <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => {signUp()}}>
           <Text style={styles.loginText}>Confirm</Text>
         </TouchableOpacity>
   </View>

@@ -1,6 +1,6 @@
 import color from "color";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,10 +10,13 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { AuthContext } from "../../services/Context";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const {signIn} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -57,7 +60,7 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Main')}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => {signIn()}}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
       </View>
