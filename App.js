@@ -15,7 +15,6 @@ import GroupSettings from './src/app/screens/groups/GroupSettings'
 import ChatRoom from './src/app/screens/chat/UserChatScreen'
 import GroupPage from './src/app/screens/groups/GroupPage'
 import {AuthContext} from './src/app/services/Context'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createStackNavigator();
@@ -65,19 +64,17 @@ const App = () => {
   const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
 
   const authContext = useMemo(() => ({
-    signIn: async(username, password) => {
+    signIn: async(foundUser) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
       // console.log('user token: ', userToken);
-      let userToken;
-      userToken = null;
-      if (username == 'User' && password == '123456') {
+      const userToken = String(foundUser[0].userToken);
+      const username = String(foundUser[0].email);
+      try {
         userToken='fgkj';
-        try {
-          await AsyncStorage.setItem('userToken', userToken);
-        } catch(e) {
-          console.log(e);
-        }
+        await AsyncStorage.setItem('userToken', userToken);
+      } catch(e) {
+        console.log(e);
       }
       dispatch({ type: 'LOGIN', id: username, token: userToken });
     },

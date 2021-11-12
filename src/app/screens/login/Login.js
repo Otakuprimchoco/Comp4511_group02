@@ -9,24 +9,58 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import { AuthContext } from "../../services/Context";
+import * as Animatable from 'react-native-animatable';
+
+import Users from '../../model/users';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isValidPassword, setIsValidPassword] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
   const {signIn} = useContext(AuthContext);
 
   const loginHandle = (email, password) => {
-    signIn(email, password);
+
+    const foundUser = Users.filter( item => {
+      return email == item.email && password == item.password;
+    });
+
+    if (isValidEmail == 0 || isValidPassword == 0) {
+      setIsValidPassword(false);//Alert.alert('Invalid Email/Password', [{text: 'Okay'}]);
+      setIsValidEmail(false);
+    } 
+
+    if (foundUser.length == 0) {
+      setIsValidPassword(false);
+      setIsValidEmail(false);
+      Alert.alert('Invalid User!', 'Email or password is incorrect.', [
+        {text: 'Okay'}
+    ]);
+    } else {
+      signIn(foundUser);
+    }
   }
 
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
         <Image style={styles.image} source={require("../../assets/logos/logo.png")} />
+        {(isValidPassword && isValidEmail) 
+        ? null 
+        : 
+        (
+          <Animatable.View animation="fadeInLeft" duration={500}>
+            <Text style={{color: 'red', fontWeight: 'bold'}}>Email and/or Password is incorrect</Text>
+          </Animatable.View>
+        )}
       </View>
+
+      
 
       <View style={styles.inputView}>
         <View style={{flexDirection: 'row', paddingBottom: 5}}>
