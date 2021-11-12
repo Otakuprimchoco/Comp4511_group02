@@ -18,8 +18,8 @@ const Tabs = () => {
                 headerShown: false,
                 tabBarActiveTintColor: "white",
                 tabBarInactiveTintColor: "white",
-                tabBarActiveBackgroundColor: "darkcyan",
-                tabBarInactiveBackgroundColor: "#8fcbbc",
+                tabBarActiveBackgroundColor: "#008080",
+                tabBarInactiveBackgroundColor: "#66B2B2",
                 tabBarShowLabel: false,
                 tabBarStyle: [{ "display": "flex" }, null]
             }}
