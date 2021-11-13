@@ -14,7 +14,11 @@ import GroupSettings from './src/app/screens/groups/GroupSettings'
 
 import ChatRoom from './src/app/screens/chat/UserChatScreen'
 import GroupPage from './src/app/screens/groups/GroupPage'
-
+import EventSelected from './src/app/screens/events/EventSelected';
+import AddEvent from './src/app/screens/events/AddEventFlow/AddEvent';
+import AddEvent2 from './src/app/screens/events/AddEventFlow/AddEvent2';
+import CreatedEvent from './src/app/screens/events/AddEventFlow/CreatedEvent';
+import EventSettings from './src/app/screens/events/AddEventFlow/EventSettings';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -48,6 +52,11 @@ const App = () => {
               },
             } )} />
           <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
+          <Stack.Screen options={{ headerShown: false }} name="EventSelected" component={EventSelected} />
+          <Stack.Screen options={{ headerShown: false }} name="AddEvent" component={AddEvent} />
+          <Stack.Screen options={{ headerShown: false }} name="AddEvent2" component={AddEvent2} />
+          <Stack.Screen options={{ headerShown: false }} name="CreatedEvent" component={CreatedEvent} />
+          <Stack.Screen options={{ headerShown: false }} name="EventSettings" component={EventSettings} />
 
         </Stack.Navigator>
       </NavigationContainer>

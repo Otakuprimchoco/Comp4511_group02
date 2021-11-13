@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image, Header, TouchableOpacity, StatusBar } fr
 import Tab1 from '../screens/tabs/Events';
 import ChatsLanding from '../screens/chat/Chats'
 import GroupsSubNavigation from './GroupsSubNavigation'
-
+import EventSubNavigation from './EventSubNavigation';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +26,7 @@ const Tabs = () => {
         >
             <Tab.Screen
                 name="Events"
-                component={Tab1}
+                component={EventSubNavigation}
                 options={{
                     tabBarIcon: ( { focused } ) => (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
