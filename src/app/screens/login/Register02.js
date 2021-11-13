@@ -27,7 +27,23 @@ export default function Register02({route, navigation}) {
     const id = Users.length + 1;
     const userToken = 'userToken' + id;
 
-    Users.push({email: email, password: password, name: name, publicACC: publicACC, student: student, userToken: userToken, id: id});
+    Users.push({email: email, password: password, name: name, publicACC: publicACC, student: student, userToken: userToken, id: id,  
+      groupNotif: true,
+      eventNotif: true,
+      chatNotif: true,
+      role: "",
+      about: "",
+      namePublic: true,
+      rolePublic: true,
+      aboutPublic: true,
+      image: 'https://picsum.photos/id/237/200/300',
+      interests: [], //list of strings
+      bookedEvents: [], //event id list
+      favoriteEvents: [],  //event id list
+      myGroups: [], //group id
+      followingGroups: [], //group id,
+      friends: [], //user id
+    });
     console.log(Users);
     const foundUser = Users.filter( item => {
       return userToken == item.userToken && email == item.email && password == item.password;

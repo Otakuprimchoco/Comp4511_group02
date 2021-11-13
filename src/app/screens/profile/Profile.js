@@ -14,34 +14,82 @@ import { Appbar, Switch } from 'react-native-paper';
 import {Avatar} from 'react-native-elements';
 import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
 import InterestList from "../../assets/SelectionList/JustInterestList";
+import * as ImagePicker from 'expo-image-picker';
+import MainButton from '../../assets/buttons/MainButton';
 
 import ToggleSwitch from 'rn-toggle-switch';
 import Constants from 'expo-constants';
 
 import { AuthContext } from "../../services/Context";
 
-export default function Profile({navigation}) {
-  const [publicACC, setPublicACC] = useState(true);
-  const [groupNotif, setGroupNotif] = useState(true);
-  const [eventNotif, setEventNotif] = useState(true);
-  const [chatNotif, setChatNotif] = useState(true);
+export default function Profile({route, navigation}) {
 
-  const [role, setRole] = useState("");
-  const [about, setAbout] = useState("");
-  const [name, setName] = useState("");
-  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-  const [isSwitchOn2, setIsSwitchOn2] = React.useState(false);
-  const [isSwitchOn3, setIsSwitchOn3] = React.useState(false);
+  const { userToken } = route.params;
+  const foundUser = Users.filter( item => {
+    return userToken == item.userToken;
+  });
+
+  // const email = String(foundUser[0].email);
+
+  const [publicACC, setPublicACC] = useState(foundUser[0].publicACC);
+  const [groupNotif, setGroupNotif] = useState(foundUser[0].groupNotif);
+  const [eventNotif, setEventNotif] = useState(foundUser[0].eventNotif);
+  const [chatNotif, setChatNotif] = useState(foundUser[0].chatNotif);
+
+  const [role, setRole] = useState(foundUser[0].role);
+  const [about, setAbout] = useState(foundUser[0].about);
+  const [name, setName] = useState(foundUser[0].name);
+
+  const [isSwitchOn, setIsSwitchOn] = useState(foundUser[0].namePublic);// don't think these are being used by the swutch
+  const [isSwitchOn2, setIsSwitchOn2] = useState(foundUser[0].rolePublic);
+  const [isSwitchOn3, setIsSwitchOn3] = useState(foundUser[0].aboutPublic);
+
+  const [image, setImage] = useState(foundUser[0].image);
+
+  useEffect (() => {
+    foundUser[0].publicACC = publicACC;
+    foundUser[0].groupNotif = groupNotif;
+    foundUser[0].eventNotif = eventNotif;
+    foundUser[0].chatNotif = chatNotif;
+    foundUser[0].role = role;
+    foundUser[0].about = about;
+    foundUser[0].name = name;
+    foundUser[0].namePublic = isSwitchOn; // don't think these are being used by the swutch
+    foundUser[0].rolePublic = isSwitchOn2;
+    foundUser[0].aboutPublic = isSwitchOn3;
+    foundUser[0].image = image;
+  });
 
   const {signOut} = useContext(AuthContext);
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
-  const _goBack = () => navigation.pop()//console.log('Went back');
+  const _goBack = () => navigation.pop();//
 
   const _handleSearch = () => console.log('Searching');
 
   const _handleMore = () => console.log('Shown more');
+
+  useEffect(() => {
+    //IIFE
+    (async () => {
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== ImagePicker.PermissionStatus.GRANTED) {
+        alert("Please grant photo permissions in settings");
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    });
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -54,7 +102,12 @@ export default function Profile({navigation}) {
     </Appbar.Header>
 
     <View style={{alignItems: 'center', padding: 10}}>
-      <ImagePickerExample></ImagePickerExample>
+      <Image source={{uri: image}} style={styles.image}/>
+      <View style={{padding: 10 }}>
+        <TouchableOpacity style={styles.createBtn1} onPress={pickImage}>
+          <Text style={styles.createText1}>Change Photo</Text>
+        </TouchableOpacity>
+      </View>
     </View>
 
     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
@@ -309,5 +362,26 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingLeft: 20,
     paddingTop: 5,
-  }
+  },
+  image: {
+    borderWidth: 1,
+    borderColor: 'black',
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+  },
+  createBtn1: {
+    width: 173,
+    height: 52,
+    borderRadius: 10,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#008080"
+  },
+  createText1: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
 });

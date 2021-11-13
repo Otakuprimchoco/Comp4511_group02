@@ -132,7 +132,7 @@ const App = () => {
           { (loginState.userToken != null) ?
             (
               <Stack.Navigator initialRouteName="Profile" >
-              <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} />
+              <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{userToken: loginState.userToken}}/>
                   <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} />
                   <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
                   <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />

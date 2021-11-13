@@ -6,7 +6,22 @@ export default Users = [
         password: 'Password', 
         userToken: 'token123',
         publicACC: true, 
-        student: true
+        student: true,
+        groupNotif: true,
+        eventNotif: true,
+        chatNotif: true,
+        role: "",
+        about: "",
+        namePublic: true,
+        rolePublic: true,
+        aboutPublic: true,
+        image: 'https://picsum.photos/id/237/200/300',
+        interests: ['frontend'], //list of strings
+        bookedEvents: [], //event id list
+        favoriteEvents: [],  //event id list
+        myGroups: [], //group id
+        followingGroups: [], //group id,
+        friends: [], //user id
     },
     {
         id: 2, 
@@ -15,7 +30,22 @@ export default Users = [
         password: 'Pass1234', 
         userToken: 'token12345',
         publicACC: true, 
-        student: true
+        student: true,
+        groupNotif: true,
+        eventNotif: true,
+        chatNotif: true,
+        role: "",
+        about: "",
+        namePublic: true,
+        rolePublic: true,
+        aboutPublic: true,
+        image: 'https://picsum.photos/id/237/200/300',
+        interests: ['frontend'], //list of strings
+        bookedEvents: [], //event id list
+        favoriteEvents: [],  //event id list
+        myGroups: [], //group id
+        followingGroups: [], //group id,
+        friends: [], //user id
     },
     {
         id: 3, 
@@ -24,6 +54,21 @@ export default Users = [
         password: 'Testpass', 
         userToken: 'testtoken',
         publicACC: true, 
-        student: true
+        student: true,
+        groupNotif: true,
+        eventNotif: true,
+        chatNotif: true,
+        role: "",
+        about: "",
+        namePublic: true,
+        rolePublic: true,
+        aboutPublic: true,
+        image: 'https://picsum.photos/id/237/200/300',
+        interests: ['frontend'], //list of strings
+        bookedEvents: [], //event id list
+        favoriteEvents: [],  //event id list
+        myGroups: [], //group id
+        followingGroups: [], //group id,
+        friends: [], //user id
     },
 ];
