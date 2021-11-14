@@ -10,15 +10,10 @@ import ForgotPassword from './src/app/screens/login/ForgotPassword';
 import ForgotPassword2 from './src/app/screens/login/ForgotPassword2';
 import ChangePassword1 from './src/app/screens/login/ChangePassword1';
 import Profile from './src/app/screens/profile/Profile';
-import Main from './src/app/navigation/tabs'
-import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
-import CreateGroup2 from './src/app/screens/groups/CreateGroup2'
-import GroupSettings from './src/app/screens/groups/GroupSettings'
-import EventSelected from './src/app/screens/events/EventSelected';
-import AddEvent from './src/app/screens/events/AddEventFlow/AddEvent';
-import AddEvent2 from './src/app/screens/events/AddEventFlow/AddEvent2';
-import CreatedEvent from './src/app/screens/events/AddEventFlow/CreatedEvent';
-import EventSettings from './src/app/screens/events/AddEventFlow/EventSettings';
+import Main from './src/app/navigation/tabs';
+import CreateGroup1 from './src/app/screens/groups/CreateGroup1';
+import CreateGroup2 from './src/app/screens/groups/CreateGroup2';
+import GroupSettings from './src/app/screens/groups/GroupSettings';
 
 import ChatRoom from './src/app/screens/chat/UserChatScreen';
 import GroupPage from './src/app/screens/groups/GroupPage';
@@ -145,11 +140,6 @@ const App = () => {
                   <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
                   <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
                   <Stack.Screen options={{ headerShown: false }} name="GroupSettings" component={GroupSettings} />
-                  <Stack.Screen options={{ headerShown: false }} name="EventSelected" component={EventSelected} />
-                  <Stack.Screen options={{ headerShown: false }} name="AddEvent" component={AddEvent} />
-                  <Stack.Screen options={{ headerShown: false }} name="AddEvent2" component={AddEvent2} />
-                  <Stack.Screen options={{ headerShown: false }} name="CreatedEvent" component={CreatedEvent} />
-                  <Stack.Screen options={{ headerShown: false }} name="EventSettings" component={EventSettings} />
                   <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
                     options={( { route } ) => ( {
                       title: route.params.userName,

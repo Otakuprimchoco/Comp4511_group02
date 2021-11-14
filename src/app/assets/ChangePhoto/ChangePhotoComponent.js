@@ -35,7 +35,7 @@ export default function ImagePickerExample() {
 
   return (
     <View>
-      <Image source={{uri: image}} style={styles.image}/>
+      <Avatar rounded size="xlarge" source={{ uri: image }} />
       <View style={{padding: 10 }}>
         <TouchableOpacity style={styles.createBtn} onPress={pickImage}>
           <Text style={styles.createText}>Change Photo</Text>
@@ -49,15 +49,15 @@ const styles = StyleSheet.create({
   image: {
     borderWidth: 1,
     borderColor: 'black',
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     borderRadius: 100,
+    marginLeft: 50
   },
   createBtn: {
     width: 173,
     height: 52,
     borderRadius: 10,
-    height: 50,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#008080"

@@ -134,7 +134,6 @@ const App = () => {
     <AuthContext.Provider value={authContext}>
     <View style={{ flex: 1 }}>
       <NavigationContainer ref={ref}>
-
         
           {/* The Main page navigation */}
           { (loginState.userToken != null) ?
