@@ -59,8 +59,7 @@
     "rn-toggle-switch": "^1.0.2",
     "serve": "^13.0.2",
     "styled-components": "^5.3.3",
-    "switch-button-react-native": "^1.0.3",
-    "undefined": "react-native-vector-icons/Feather"
+    "switch-button-react-native": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
