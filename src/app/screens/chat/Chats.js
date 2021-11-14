@@ -1,6 +1,6 @@
 //Learn from tutorial https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React from 'react';
-import { View, StyleSheet, FlatList, } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
 import { Header } from 'react-native-elements';
 import {
   Container,
@@ -57,7 +57,7 @@ const Messages = [
     messageTime: '2 days ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
-  },
+  }
 ];
 
 
@@ -99,8 +99,17 @@ const MessagesScreen = ( { navigation } ) => {
             </Card>
           )}
         />
+
       </Container>
-    </View>
+
+      <TouchableOpacity style={styles.Button} onPress={() => navigation.navigate( 'Login' )}>
+        <Text style={styles.ButtonText}> New Chat </Text>
+      </TouchableOpacity>
+
+
+
+    </View >
+
 
   );
 };
@@ -111,6 +120,19 @@ const styles = StyleSheet.create( {
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'transparent'
   },
+  Button: {
+    backgroundColor: "#008080",
+    position: 'absolute',
+    borderRadius: 10,
+    bottom: 10,
+    alignItems: 'center',
+  },
+  ButtonText: {
+    color: 'white',
+    padding: 10,
+    fontSize: 16
+  }
 } );

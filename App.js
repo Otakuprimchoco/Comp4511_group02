@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo, useReducer} from 'react';
+import React, { useState, useEffect, useMemo, useReducer } from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,7 +14,7 @@ import GroupSettings from './src/app/screens/groups/GroupSettings';
 
 import ChatRoom from './src/app/screens/chat/UserChatScreen';
 import GroupPage from './src/app/screens/groups/GroupPage';
-import {AuthContext} from './src/app/services/Context';
+import { AuthContext } from './src/app/services/Context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
@@ -29,29 +29,29 @@ const App = () => {
     userName: null,
   };
 
-  const loginReducer = (prevState, action) => {
-    switch( action.type ) {
-      case 'RETRIEVE_TOKEN': 
+  const loginReducer = ( prevState, action ) => {
+    switch ( action.type ) {
+      case 'RETRIEVE_TOKEN':
         return {
           ...prevState,
           userToken: action.token,
           isLoading: false,
         };
-      case 'LOGIN': 
+      case 'LOGIN':
         return {
           ...prevState,
           userName: action.id,
           userToken: action.token,
           isLoading: false,
         };
-      case 'LOGOUT': 
+      case 'LOGOUT':
         return {
           ...prevState,
           userName: null,
           userToken: null,
           isLoading: false,
         };
-      case 'REGISTER': 
+      case 'REGISTER':
         return {
           ...prevState,
           userName: action.id,
@@ -61,106 +61,110 @@ const App = () => {
     }
   };
 
-  const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
+  const [loginState, dispatch] = useReducer( loginReducer, initialLoginState );
 
-  const authContext = useMemo(() => ({
-    signIn: async(foundUser) => {
+  const authContext = useMemo( () => ( {
+    signIn: async ( foundUser ) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
       // console.log('user token: ', userToken);
-      const userToken = String(foundUser[0].userToken);
-      const username = String(foundUser[0].email);
+      const userToken = String( foundUser[0].userToken );
+      const username = String( foundUser[0].email );
       try {
-        await AsyncStorage.setItem('userToken', userToken);
-      } catch(e) {
-        console.log(e);
+        await AsyncStorage.setItem( 'userToken', userToken );
+      } catch ( e ) {
+        console.log( e );
       }
-      dispatch({ type: 'LOGIN', id: username, token: userToken });
+      dispatch( { type: 'LOGIN', id: username, token: userToken } );
     },
-    signOut: async() => {
+    signOut: async () => {
       // setUserToken(null);
       // setIsLoading(false);
       try {
-        await AsyncStorage.removeItem('userToken');
-      } catch(e) {
-        console.log(e);
+        await AsyncStorage.removeItem( 'userToken' );
+      } catch ( e ) {
+        console.log( e );
       }
-      dispatch({ type: 'LOGOUT' });
+      dispatch( { type: 'LOGOUT' } );
     },
-    signUp: async(foundUser) => {
+    signUp: async ( foundUser ) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
-      const userToken = String(foundUser[0].userToken);
-      const username = String(foundUser[0].email);
+      const userToken = String( foundUser[0].userToken );
+      const username = String( foundUser[0].email );
       try {
-        await AsyncStorage.setItem('userToken', userToken);
-      } catch(e) {
-        console.log(e);
+        await AsyncStorage.setItem( 'userToken', userToken );
+      } catch ( e ) {
+        console.log( e );
       }
-      dispatch({ type: 'REGISTER', id: username, token: userToken });
+      dispatch( { type: 'REGISTER', id: username, token: userToken } );
     },
-  }), []);
+  } ), [] );
 
-  useEffect(() => {
-    setTimeout(async() => {
+  useEffect( () => {
+    setTimeout( async () => {
       let userToken;
       userToken = null;
       try {
-        userToken = await AsyncStorage.getItem('userToken');
-      } catch(e) {
-        console.log(e);
+        userToken = await AsyncStorage.getItem( 'userToken' );
+      } catch ( e ) {
+        console.log( e );
       }
-      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
-    }, 1000);
-  }, []);
+      dispatch( { type: 'RETRIEVE_TOKEN', token: userToken } );
+    }, 1000 );
+  }, [] );
 
-  if( loginState.isLoading ) {
-    return(
-      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <ActivityIndicator size="large"/>
+  if ( loginState.isLoading ) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
       </View>
     );
   }
-  
+
   return (
     <AuthContext.Provider value={authContext}>
-    <View style={{ flex: 1 }}>
-      <NavigationContainer ref={ref}>
+      <View style={{ flex: 1 }}>
+        <NavigationContainer ref={ref}>
 
-        
+
           {/* The Main page navigation */}
-          { (loginState.userToken != null) ?
+          {( loginState.userToken != null ) ?
             (
               <Stack.Navigator initialRouteName="Main" >
                 <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} />
-                <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{userToken: loginState.userToken}}/> 
-                  <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
-                  <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
-                  <Stack.Screen options={{ headerShown: false }} name="GroupSettings" component={GroupSettings} />
-                  <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
-                    options={( { route } ) => ( {
-                      title: route.params.userName,
-                      headerBackTitleVisible: false,
-                      headerTintColor: '#fff',
-                      headerTitleStyle: {
-                        fontWeight: 'bold',
-                      },
-                      headerStyle: {
-                        backgroundColor: '#8fcbbc',
-                      },
-                    } )} />
-                  <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
+                <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{ userToken: loginState.userToken }} />
+                <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
+                <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
+                <Stack.Screen options={{ headerShown: false }} name="GroupSettings" component={GroupSettings} />
+                <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
+                  options={( { route } ) => ( {
+                    title: route.params.userName,
+                    headerBackTitleVisible: false,
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                    },
+                    headerStyle: {
+                      backgroundColor: '#8fcbbc',
+                    },
+                  } )} />
+                <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
               </Stack.Navigator>
             ) : (
-            <Stack.Navigator initialRouteName="Login">
-                  <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
-                  <Stack.Screen options={{ headerShown: false }} name="Register01" component={Register01} />
-                  <Stack.Screen options={{ headerShown: false }} name="Register02" component={Register02} />
-            </Stack.Navigator>
+
+              <Stack.Navigator initialRouteName="Login">
+                {/* InitialRouteName should back to Login after testing competed */}
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+                <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} />
+                <Stack.Screen options={{ headerShown: false }} name="Register01" component={Register01} />
+                <Stack.Screen options={{ headerShown: false }} name="Register02" component={Register02} />
+
+              </Stack.Navigator>
             )
           }
-      </NavigationContainer>
-    </View>
+        </NavigationContainer>
+      </View>
     </AuthContext.Provider>
   )
 }
