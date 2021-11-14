@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo, useReducer } from 'react';
-import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-native';
-
+import React, { useEffect, useMemo, useReducer } from 'react';
+import { StyleSheet, View, ActivityIndicator, Button } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/app/screens/login/Login';
@@ -160,7 +160,7 @@ const App = () => {
                     },
                     headerStyle: {
                       backgroundColor: '#8fcbbc',
-                    },
+                    }
                   } )} />
                 <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
                 <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{ userToken: loginState.userToken }} />
@@ -173,7 +173,6 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen options={{ headerShown: false }} name="ForgotPassword2" component={ForgotPassword2} />
               </Stack.Navigator>
-
             )
           }
         </NavigationContainer>
@@ -183,3 +182,16 @@ const App = () => {
 }
 
 export default App;
+const styles = StyleSheet.create( {
+  container: {
+    flex: 1
+  },
+  icon: {
+    paddingLeft: 10
+  },
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: 120
+  }
+} );
