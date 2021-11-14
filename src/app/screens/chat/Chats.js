@@ -148,7 +148,7 @@ export default class MessagesScreen extends Component {
                   data={Messages}
                   keyExtractor={item => item.id}
                   renderItem={( { item } ) => (
-                    <Card onPress={() => navigation.navigate( 'ChatRoom', { userName: item.userName } )}>
+                    <Card onPress={() => { this.setState( { visible: false } ); navigation.navigate( 'ChatRoom', { userName: item.userName } ); }}>
                       <UserInfo>
                         <UserImgWrapper>
                           <UserImg source={item.userImg} />
@@ -210,6 +210,8 @@ const styles = StyleSheet.create( {
     height: 500,
     width: 325,
 
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'white'
   }
 
