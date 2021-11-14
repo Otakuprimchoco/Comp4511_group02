@@ -35,7 +35,7 @@ export default function ImagePickerExample() {
 
   return (
     <View>
-      <Avatar rounded size="xlarge" source={{ uri: image }} />
+      <Avatar rounded size="xlarge" source={{ uri: image }} containerStyle={{marginLeft: 20}}/>
       <View style={{padding: 10 }}>
         <TouchableOpacity style={styles.createBtn} onPress={pickImage}>
           <Text style={styles.createText}>Change Photo</Text>

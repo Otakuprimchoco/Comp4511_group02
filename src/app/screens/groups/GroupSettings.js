@@ -37,12 +37,7 @@ export default function GroupSettings ( { route, navigation } ) {
         rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
       />
       <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}}>
-        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
-          <Avatar rounded size="xlarge" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
-
-        </View>
-        <View style={{paddingTop: 10}}>
-
+        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10, }}>
           <ImagePickerExample></ImagePickerExample>
         </View>
         <View style={styles.inputView}>
