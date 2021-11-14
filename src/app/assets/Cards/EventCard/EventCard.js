@@ -6,7 +6,7 @@ import {
 import { ListItem, Icon } from 'react-native-elements';
 import styles from "./EventCard.styles";
 
-const EventCard = ({i, name, subtitle, state}) => {
+const EventCard = ({i, name, subtitle, state, onPressFn}) => {
 
   const [liked, setLiked] = useState(false);
 
@@ -16,7 +16,8 @@ const EventCard = ({i, name, subtitle, state}) => {
   
   return (
     <View>
-      <ListItem key={i} bottomDivider button>
+      <ListItem key={i} bottomDivider button 
+      onPress={onPressFn}>
         <ListItem.Content>
             <ListItem.Title style={styles.titleView}>{name}</ListItem.Title>
             <ListItem.Subtitle  style={styles.subtitleView}>{subtitle}</ListItem.Subtitle>

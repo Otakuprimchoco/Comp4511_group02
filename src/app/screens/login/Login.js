@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { AuthContext } from "../../services/Context";
 import * as Animatable from 'react-native-animatable';
+import { Icon } from 'react-native-elements';
 
 import Users from '../../model/users';
 
@@ -21,6 +22,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidEmail, setIsValidEmail] = useState(true);
+  // const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
 
   const {signIn} = useContext(AuthContext);
 
@@ -80,19 +82,38 @@ export default function Login({ navigation }) {
           <Text style={{fontWeight: 'bold', fontSize: 14,}}>Password</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Enter Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-          value={password}
-        />
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Enter Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            onChangeText={(password) => setPassword(password)}
+            value={password}
+          />
+          {/*
+
+        <View>
+          <TouchableOpacity onPress={() => {setSecureTextEntryLogin(!secureTextEntryLogin)}}>
+            {secureTextEntryLogin ? 
+              <Icon 
+                  name="eye-slash"
+                  type='font-awesome'
+              />
+            :
+              <Icon 
+                  name="eye"
+                  type='font-awesome'
+              />
+            }
+          </TouchableOpacity>
+
+        </View>
+          */}
       </View>
     
       <View style={{alignItems: 'flex-end', marginRight: 20}}>
         <TouchableOpacity>
-          <Text style={styles.forgot_button}>Forgot Password?</Text>
+          <Text style={styles.forgot_button} onPress={() => navigation.navigate('ForgotPassword')}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
 

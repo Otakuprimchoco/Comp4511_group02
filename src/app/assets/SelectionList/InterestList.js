@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Button, Alert, Text,} from 'react-native';
 import { TagSelect } from 'react-native-tag-select';
 import { SearchBar } from 'react-native-elements';
+import SearchAndFilter from '../SearchAndFilter/SearchAndFilter';
 
 export default class InterestList extends React.Component {
 
@@ -49,15 +50,7 @@ export default class InterestList extends React.Component {
             <Text style={{color: "red"}}> * </Text>
           </Text>
         </View>
-        <SearchBar
-          lightTheme 
-          round
-          showCancel
-          containerStyle={styles.searchContainer}
-          placeholder="Search..."
-          onChangeText={this.updateSearch}
-          value={search}
-        />
+        <SearchAndFilter/>
         <View style={styles.tagContainer}>
           <TagSelect
             data={data}
