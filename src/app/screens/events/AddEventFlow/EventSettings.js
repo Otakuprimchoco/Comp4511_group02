@@ -35,10 +35,6 @@ export default function EventSettings ( { navigation } ) {
       />
       <ScrollView>
       <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
-        <Avatar rounded size="xlarge" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
-
-      </View>
-      <View style={{paddingTop: 10}}>
 
         <ImagePickerExample></ImagePickerExample>
       </View>

@@ -71,7 +71,7 @@ const MessagesScreen = ( { navigation } ) => {
         barStyle="light-content" // or directly
 
         containerStyle={{
-          backgroundColor: '#8fcbbc',
+          backgroundColor: '#66B2B2',
           justifyContent: 'space-around',
         }}
         leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}

@@ -24,10 +24,10 @@ export default function CreateGroup2({route, navigation}) {
           barStyle="light-content" // or directly
 
           containerStyle={{
-            backgroundColor: '#8fcbbc',
+            backgroundColor: '#66B2B2',
             justifyContent: 'space-around',
           }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
+          leftComponent={{ icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' }, 
             onPress: () => {navigation.pop()} }}
           centerComponent={{ text: groupName, style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
           rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}

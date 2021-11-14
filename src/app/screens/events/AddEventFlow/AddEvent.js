@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { onBlur, StyleSheet, Text, TextInput, View,} from "react-native";
+import { onBlur, StyleSheet, Text, TextInput, View, ScrollView} from "react-native";
 import { Avatar, Header } from 'react-native-elements';
 import MainButton from "../../../assets/buttons/MainButton";
 import ImagePickerExample from '../../../assets/ChangePhoto/ChangePhotoComponent';
@@ -32,11 +32,8 @@ export default function AddEvent ( { navigation } ) {
         centerComponent={{ text: 'Add Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
         rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
       />
+      <ScrollView>
       <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
-        <Avatar rounded size="xlarge" source={{ uri: 'https://picsum.photos/id/237/200/300' }} />
-
-      </View>
-      <View style={{paddingTop: 10}}>
         <ImagePickerExample></ImagePickerExample>
       </View>
       <View style={styles.inputView}>
@@ -105,6 +102,7 @@ export default function AddEvent ( { navigation } ) {
       <View style={styles.buttonContainer}>
         <MainButton text={"Next"} onPressFn={() => navigation.navigate( "AddEvent2", { eventName: name } )}/>
       </View>
+      </ScrollView>
     </View>
   );
 }

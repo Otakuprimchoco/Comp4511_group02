@@ -8,7 +8,9 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  onBlur
+  onBlur,
+  ScrollView,
+  Alert
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 
@@ -18,6 +20,24 @@ export default function Register01( {navigation}) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
 
+  const [publicACC, setPublicACC] = useState(true);
+  const [student, setStudent] = useState(true);
+
+  const verifyToReg02 = () => {
+    if (email == 0 || password == 0 || confirmPassword == 0 || name == 0 ) {
+      Alert.alert('Invalid Input!', 'One or more required fields are empty.', [
+        {text: 'Okay'}
+      ]);
+    } else if (password != confirmPassword) {
+      Alert.alert('Invalid Input!', 'Passwords do not match.', [
+        {text: 'Okay'}
+      ]);
+    } else {
+      navigation.navigate('Register02', {email: email, password: password, name: name, publicACC: publicACC, student: student});
+    }
+    
+  };
+
 
   const _goBack = () => console.log('Went back');
 
@@ -26,7 +46,7 @@ export default function Register01( {navigation}) {
   const _handleMore = () => console.log('Shown more');
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
     <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
@@ -96,50 +116,50 @@ export default function Register01( {navigation}) {
 
       <View style={styles.question}>
         <View style={{flexDirection: 'row', paddingBottom: 5}}>
-          <Text style={{fontWeight: 'bold', fontSize: 14, color:'#008080'}}>Which one do you represent?</Text>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>Which represents you best?</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
       </View>
 
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <TouchableOpacity style={{backgroundColor: "#008080"}}>
-          <Text style={styles.loginText}>Student</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={{backgroundColor: "#ffffff", borderColor: 'black', borderWidth: 2,}}>
-          <Text style={{color: '#008080'}}>Company</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: 20,}}>
+        <TouchableOpacity style={student ? styles.buttonOn : styles.buttonOff} onPress={() => setStudent(true)}>
+          <Text style={student ? styles.buttonTextOn: styles.buttonTextOff}>Student</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={student ? styles.buttonOff : styles.buttonOn} onPress={() => setStudent(false)}>
+            <Text style={student ? styles.buttonTextOff : styles.buttonTextOn}>Company</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.question}>
         <View style={{flexDirection: 'row', paddingBottom: 5}}>
-          <Text style={{fontWeight: 'bold', fontSize: 14, color:'#008080'}}>What type of account do you want?</Text>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>What type of account do you want?</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
       </View>
 
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <TouchableOpacity style={{backgroundColor: "#008080"}}>
-          <Text style={styles.loginText}>Public</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={{backgroundColor: "#ffffff", borderColor: 'black', borderWidth: 2,}}>
-          <Text style={{color: '#008080'}}>Private</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: 20,}}>
+        <TouchableOpacity style={publicACC ? styles.buttonOn : styles.buttonOff} onPress={() => setPublicACC(true)}>
+          <Text style={publicACC ? styles.buttonTextOn: styles.buttonTextOff}>Public Account</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={publicACC ? styles.buttonOff : styles.buttonOn} onPress={() => setPublicACC(false)}>
+            <Text style={publicACC ? styles.buttonTextOff : styles.buttonTextOn}>Private Account</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Register02')}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => verifyToReg02()}>
           <Text style={styles.loginText}>Next</Text>
         </TouchableOpacity>
       </View>
 
 
-      <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
+      <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
         <Text style={{fontWeight: 'bold', fontSize: 18,}}>Already a User? </Text>
         <TouchableOpacity  onPress={() => navigation.navigate('Login')}>
           <Text style={{fontWeight: 'bold', fontSize: 18, color: '#66B2B2',}}>Login Here</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
     
   );
 }
@@ -155,16 +175,42 @@ const styles = StyleSheet.create({
     width: 200, 
     height: 200,
   },
+  buttonOn: {
+    backgroundColor: "#008080", 
+    width: 175, 
+    height: 50,
+    justifyContent: 'center',
+  },
+  buttonOff: {
+    backgroundColor: "#ffffff", 
+    borderColor: 'grey', 
+    borderWidth: 2, 
+    width: 175, 
+    height: 50,
+    justifyContent: 'center',
+
+  },
+  buttonTextOn: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  buttonTextOff: {
+    color: 'grey',
+    fontWeight: 'bold',
+    fontSize: 18,
+    textAlign: 'center',
+  },
 
   inputView: {
     alignItems: "flex-start",
-    margin: 20,
+    margin: 15,
   },
 
   TextInput: {
     height: 50,
-    flex: 1,
-    padding: 20,
+    paddingLeft: 20,
     borderWidth: 1,
     width: "100%",
     borderRadius: 10,
@@ -180,10 +226,10 @@ const styles = StyleSheet.create({
     width: 94,
     height: 52,
     borderRadius: 10,
+    marginTop: 10,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 60,
     backgroundColor: "#008080",
   },
 

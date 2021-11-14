@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,11 +11,47 @@ import {
   onBlur
 } from "react-native";
 import { Appbar } from 'react-native-paper';
-import InterestList from '../../assets/SelectionList/InterestList';
+import InterestList from "../../assets/SelectionList/JustInterestList";
+import Users from '../../model/users';
 
-export default function Register02({navigation}) {
 
-  const _goBack = () => console.log('Went back');
+import { AuthContext } from "../../services/Context";
+
+export default function Register02({route, navigation}) {
+
+  const { email, password, name, publicACC, student} = route.params;
+
+  const {signUp } = useContext(AuthContext);
+
+  const registerHandle = () => {
+    const id = Users.length + 1;
+    const userToken = 'userToken' + id;
+
+    Users.push({email: email, password: password, name: name, publicACC: publicACC, student: student, userToken: userToken, id: id,  
+      groupNotif: true,
+      eventNotif: true,
+      chatNotif: true,
+      role: "",
+      about: "",
+      namePublic: true,
+      rolePublic: true,
+      aboutPublic: true,
+      image: 'https://picsum.photos/id/237/200/300',
+      interests: [], //list of strings
+      bookedEvents: [], //event id list
+      favoriteEvents: [],  //event id list
+      myGroups: [], //group id
+      followingGroups: [], //group id,
+      friends: [], //user id
+    });
+    console.log(Users);
+    const foundUser = Users.filter( item => {
+      return userToken == item.userToken && email == item.email && password == item.password;
+    });
+    signUp(foundUser);
+  };
+
+  const _goBack = () => console.log(email, password, name, publicACC, student);
 
   const _handleSearch = () => console.log('Searching');
 
@@ -31,10 +67,19 @@ export default function Register02({navigation}) {
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>
 
-   <InterestList/>
+    <View style={styles.question}>
+        <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>Please select atleast one interest</Text>
+          <Text style={{color: 'red'}}>*</Text>
+        </View>
+      </View>
+
+    <View style={{margin: 10}}>
+      <InterestList></InterestList>
+    </View>
    
    <View style={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity style={styles.loginBtn}  onPress={() => registerHandle()}>
           <Text style={styles.loginText}>Confirm</Text>
         </TouchableOpacity>
   </View>
@@ -63,8 +108,7 @@ const styles = StyleSheet.create({
 
   TextInput: {
     height: 50,
-    flex: 1,
-    padding: 20,
+    paddingLeft: 20,
     borderWidth: 1,
     width: "100%",
     borderRadius: 10,
@@ -97,5 +141,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingLeft: 20,
     paddingTop: 5,
+    marginTop: 20,
   }
 });
