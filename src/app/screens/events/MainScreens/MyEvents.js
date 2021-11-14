@@ -18,7 +18,7 @@ export default function MyEvents({navigation}) {
     <View style={styles.container}>
         <View style={styles.eventsContainer}>
           <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Past Events</Text>
+            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Booked Events</Text>
             <SearchAndFilter/>
           </View>
           < ScrollView style={styles.eventsList}>
@@ -27,7 +27,7 @@ export default function MyEvents({navigation}) {
               <EventCard 
                 key={i} name={item.name}
                 subtitle={`${item.timeToEvent}`}
-                onPressFn={() => {navigation.push("EventSelected")}}                
+                onPressFn={() => {navigation.push("JoinEvent")}}                
                 />
             ))
           }

@@ -19,6 +19,7 @@ import AddEvent from './src/app/screens/events/AddEventFlow/AddEvent';
 import AddEvent2 from './src/app/screens/events/AddEventFlow/AddEvent2';
 import CreatedEvent from './src/app/screens/events/AddEventFlow/CreatedEvent';
 import EventSettings from './src/app/screens/events/AddEventFlow/EventSettings';
+import JoinEvent from './src/app/screens/events/JoinEvent';
 
 import ChatRoom from './src/app/screens/chat/UserChatScreen';
 import GroupPage from './src/app/screens/groups/GroupPage';
@@ -149,7 +150,8 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="AddEvent" component={AddEvent} />
                 <Stack.Screen options={{ headerShown: false }} name="AddEvent2" component={AddEvent2} />
                 <Stack.Screen options={{ headerShown: false }} name="CreatedEvent" component={CreatedEvent} />
-                <Stack.Screen options={{ headerShown: false }} name="EventSettings" component={EventSettings} />
+                <Stack.Screen options={{ headerShown: false }} name="EventSettings" component={EventSettings} /> 
+                <Stack.Screen options={{ headerShown: false }} name="JoinEvent" component={JoinEvent} /> 
                 <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
                   options={( { route } ) => ( {
                     title: route.params.userName,
