@@ -6,6 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/app/screens/login/Login';
 import Register01 from './src/app/screens/login/Register01';
 import Register02 from './src/app/screens/login/Register02';
+import ForgotPassword from './src/app/screens/login/ForgotPassword';
+import ForgotPassword2 from './src/app/screens/login/ForgotPassword2';
+import ChangePassword1 from './src/app/screens/login/ChangePassword1';
 import Profile from './src/app/screens/profile/Profile';
 import Main from './src/app/navigation/tabs'
 import CreateGroup1 from './src/app/screens/groups/CreateGroup1'
@@ -136,7 +139,7 @@ const App = () => {
           {/* The Main page navigation */}
           { (loginState.userToken != null) ?
             (
-              <Stack.Navigator initialRouteName="Main" >
+              <Stack.Navigator initialRouteName="Profile" >
                 <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} />
                 <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{userToken: loginState.userToken}}/> 
                   <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
@@ -160,13 +163,15 @@ const App = () => {
                       },
                     } )} />
                   <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
+                  <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{userToken: loginState.userToken}}/>
               </Stack.Navigator>
             ) : (
             <Stack.Navigator initialRouteName="Login">
                   <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
                   <Stack.Screen options={{ headerShown: false }} name="Register01" component={Register01} />
                   <Stack.Screen options={{ headerShown: false }} name="Register02" component={Register02} />
-
+                  <Stack.Screen options={{ headerShown: false }} name="ForgotPassword" component={ForgotPassword} />
+                  <Stack.Screen options={{ headerShown: false }} name="ForgotPassword2" component={ForgotPassword2} />
             </Stack.Navigator>
             )
           }

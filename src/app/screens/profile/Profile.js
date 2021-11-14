@@ -47,6 +47,9 @@ export default function Profile({route, navigation}) {
   const [image, setImage] = useState(foundUser[0].image);
 
   useEffect (() => {
+    console.log(Users.filter( item => {
+      return userToken == item.userToken;
+    }));
     foundUser[0].publicACC = publicACC;
     foundUser[0].groupNotif = groupNotif;
     foundUser[0].eventNotif = eventNotif;
@@ -263,7 +266,7 @@ export default function Profile({route, navigation}) {
 
       <View style={{flexDirection: 'row', justifyContent: 'center'}}>
         <View style={{margin: 20}}>
-          <TouchableOpacity style={styles.createBtn}>
+          <TouchableOpacity style={styles.createBtn} onPress={() => navigation.navigate('ChangePassword')}>
             <Text style={styles.createText}>Change</Text>
             <Text style={styles.createText}>Password</Text>
           </TouchableOpacity>

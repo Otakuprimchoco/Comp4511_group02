@@ -4,7 +4,7 @@ export default Users = [
         email: 'User1@email.com',
         name: 'user1',
         password: 'Password', 
-        userToken: 'token123',
+        userToken: 'Token123',
         publicACC: true, 
         student: true,
         groupNotif: true,
