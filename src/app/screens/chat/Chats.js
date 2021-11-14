@@ -1,7 +1,7 @@
 //Learn from tutorial https://www.youtube.com/watch?v=bGGeD5RkdzQ
-import React from 'react';
-import { View, StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
-import { Header } from 'react-native-elements';
+import React, { Component } from 'react';
+import { View, StyleSheet, FlatList, TouchableOpacity, Text, Button } from 'react-native';
+import { Header, Icon } from 'react-native-elements';
 import {
   Container,
   Card,
@@ -14,7 +14,7 @@ import {
   MessageText,
   TextSection,
 } from './MessageStyles';
-
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 
 
 const Messages = [
@@ -61,60 +61,125 @@ const Messages = [
 ];
 
 
-const MessagesScreen = ( { navigation } ) => {
-  return (
+export default class MessagesScreen extends Component {
+  constructor( props ) {
+    super( props );
 
-    <View style={styles.container}>
+    this.state = {
+      count: 0,
+    }
+  }
+  render () {
+    const { navigation } = this.props;
+    return (
 
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
+      <View style={styles.container} >
 
-        containerStyle={{
-          backgroundColor: '#66B2B2',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-        centerComponent={{ text: 'Chats', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
-      />
-      <Container>
-        <FlatList
-          data={Messages}
-          keyExtractor={item => item.id}
-          renderItem={( { item } ) => (
-            <Card onPress={() => navigation.navigate( 'ChatRoom', { userName: item.userName } )}>
-              <UserInfo>
-                <UserImgWrapper>
-                  <UserImg source={item.userImg} />
-                </UserImgWrapper>
-                <TextSection>
-                  <UserInfoText>
-                    <UserName>{item.userName}</UserName>
-                    <PostTime>{item.messageTime}</PostTime>
-                  </UserInfoText>
-                  <MessageText>{item.messageText}</MessageText>
-                </TextSection>
-              </UserInfo>
-            </Card>
-          )}
-        />
+        <Header
+          statusBarProps={{ barStyle: 'light-content' }}
+          barStyle="light-content" // or directly
 
-      </Container>
+          containerStyle={{
+            backgroundColor: '#66B2B2',
+            justifyContent: 'space-around',
+          }}
+          leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
+          centerComponent={{ text: 'Chats', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+          rightComponent={<View style={styles.Header}>
+            <Icon
+              name='notifications-none'
+              color='#00aced'
+              iconStyle={{ color: '#fff' }}
+              onPress={() => {
+                this.setState( { visible: true } );
+              }}
+            />
+            <Icon
+              name='account-circle'
+              type='MaterialCommunityIcons'
+              color='#517fa4'
+              iconStyle={{ color: '#fff' }}
+              onPress={() => navigation.navigate( 'Profile' )}
+            />
+          </View>}
 
-      <TouchableOpacity style={styles.Button} onPress={() => navigation.navigate( 'Login' )}>
-        <Text style={styles.ButtonText}> New Chat </Text>
-      </TouchableOpacity>
+        >
+
+        </Header>
+        <Container>
+          <FlatList
+            data={Messages}
+            keyExtractor={item => item.id}
+            renderItem={( { item } ) => (
+              <Card onPress={() => navigation.navigate( 'ChatRoom', { userName: item.userName } )}>
+                <UserInfo>
+                  <UserImgWrapper>
+                    <UserImg source={item.userImg} />
+                  </UserImgWrapper>
+                  <TextSection>
+                    <UserInfoText>
+                      <UserName>{item.userName}</UserName>
+                      <PostTime>{item.messageTime}</PostTime>
+                    </UserInfoText>
+                    <MessageText>{item.messageText}</MessageText>
+                  </TextSection>
+                </UserInfo>
+              </Card>
+            )}
+          />
+
+        </Container>
+
+        <TouchableOpacity style={styles.Button} onPress={() => navigation.navigate( 'Login' )}>
+          <Text style={styles.ButtonText}> New Chat </Text>
+        </TouchableOpacity>
+
+
+        <Dialog
+          visible={this.state.visible}
+          onTouchOutside={() => {
+            this.setState( { visible: false } );
+          }}
+        >
+          <DialogContent>
+            <View style={styles.containerPop}>
+              <Container>
+                <FlatList
+                  data={Messages}
+                  keyExtractor={item => item.id}
+                  renderItem={( { item } ) => (
+                    <Card onPress={() => { this.setState( { visible: false } ); navigation.navigate( 'ChatRoom', { userName: item.userName } ); }}>
+                      <UserInfo>
+                        <UserImgWrapper>
+                          <UserImg source={item.userImg} />
+                        </UserImgWrapper>
+                        <TextSection>
+                          <UserInfoText>
+                            <UserName>{item.userName}</UserName>
+                            <PostTime>{item.messageTime}</PostTime>
+                          </UserInfoText>
+                          <MessageText>{item.messageText}</MessageText>
+                        </TextSection>
+                      </UserInfo>
+                    </Card>
+                  )}
+                />
+
+              </Container>
+            </View>
+          </DialogContent>
+        </Dialog>
 
 
 
-    </View >
+      </View >
 
 
-  );
+    );
+  }
 };
 
-export default MessagesScreen;
+
 
 const styles = StyleSheet.create( {
   container: {
@@ -134,5 +199,20 @@ const styles = StyleSheet.create( {
     color: 'white',
     padding: 10,
     fontSize: 16
+  },
+  Header: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerPop: {
+    height: 500,
+    width: 325,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white'
   }
+
 } );

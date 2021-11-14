@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -26,7 +26,7 @@ const Tab = createMaterialTopTabNavigator();
 export default function GroupSubNavigation({navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      <Header
+        <Header
           statusBarProps={{ barStyle: 'light-content' }}
           barStyle="light-content" // or directly
 
@@ -35,9 +35,25 @@ export default function GroupSubNavigation({navigation}) {
             justifyContent: 'space-around',
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'account-circle', type: 'material-community',  color: '#fff', onPress: () => navigation.push('Profile') }}
-        />
+          centerComponent={{ text: 'Events', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+          rightComponent={<View style={styles.Header}>
+            <Icon
+              name='notifications-none'
+              color='#00aced'
+              iconStyle={{ color: '#fff' }}
+              onPress={() => {
+                this.setState( { visible: true } );
+              }}
+            />
+            <Icon
+              name='account-circle'
+              type='MaterialCommunityIcons'
+              color='#517fa4'
+              iconStyle={{ color: '#fff' }}
+              onPress={() => navigation.navigate( 'Profile' )}
+            />
+          </View>}
+        />  
       <Tab.Navigator
       initialRouteName="DiscoverGroups"
       screenOptions={{
@@ -92,3 +108,38 @@ export default function GroupSubNavigation({navigation}) {
 //     );
 //     }
 // }
+const styles = StyleSheet.create( {
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent'
+  },
+  Button: {
+    backgroundColor: "#008080",
+    position: 'absolute',
+    borderRadius: 10,
+    bottom: 10,
+    alignItems: 'center',
+  },
+  ButtonText: {
+    color: 'white',
+    padding: 10,
+    fontSize: 16
+  },
+  Header: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerPop: {
+    height: 500,
+    width: 325,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  }
+
+} );
