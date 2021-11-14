@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
+  // const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
 
   const {signIn} = useContext(AuthContext);
 
@@ -113,7 +113,7 @@ export default function Login({ navigation }) {
     
       <View style={{alignItems: 'flex-end', marginRight: 20}}>
         <TouchableOpacity>
-          <Text style={styles.forgot_button}>Forgot Password?</Text>
+          <Text style={styles.forgot_button} onPress={() => navigation.navigate('ForgotPassword')}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
 
