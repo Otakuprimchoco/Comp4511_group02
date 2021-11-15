@@ -16,6 +16,7 @@ import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
 import InterestList from "../../assets/SelectionList/JustInterestList";
 import * as ImagePicker from 'expo-image-picker';
 import MainButton from '../../assets/buttons/MainButton';
+import ProfileHeader from '../../assets/Header/ProfileHeader'
 
 import ToggleSwitch from 'rn-toggle-switch';
 import Constants from 'expo-constants';
@@ -67,12 +68,6 @@ export default function Profile({route, navigation}) {
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
-  const _goBack = () => navigation.pop();//
-
-  const _handleSearch = () => console.log('Searching');
-
-  const _handleMore = () => console.log('Shown more');
-
   useEffect(() => {
     //IIFE
     (async () => {
@@ -97,12 +92,7 @@ export default function Profile({route, navigation}) {
   return (
     <ScrollView style={styles.container}>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="" subtitle="" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-    </Appbar.Header>
+    <ProfileHeader nav={navigation}></ProfileHeader>
 
     <View style={{alignItems: 'center', padding: 10}}>
       <Image source={{uri: image}} style={styles.image}/>
