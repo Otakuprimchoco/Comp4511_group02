@@ -90,7 +90,7 @@ export default function JoinEvent({navigation, EventId}) {
               setisJoinEvent(false);
             }}
           >
-          <JoinEventPopup description={eventData.description} closePopupFn={() => {setisJoinEvent(false)}}/>
+          <JoinEventPopup nav={navigation} description={eventData.description} closePopupFn={() => {setisJoinEvent(false)}}/>
           </Modal>
         }
         

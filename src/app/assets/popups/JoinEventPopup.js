@@ -7,7 +7,12 @@ import { Header, Icon } from 'react-native-elements';
 import MainButton from "../buttons/MainButton";
 
 
-export default function JoinEventPopup({description, closePopupFn}) {
+export default function JoinEventPopup({nav, description, closePopupFn}) {
+
+    const liveEvent = () => {
+        nav.navigate('LiveEvent');
+        closePopupFn();
+    }
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -22,8 +27,10 @@ export default function JoinEventPopup({description, closePopupFn}) {
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>insert microphone and video buttons</Text>
             </View>
-            <View style={{alignItems: "center"}}>
-            <MainButton text={"Join Event"}/>
+            <View style={{margin: 20}}>
+                <TouchableOpacity style={styles.createBtn} onPress={() => {liveEvent()}}>
+                    <Text style={styles.createText}>Logout</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -67,5 +74,20 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 10,
         right: 0
-    }
+    },
+    createBtn: {
+      width: 160,
+      height: 70,
+      borderRadius: 10,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#008080",
+      padding: 20,
+    },
+    createText: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 20,
+      textAlign: 'center',
+    },
 })
