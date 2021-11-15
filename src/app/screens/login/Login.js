@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidEmail, setIsValidEmail] = useState(true);
-  // const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
+  const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
 
   const {signIn} = useContext(AuthContext);
 
@@ -82,33 +82,31 @@ export default function Login({ navigation }) {
           <Text style={{fontWeight: 'bold', fontSize: 14,}}>Password</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
+        <View style={styles.inputBorder}>
           <TextInput
-            style={styles.TextInput}
+            style={styles.TextInput1}
             placeholder="Enter Password"
             placeholderTextColor="#003f5c"
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntryLogin}
             onChangeText={(password) => setPassword(password)}
             value={password}
           />
-          {/*
-
-        <View>
-          <TouchableOpacity onPress={() => {setSecureTextEntryLogin(!secureTextEntryLogin)}}>
-            {secureTextEntryLogin ? 
-              <Icon 
-                  name="eye-slash"
-                  type='font-awesome'
-              />
-            :
-              <Icon 
-                  name="eye"
-                  type='font-awesome'
-              />
-            }
-          </TouchableOpacity>
-
+          <View>
+            <TouchableOpacity style={{margin: 10}} onPress={() => {setSecureTextEntryLogin(!secureTextEntryLogin)}}>
+              {secureTextEntryLogin ? 
+                <Icon 
+                    name="eye-slash"
+                    type='font-awesome'
+                />
+              :
+                <Icon 
+                    name="eye"
+                    type='font-awesome'
+                />
+              }
+            </TouchableOpacity>
+          </View>
         </View>
-          */}
       </View>
     
       <View style={{alignItems: 'flex-end', marginRight: 20}}>
@@ -159,6 +157,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: "100%",
     borderRadius: 10,
+  },
+  TextInput1: {
+    height: 50,
+    paddingLeft: 20,
+    width: "85%",
+    borderRadius: 10,
+  },
+  inputBorder: {
+    borderWidth: 1,
+    width: "100%",
+    borderRadius: 10, flexDirection: 'row'
   },
 
   forgot_button: {

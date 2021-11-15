@@ -4,11 +4,14 @@ import {
     Alert } from 'react-native';
 import { Appbar, Switch } from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
+import { Icon } from 'react-native-elements';
 
 export default function ChangePassword1({route, navigation}){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isValidPassword, setIsValidPassword] = useState(true);
+    const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
+    const [secureTextEntryLogin1, setSecureTextEntryLogin1] = useState(true);
 
     const { userToken } = route.params;
 
@@ -63,34 +66,68 @@ export default function ChangePassword1({route, navigation}){
         </View>
 
         <View style={styles.inputView}>
-            <View style={{flexDirection: 'row', paddingBottom: 5}}>
-            <Text style={{fontWeight: 'bold', fontSize: 14,}}>New Password</Text>
-            <Text style={{color: 'red'}}>*</Text>
-            </View>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Enter Password"
+        <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Text style={{fontWeight: 'bold', fontSize: 14,}}>New Password</Text>
+          <Text style={{color: 'red'}}>*</Text>
+        </View>
+        <View style={styles.inputBorder}>
+          <TextInput
+            style={styles.TextInput1}
+            placeholder="Enter New Password"
             placeholderTextColor="#003f5c"
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntryLogin}
             onChangeText={(password) => setPassword(password)}
             value={password}
-            />
+          />
+           <View>
+            <TouchableOpacity style={{margin: 10}} onPress={() => {setSecureTextEntryLogin(!secureTextEntryLogin)}}>
+              {secureTextEntryLogin ? 
+                <Icon 
+                    name="eye-slash"
+                    type='font-awesome'
+                />
+              :
+                <Icon 
+                    name="eye"
+                    type='font-awesome'
+                />
+              }
+            </TouchableOpacity>
+          </View>
         </View>
+      </View>
 
-        <View style={styles.inputView}>
-            <View style={{flexDirection: 'row', paddingBottom: 5}}>
-            <Text style={{fontWeight: 'bold', fontSize: 14,}}>Confirm Password</Text>
-            <Text style={{color: 'red'}}>*</Text>
-            </View>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Enter Password"
+      <View style={styles.inputView}>
+        <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Text style={{fontWeight: 'bold', fontSize: 14,}}>Confirm New Password</Text>
+          <Text style={{color: 'red'}}>*</Text>
+        </View>
+        <View style={styles.inputBorder}>
+          <TextInput
+            style={styles.TextInput1}
+            placeholder="Enter New Password"
             placeholderTextColor="#003f5c"
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntryLogin1}
             onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
             value={confirmPassword}
-            />
+          />
+          <View>
+            <TouchableOpacity style={{margin: 10}} onPress={() => {setSecureTextEntryLogin1(!secureTextEntryLogin1)}}>
+              {secureTextEntryLogin1 ? 
+                <Icon 
+                    name="eye-slash"
+                    type='font-awesome'
+                />
+              :
+                <Icon 
+                    name="eye"
+                    type='font-awesome'
+                />
+              }
+            </TouchableOpacity>
+          </View>
         </View>
+      </View>
         <View style={{alignItems: 'center', backgroundColor: "#fff"}}>
             <TouchableOpacity style={styles.loginBtn} onPress={() => {loginHandle()}}>
             <Text style={styles.loginText}>Confirm</Text>
@@ -147,5 +184,16 @@ const styles = StyleSheet.create({
       color: 'white',
       fontWeight: 'bold',
       fontSize: 20,
-    }
+    },
+    TextInput1: {
+      height: 50,
+      paddingLeft: 20,
+      width: "85%",
+      borderRadius: 10,
+    },
+    inputBorder: {
+      borderWidth: 1,
+      width: "100%",
+      borderRadius: 10, flexDirection: 'row'
+    },
   });

@@ -13,6 +13,7 @@ import {
   Alert
 } from "react-native";
 import { Appbar } from 'react-native-paper';
+import { Icon } from 'react-native-elements';
 
 export default function Register01( {navigation}) {
   const [email, setEmail] = useState("");
@@ -22,6 +23,8 @@ export default function Register01( {navigation}) {
 
   const [publicACC, setPublicACC] = useState(true);
   const [student, setStudent] = useState(true);
+  const [secureTextEntryLogin, setSecureTextEntryLogin] = useState(true);
+  const [secureTextEntryLogin1, setSecureTextEntryLogin1] = useState(true);
 
   const verifyToReg02 = () => {
     if (email == 0 || password == 0 || confirmPassword == 0 || name == 0 ) {
@@ -39,7 +42,7 @@ export default function Register01( {navigation}) {
   };
 
 
-  const _goBack = () => console.log('Went back');
+  const _goBack = () => navigation.pop(); //console.log('Went back');
 
   const _handleSearch = () => console.log('Searching');
 
@@ -89,14 +92,31 @@ export default function Register01( {navigation}) {
           <Text style={{fontWeight: 'bold', fontSize: 14,}}>Password</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Enter Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-          value={password}
-        />
+        <View style={styles.inputBorder}>
+          <TextInput
+            style={styles.TextInput1}
+            placeholder="Enter Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={secureTextEntryLogin}
+            onChangeText={(password) => setPassword(password)}
+            value={password}
+          />
+           <View>
+            <TouchableOpacity style={{margin: 10}} onPress={() => {setSecureTextEntryLogin(!secureTextEntryLogin)}}>
+              {secureTextEntryLogin ? 
+                <Icon 
+                    name="eye-slash"
+                    type='font-awesome'
+                />
+              :
+                <Icon 
+                    name="eye"
+                    type='font-awesome'
+                />
+              }
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
 
       <View style={styles.inputView}>
@@ -104,14 +124,31 @@ export default function Register01( {navigation}) {
           <Text style={{fontWeight: 'bold', fontSize: 14,}}>Confirm Password</Text>
           <Text style={{color: 'red'}}>*</Text>
         </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Enter Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
-          value={confirmPassword}
-        />
+        <View style={styles.inputBorder}>
+          <TextInput
+            style={styles.TextInput1}
+            placeholder="Enter Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={secureTextEntryLogin1}
+            onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
+            value={confirmPassword}
+          />
+          <View>
+            <TouchableOpacity style={{margin: 10}} onPress={() => {setSecureTextEntryLogin1(!secureTextEntryLogin1)}}>
+              {secureTextEntryLogin1 ? 
+                <Icon 
+                    name="eye-slash"
+                    type='font-awesome'
+                />
+              :
+                <Icon 
+                    name="eye"
+                    type='font-awesome'
+                />
+              }
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
 
       <View style={styles.question}>
@@ -243,5 +280,16 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingLeft: 20,
     paddingTop: 5,
+  },
+  TextInput1: {
+    height: 50,
+    paddingLeft: 20,
+    width: "85%",
+    borderRadius: 10,
+  },
+  inputBorder: {
+    borderWidth: 1,
+    width: "100%",
+    borderRadius: 10, flexDirection: 'row'
   }
 });

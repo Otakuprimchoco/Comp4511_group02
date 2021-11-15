@@ -51,7 +51,7 @@ export default function Register02({route, navigation}) {
     signUp(foundUser);
   };
 
-  const _goBack = () => console.log(email, password, name, publicACC, student);
+  const _goBack = () => navigation.pop();// console.log(email, password, name, publicACC, student);
 
   const _handleSearch = () => console.log('Searching');
 
