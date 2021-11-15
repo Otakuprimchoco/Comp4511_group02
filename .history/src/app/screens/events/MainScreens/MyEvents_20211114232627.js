@@ -33,6 +33,24 @@ export default function MyEvents({navigation}) {
           }
           </ScrollView>
         </View>
+        <View style={styles.spacer}/>
+        <View style={styles.eventsContainer}>
+          <View style={{paddingBottom: 10, paddingLeft: 5}}>
+            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Favorites </Text>
+            <SearchAndFilter/>
+          </View>
+          < ScrollView style={styles.eventsList}>
+          {
+            Favorites.my_events.map((item, i) => (
+              <EventCard 
+                key={i} name={item.name}
+                subtitle={`${item.timeToEvent}`}
+                onPressFn={() => {navigation.push("EventSelected")}}
+                />
+            ))
+          }
+          </ScrollView>
+        </View>
       </View>
   );
 }

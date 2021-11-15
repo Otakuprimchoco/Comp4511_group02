@@ -97,7 +97,7 @@ export default function Profile({route, navigation}) {
   return (
     <ScrollView style={styles.container}>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
+    <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
       <Appbar.Content title="" subtitle="" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
@@ -286,7 +286,7 @@ export default function Profile({route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "red",
   },
   buttonOff: {
     backgroundColor: "#ffffff", 

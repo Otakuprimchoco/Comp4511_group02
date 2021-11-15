@@ -9,7 +9,6 @@ import BoothsGrid from "./BoothsGrid";
 import MainButton from "../../assets/buttons/MainButton";
 import JoinEventPopup from "../../assets/popups/JoinEventPopup";
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
-import LiveEventButton from "../../assets/buttons/LiveEventButton";
 
 export default function JoinEvent({navigation, EventId}) {
   const eventData = data[1]
@@ -94,9 +93,7 @@ export default function JoinEvent({navigation, EventId}) {
           </Modal>
         }
         
-        <View style={{marginLeft: "28%", marginTop: 10}}>
-        <LiveEventButton text={"  On Live!\nJoin it now"} onPressFn={() => {setisJoinEvent(true)}}/>
-        </View>
+        
         <View style={{padding: 10}}>
           <Text style={{fontWeight: "bold"}}>Description: </Text>
           <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>

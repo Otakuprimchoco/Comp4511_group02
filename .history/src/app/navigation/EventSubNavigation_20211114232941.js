@@ -1,29 +1,16 @@
+// subnavigation for event pages -> top bar navigation
+
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import {
-  useFonts,
-  Roboto_100Thin,
-  Roboto_100Thin_Italic,
-  Roboto_300Light,
-  Roboto_300Light_Italic,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_500Medium,
-  Roboto_500Medium_Italic,
-  // Roboto_700Bold,
-  Roboto_700Bold_Italic,
-  Roboto_900Black,
-  Roboto_900Black_Italic,
-} from '@expo-google-fonts/roboto';
-import MyGroupsScreen from '../screens/groups/MyGroups'
-import DiscoverGroupsScreen from '../screens/groups/DiscoverGroups'
+import MyEvents from '../screens/events/MainScreens/MyEvents';
+import DiscoverEvents from '../screens/events/MainScreens/DiscoverEvents'
+import PastEvents from '../screens/events/MainScreens/PastEvents';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function GroupSubNavigation({navigation}) {
+export default function EventSubNavigation({navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
         <Header
@@ -35,7 +22,7 @@ export default function GroupSubNavigation({navigation}) {
             justifyContent: 'space-around',
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+          centerComponent={{ text: 'Events', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
           rightComponent={<View style={styles.Header}>
             <Icon
               name='notifications-none'
@@ -55,59 +42,35 @@ export default function GroupSubNavigation({navigation}) {
           </View>}
         />  
       <Tab.Navigator
-      initialRouteName="DiscoverGroups"
+      initialRouteName="DiscoverEvents"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
+        tabBarLabelStyle: { fontSize: 10, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,
         }}
         >
         <Tab.Screen
-          name="DiscoverGroups"
-          component={DiscoverGroupsScreen}
-          options={{ tabBarLabel: 'Discover Groups', tabBarAccessibilityLabel: 'Discover Groups' }}
+          name="MyEvents"
+          component={MyEvents}
+          options={{ tabBarLabel: 'My Events', tabBarAccessibilityLabel: 'My Events' }}
         />
         <Tab.Screen
-          name="MyGroups"
-          component={MyGroupsScreen}
-          options={{ tabBarLabel: 'My Groups', tabBarAccessibilityLabel: 'My Groups' }}
+          name="DiscoverEvents"
+          component={DiscoverEvents}
+          options={{ tabBarLabel: 'Discover Events', tabBarAccessibilityLabel: 'Discover Events' }}
+        />
+        <Tab.Screen
+          name="PastEvents"
+          component={PastEvents}
+          options={{ tabBarLabel: 'Past Events', tabBarAccessibilityLabel: 'Past Events' }}
         />
       </Tab.Navigator>
     </View>
   );
 }
-// export default function GroupSubNavigation() {
-//   let [fontsLoaded] = useFonts({
-//     Roboto_100Thin,
-//     Roboto_100Thin_Italic,
-//     Roboto_300Light,
-//     Roboto_300Light_Italic,
-//     Roboto_400Regular,
-//     Roboto_400Regular_Italic,
-//     Roboto_500Medium,
-//     Roboto_500Medium_Italic,
-//     // Roboto_700Bold,
-//     Roboto_700Bold_Italic,
-//     Roboto_900Black,
-//     Roboto_900Black_Italic,
-//   });
 
-//   if (!fontsLoaded) {
-//     return (
-//       <NavigationContainer independent={true}>
-//         <Tabs />
-//       </NavigationContainer>
-//     );
-//   } else {
-//     return (
-//       <NavigationContainer independent={true}>
-//         <Tabs />
-//       </NavigationContainer>
-//     );
-//     }
-// }
 const styles = StyleSheet.create( {
   container: {
     flex: 1,

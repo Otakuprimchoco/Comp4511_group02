@@ -95,7 +95,7 @@ export default function JoinEvent({navigation, EventId}) {
         }
         
         <View style={{marginLeft: "28%", marginTop: 10}}>
-        <LiveEventButton text={"  On Live!\nJoin it now"} onPressFn={() => {setisJoinEvent(true)}}/>
+        <MainButton text={"  On Live!\nJoin it now"} onPressFn={() => {setisJoinEvent(true)}}/>
         </View>
         <View style={{padding: 10}}>
           <Text style={{fontWeight: "bold"}}>Description: </Text>

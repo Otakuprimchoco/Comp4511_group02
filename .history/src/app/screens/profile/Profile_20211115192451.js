@@ -97,9 +97,9 @@ export default function Profile({route, navigation}) {
   return (
     <ScrollView style={styles.container}>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
+    <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="" subtitle="" />
+      <Appbar.Content syle={{backgroundColor: "red"}} title="" subtitle="" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>

@@ -35,7 +35,7 @@ export default function GroupSubNavigation({navigation}) {
             justifyContent: 'space-around',
           }}
           leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+          centerComponent={{ text: 'Events', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
           rightComponent={<View style={styles.Header}>
             <Icon
               name='notifications-none'

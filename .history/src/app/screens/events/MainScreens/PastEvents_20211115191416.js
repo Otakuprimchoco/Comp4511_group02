@@ -6,28 +6,27 @@ import {
   ScrollView} from "react-native";
 import PastEventCard from "../../../assets/Cards/EventCard/PastEventCard";
 import SearchAndFilter from "../../../assets/SearchAndFilter/SearchAndFilter";
-import myEventsData from '../../../assets/sampleUserData/Sample_Event_Data/sample_myEvents_data'
+import pastEventsData from '../../../assets/sampleUserData/Sample_Event_Data/sample_past_events_data'
 import favEventsData from '../../../assets/sampleUserData/Sample_Event_Data/sample_favEvents_data'
-import EventCard from "../../../assets/Cards/EventCard/EventCard";
 
-export default function MyEvents({navigation}) {
-  const Booked_Events = myEventsData[1]
+export default function PastEvents() {
+  // const EventData = pastEventsData[1]
   const Favorites = favEventsData[1]
 
   return (
     <View style={styles.container}>
         <View style={styles.eventsContainer}>
           <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Booked Events</Text>
+            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Past Events</Text>
             <SearchAndFilter/>
           </View>
           < ScrollView style={styles.eventsList}>
           {
-            Booked_Events.my_events.map((item, i) => (
+            Favorites.my_events.map((item, i) => (
               <EventCard 
                 key={i} name={item.name}
                 subtitle={`${item.timeToEvent}`}
-                onPressFn={() => {navigation.push("JoinEvent")}}                
+                onPressFn={() => {navigation.push("EventSelected")}}
                 />
             ))
           }
@@ -74,7 +73,4 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 2
   },
-  spacer:{
-    paddingTop: 10
-  }
   });

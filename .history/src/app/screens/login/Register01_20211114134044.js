@@ -48,7 +48,7 @@ export default function Register01( {navigation}) {
   return (
     <ScrollView style={styles.container}>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
+    <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
       <Appbar.Content title="Title" subtitle="Subtitle" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
