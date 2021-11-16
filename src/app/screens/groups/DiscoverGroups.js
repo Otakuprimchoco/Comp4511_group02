@@ -79,8 +79,8 @@ export default function DiscoverGroups({navigation}) {
             <GroupCard 
               key={i} name={item.name} 
               subtitleL={item.subtitleL} subtitleR={item.subtitleR}
-              onPressFn={() => {navigation.push("GroupPage")}}
-              isOwner={item.isOwner}
+              onPressFn={() => {navigation.push("GroupPage", {isOwner: false})}}
+              isOwner={false}
               />
           ))
         }

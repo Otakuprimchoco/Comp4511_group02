@@ -11,8 +11,9 @@ import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/sample_groupPageData'
 import pending from '../../assets/icons/pending.png';
 import MemberList from '../../assets/memberList/MemberList'
+import Header1 from "../../assets/Header/Header1";
+import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
 
-<<<<<<< HEAD
 const list = [
   {
     key: 1,
@@ -28,12 +29,12 @@ const list = [
     about: 'About section for interests etc',
     followed: false,
   },
-{
-  key: 3,
-  name: 'Full Name',
-  avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-  about: 'About section for interests etc',
-  followed: true,
+  {
+    key: 3,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: true,
   },
   {
     key: 4,
@@ -52,29 +53,17 @@ const list = [
 ]
 
 export default function GroupPage({route, navigation}) {
-=======
-export default function GroupPage({navigation, groupId}) {
->>>>>>> 7238b9e769e4f5b44f6b2539778bb57f1fcc67ca
   const groupData = data[1]
+  const eventData = data2[1]
   const [isFollowing, setIsFollowing] = useState(true);
-  const [isOwner, setIsOwner] = useState(true);
+  const [isOwner, setIsOwner] = useState(route.params.isOwner);
+  // setIsOwner(route.params.isOwner)
   const [isAboutPopupVisible, setIsAboutPopupVisible] = useState(false);
+  const [isMembersPopup, setisMembersPopup] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-
-        containerStyle={{
-          backgroundColor: '#66B2B2',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{ icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' }, 
-          onPress: () => {navigation.pop()} }}
-        centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-      />
+      <Header1 title='Groups' nav={navigation}></Header1>
       <View style={styles.groupHeader}>
         <View>
           <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
@@ -109,8 +98,21 @@ export default function GroupPage({navigation, groupId}) {
           <AboutGroupPopup description={groupData.description} closePopupFn={() => {setIsAboutPopupVisible(false)}}/>
           </Modal>
         }
+        {isMembersPopup &&
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={isMembersPopup}
+            onRequestClose={() => {
+              setisMembersPopup(false);
+            }}
+          >
+          <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
+          </Modal>
+        }
 
-        <View style={styles.followButtonContainer}>
+        { !isOwner &&
+          <View style={styles.followButtonContainer}>
           {
             isFollowing ?
             <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'} 
@@ -120,18 +122,30 @@ export default function GroupPage({navigation, groupId}) {
               onPressFn={() => {setIsFollowing(true)}}/>
           }
 
-        </View>
+        </View>}
         <View style={styles.membersContainer}>
           <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
             <Text style={{fontSize: 14, fontWeight: 'bold'}}>Members</Text>
             <Text style={{fontSize: 14, color: 'grey'}}> ({groupData.numMembers})</Text>
+            <View style={styles.inviteContainer}>
+              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                onPressFn={() => {setisMembersPopup(true)}}/>
+            </View>  
           </View>
           <MemberList navigation={navigation} members={list}/>
         </View>
+
         <View style={styles.spacer}/>
+
         <View style={styles.eventsContainer}>
-          <View style={{paddingBottom: 10, paddingLeft: 5}}>
+          <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row'}}>
             <Text style={{fontSize: 14, fontWeight: 'bold'}}>Upcoming Events</Text>
+            { isOwner &&
+              <View style={styles.createEventContainer}>
+                <SubButton text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                  onPressFn={() => {navigation.push("AddEvent")}}/>
+              </View> 
+            }
           </View>
           < ScrollView style={styles.eventsList}>
           {
@@ -170,6 +184,14 @@ const styles = StyleSheet.create({
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10
+  },
+  inviteContainer: {
+    marginLeft: 100,
+    // paddingBottom: 10, 
+  },
+  createEventContainer: {
+    marginLeft: 100,
+    // paddingBottom: 10, 
   },
   spacer: {
     height: 10,
