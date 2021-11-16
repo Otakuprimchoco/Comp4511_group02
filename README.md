@@ -1,10 +1,17 @@
 # Comp4511_group02
 
+## To Lavanya:
+- using iphone12
+- please run both npm install and expo install
+- starting page is in App.js
+- User details are: email: User1@email.com password: Password
+
 ---
 
 PLS KEEP NODE JS at Version 14.18.1
 PLS Run EXPO Install and npm install everytime you pull from github
 to install the node_modules
+Using Iphone12 in XCode simulator
 
 ---
 

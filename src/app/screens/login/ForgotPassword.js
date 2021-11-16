@@ -5,6 +5,7 @@ import {
 import { Appbar, Switch } from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 import Users from '../../model/users';
+import Header3 from '../../assets/Header/Header3';
 
 export default function ForgotPassword({navigation}){
     const [email, setEmail] = useState("");
@@ -34,12 +35,7 @@ export default function ForgotPassword({navigation}){
 
     return (
       <View style={styles.container}>
-        <Appbar.Header>
-            <Appbar.BackAction onPress={_goBack} />
-            <Appbar.Content title="Title" subtitle="Subtitle" />
-            <Appbar.Action icon="magnify" onPress={_handleSearch} />
-            <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-        </Appbar.Header>
+      <Header3 nav={navigation} title={'Forgot Password'}></Header3>
 
         <View style={styles.container}>
             <View style={{alignItems: 'center'}}>

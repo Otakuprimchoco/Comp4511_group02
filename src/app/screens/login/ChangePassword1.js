@@ -5,6 +5,7 @@ import {
 import { Appbar, Switch } from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 import { Icon } from 'react-native-elements';
+import Header3 from '../../assets/Header/Header3';
 
 export default function ChangePassword1({route, navigation}){
     const [password, setPassword] = useState("");
@@ -46,12 +47,7 @@ export default function ChangePassword1({route, navigation}){
 
     return (
       <View style={{backgroundColor: "#fff"}}>
-        <Appbar.Header>
-            <Appbar.BackAction onPress={_goBack} />
-            <Appbar.Content title="Title" subtitle="Subtitle" />
-            <Appbar.Action icon="magnify" onPress={_handleSearch} />
-            <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-        </Appbar.Header>
+        <Header3 nav={navigation} title={'Change Password'}></Header3>
 
         <View style={{alignItems: 'center', backgroundColor: "#fff"}}>
             <Image style={styles.image} source={require("../../assets/logos/logo.png")} />

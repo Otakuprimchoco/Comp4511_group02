@@ -11,7 +11,7 @@ import {
   onBlur, SafeAreaView, ScrollView,
 } from "react-native";
 import { Appbar, Switch } from 'react-native-paper';
-import {Avatar} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
 import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
 import InterestList from "../../assets/SelectionList/JustInterestList";
 import * as ImagePicker from 'expo-image-picker';
@@ -25,9 +25,51 @@ import { AuthContext } from "../../services/Context";
 import LiveEventHeader from "../../assets/Header/LiveEventHeader";
 
 export default function LiveEvent({navigation}) {
+    const [mic, setMic] = useState(true);
+    const [cam, setCam] = useState(true);
     return(
-        <View>
+        <View style={styles.container}>
+          <View style={styles.header}>
             <LiveEventHeader nav={navigation} title="UNSW Engineering Career Fair" booth="Telstra"></LiveEventHeader>
+          </View>
+
+          <View style={styles.midContainer}>
+
+          </View>
+          
+            <View style={styles.navContainer}>
+
+              <View style={styles.navView}>
+                <TouchableOpacity style={styles.icons} onPress={()=> setCam(!cam)}>
+                  {cam ? 
+                    <Icon name='videocam'type='material' size={40} color='white'/>
+                    :
+                    <Icon name='videocam-off'type='material' size={40} color='white'/>
+                  }
+                  <Text style={styles.navText}>Camera</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.icons} onPress={()=> setMic(!mic)}>
+                  {mic ?
+                  <Icon name='mic'type='material' size={40} color='white'/>
+                  :
+                  <Icon name='mic-off'type='material' size={40}  color='white'/>
+                  }
+                  <Text style={styles.navText}>Microphone</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.icons} >
+                  <Icon name='forum'type='material' size={40}  color='white' underlayColor='pink'/>
+                  <Text style={styles.navText}>Chat</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.icons} >
+                  <Icon name='mobile-screen-share' type='material' size={40}  color='white'/>
+                  <Text style={styles.navText}>Share Screen</Text>
+                </TouchableOpacity>
+
+              </View>
+            </View>
         </View>
     );
 }
@@ -37,103 +79,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  buttonOff: {
-    backgroundColor: "#ffffff", 
-    borderColor: 'grey', 
-    borderWidth: 2, 
-    width: 175, 
-    height: 50,
-    justifyContent: 'center',
-
-  },
-  buttonOn: {
-    backgroundColor: "#008080", 
-    width: 175, 
-    height: 50,
-    justifyContent: 'center',
-  },
-  buttonTextOn: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  buttonTextOff: {
-    color: 'grey',
-    fontWeight: 'bold',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  createBtn: {
-    width: 160,
-    height: 70,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#008080",
-    padding: 20,
-  },
-  createText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  image: {
-    marginBottom: 40,
-    width: 200, 
-    height: 200,
-  },
-
-  inputView: {
-    alignItems: "flex-start",
-    margin: 10,
-  },
-
-  formInput: {
-    marginTop: 30,
-    marginBottom: 20,
-  },
-
-  TextInput: {
-    height: 50,
+  midContainer: {
+    backgroundColor: "grey",
+    width: '100%',
     flex: 1,
-    paddingLeft: 20,
     borderWidth: 1,
-    width: "100%",
-    borderRadius: 10,
+    borderColor: 'red',
   },
-
-  forgot_button: {
-    fontWeight: 'bold',
-    color: '#66B2B2',
-    fontSize: 15,
+  navContainer: {
+    backgroundColor: 'rgba(0,0,0, 0.4)',
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    height:  90,
+    justifyContent: 'center',
   },
-  question: {
-    backgroundColor:'#B2D8D8',
-    alignItems: "flex-start",
-    paddingLeft: 20,
-    paddingTop: 5,
+  header: {
+    justifyContent: 'flex-start'
   },
-  image: {
-    borderWidth: 1,
-    borderColor: 'black',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+  navView: {
+    flexDirection: 'row', margin: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  createBtn1: {
-    width: 173,
-    height: 52,
-    borderRadius: 10,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#008080"
+  navText: {
+    color: '#fff',
+    padding: 5,
   },
-  createText1: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
+  icons: {
+    margin: 13,
+  }
 });
