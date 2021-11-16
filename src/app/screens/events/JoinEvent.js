@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal} from "react-native";
 import { Header, Icon } from 'react-native-elements';
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
-import AboutGroupPopup from "../../assets/popups/AboutGroupPopup";
 import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage'
 import BoothsGrid from "./BoothsGrid";

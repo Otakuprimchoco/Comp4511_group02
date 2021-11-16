@@ -5,6 +5,7 @@ import {
 } from "react-native";
 import { Header, Icon } from 'react-native-elements';
 
+// NO LONGER BEING IMPLEMENTED
 
 export default function InviteMembers({description, closePopupFn}) {
     return (

@@ -1,0 +1,1 @@
+add booth pop-up and invite member pop up

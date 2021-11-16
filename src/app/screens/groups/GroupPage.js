@@ -6,11 +6,9 @@ import {
 import { Header, Icon } from 'react-native-elements';
 import EventCard from "../../assets/Cards/EventCard/EventCard";
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
-import AboutGroupPopup from "../../assets/popups/AboutGroupPopup";
+import AboutGroupPopup from "../../assets/popups/AboutGroup/AboutGroupPopup";
 import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/sample_groupPageData'
-
-
 
 export default function GroupPage({navigation, groupId}) {
   const groupData = data[1]
