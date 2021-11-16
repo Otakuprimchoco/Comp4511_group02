@@ -15,7 +15,7 @@ import {
   TextSection,
 } from './MessageStyles';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
-import Header1 from "../../assets/Header/Header1";
+import Header2 from "../../assets/Header/Header2";
 
 const Messages = [
   {
@@ -76,7 +76,7 @@ export default class MessagesScreen extends Component {
       <View style={styles.container} >
 
         <View style={styles.container1} >
-          <Header1 title='Chats' nav={navigation}></Header1>
+          <Header2 title='Chats' nav={navigation}></Header2>
         </View>
 
         <Container>

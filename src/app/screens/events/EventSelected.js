@@ -169,18 +169,15 @@ export default function EventSelected({navigation, EventId}) {
             <MainButton text={"Book Event"} onPressFn={() =>
                 BookingConfirmation.show({
                   type: 'UserProfilePopUp',
-                  title: "eventName",
+                  title: "UNSW Engineering Career Fair",
                   nav: navigation,
                   textBody: [
-                    {
-                      boothName: 'Booth Name 1',
-                    },
-                    {
-                      boothName: 'Booth Name 2',
-                    },
-                    {
-                      boothName: 'Booth Name 3',
-                    },
+    {
+      boothName: 'Aurecon',
+    },
+    {
+      boothName: 'Teslstra',
+    },
                 ],
                   friends: true,
                   callback: () => BookingConfirmation.hide(),
