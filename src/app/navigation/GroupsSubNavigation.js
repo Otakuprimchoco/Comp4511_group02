@@ -25,7 +25,6 @@ import Header2 from '../assets/Header/Header2';
 const Tab = createMaterialTopTabNavigator();
 
 export default function GroupSubNavigation({route, navigation}) {
-  const {userToken} = route.params
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <Header2 title='Groups' nav={navigation}></Header2>
@@ -33,7 +32,7 @@ export default function GroupSubNavigation({route, navigation}) {
       initialRouteName="DiscoverGroups"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: { fontSize: 11, fontWeight: 'bold' },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,
@@ -42,13 +41,13 @@ export default function GroupSubNavigation({route, navigation}) {
         <Tab.Screen
           name="DiscoverGroups"
           component={DiscoverGroupsScreen}
-          initialParams={{userToken: userToken}}
-          options={{ tabBarLabel: 'Discover Groups', tabBarAccessibilityLabel: 'Discover Groups' }}
+          initialParams={{userToken: route.params.userToken}}
+          options={{ tabBarLabel: 'Discover', tabBarAccessibilityLabel: 'Discover Groups' }}
         />
         <Tab.Screen
           name="MyGroups"
           component={MyGroupsScreen}
-          initialParams={{userToken: userToken}}
+          initialParams={{userToken: route.params.userToken}}
           options={{ tabBarLabel: 'My Groups', tabBarAccessibilityLabel: 'My Groups' }}
         />
       </Tab.Navigator>

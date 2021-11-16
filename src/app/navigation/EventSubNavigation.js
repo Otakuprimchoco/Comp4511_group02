@@ -19,7 +19,7 @@ export default function EventSubNavigation({navigation}) {
       initialRouteName="DiscoverEvents"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: { fontSize: 10, fontWeight: 'bold' },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,
@@ -28,17 +28,17 @@ export default function EventSubNavigation({navigation}) {
         <Tab.Screen
           name="MyEvents"
           component={MyEvents}
-          options={{ tabBarLabel: 'My Events', tabBarAccessibilityLabel: 'My Events' }}
+          options={{ tabBarLabel: 'Booked', tabBarAccessibilityLabel: 'My Events' }}
         />
         <Tab.Screen
           name="DiscoverEvents"
           component={DiscoverEvents}
-          options={{ tabBarLabel: 'Discover Events', tabBarAccessibilityLabel: 'Discover Events' }}
+          options={{ tabBarLabel: 'Discover', tabBarAccessibilityLabel: 'Discover Events' }}
         />
         <Tab.Screen
           name="PastEvents"
           component={PastEvents}
-          options={{ tabBarLabel: 'Favorites', tabBarAccessibilityLabel: 'Favorites' }}
+          options={{ tabBarLabel: 'Favourited', tabBarAccessibilityLabel: 'Favorites' }}
         />
       </Tab.Navigator>
     </View>
