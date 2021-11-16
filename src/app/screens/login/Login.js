@@ -46,6 +46,7 @@ export default function Login({ navigation }) {
       signIn(foundUser);
     }
   }
+  
 
   return (
     <View style={styles.container}>

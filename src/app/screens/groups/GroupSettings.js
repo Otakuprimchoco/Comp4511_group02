@@ -11,6 +11,11 @@ import ButtonSlider from "../../assets/FormInput/ButtonSlider";
 import InterestList from "../../assets/SelectionList/InterestList";
 import data from '../../assets/sampleUserData/sample_groupPageData'
 
+function deleteGroup({groupData}) {
+  console.log("Deleting group ")
+  // TODO
+}
+
 
 export default function GroupSettings ( { route, navigation } ) {
   // TODO: Implement data retrieval
@@ -70,9 +75,12 @@ export default function GroupSettings ( { route, navigation } ) {
         </View>
         {isPrivate}
         <View style={styles.buttonContainer}>
-          <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
+          <ButtonSlider textL="Private" textR="Public" toggleFn={deleteGroup(groupData)}/>
         </View>
         <InterestList></InterestList>
+        <View style={styles.deleteGroupContainer}>
+          <MainButton text={"Delete Group"} onPressFn={() => navigation.push("CreateGroup1")}/>
+        </View>
       </ScrollView>
     </View>
   );
@@ -82,6 +90,10 @@ export default function GroupSettings ( { route, navigation } ) {
 const styles = StyleSheet.create( {
   container: {
     flex: 1
+  },
+  deleteGroupContainer: {
+    paddingBottom: 10,
+    alignSelf: 'center'
   },
   inputView: {
     // alignItems: "center",

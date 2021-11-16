@@ -10,7 +10,8 @@ import EventSubNavigation from './EventSubNavigation';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Tabs = ({route}) => {
+
     return (
 
         <Tab.Navigator
@@ -48,26 +49,30 @@ const Tabs = () => {
                         </View>
                     ),
                 }} />
-            <Tab.Screen name="Groups" component={GroupsSubNavigation} options={{
-                tabBarIcon: ( { focused } ) => (
-                    <View style={{ alignItems: "center", justifyContent: "center" }}>
-                        <Image
-                            source={require( '../assets/icons/Groups.png' )}
-                            resizeMode="contain"
-                            style={{
-                                // width: 25,
-                                height: 23,
-                                tintColor: focused ? 'white' : 'white',
-                            }}
-                        />
-                        <Text
-                            style={{ color: focused ? 'white' : 'white', fontSize: 14, fontWeight: 'bold' }}>
-                            Groups
-                        </Text>
-                    </View>
-                ),
-                headerShown: false
-            }} />
+            <Tab.Screen name="Groups" component={GroupsSubNavigation} 
+             initialParams={{userToken: route.params.userToken}}
+                options={{
+                    tabBarIcon: ( { focused } ) => (
+                        <View style={{ alignItems: "center", justifyContent: "center" }}>
+                            <Image
+                                source={require( '../assets/icons/Groups.png' )}
+                                resizeMode="contain"
+                                style={{
+                                    // width: 25,
+                                    height: 23,
+                                    tintColor: focused ? 'white' : 'white',
+                                }}
+                            />
+                            <Text
+                                style={{ color: focused ? 'white' : 'white', fontSize: 14, fontWeight: 'bold' }}>
+                                Groups
+                            </Text>
+                        </View>
+                    ),
+                    headerShown: false,
+                    
+                }} 
+            />
 
             <Tab.Screen name="Chat" component={ChatsLanding} options={{
                 tabBarIcon: ( { focused } ) => (
