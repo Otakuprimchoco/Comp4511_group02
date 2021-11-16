@@ -10,11 +10,9 @@ import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent';
 import ButtonSlider from "../../assets/FormInput/ButtonSlider";
 import InterestList from "../../assets/SelectionList/InterestList";
 import data from '../../assets/sampleUserData/sample_groupPageData'
+import Header1 from '../../assets/Header/Header1'
 
-function deleteGroup({groupData}) {
-  console.log("Deleting group ")
-  // TODO
-}
+
 
 
 export default function GroupSettings ( { route, navigation } ) {
@@ -24,23 +22,15 @@ export default function GroupSettings ( { route, navigation } ) {
   const [description, setDescription] = useState( "" );
   const [isPrivate, setIsPrivate] = useState( true );
 
+  function deleteGroup({groupData}) {
+    console.log("Deleting group ")
+    navigation.pop()
+    // TODO
+  }
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-        containerStyle={{
-          backgroundColor: '#66B2B2',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{
-          icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' },
-          onPress: () => { navigation.pop() }
-        }}
-        centerComponent={{ text: groupData.groupName, style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
-      />
+      <Header1 title='Group Settings' nav={navigation}></Header1>
       <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}}>
         <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10, }}>
           <ImagePickerExample></ImagePickerExample>
@@ -75,11 +65,11 @@ export default function GroupSettings ( { route, navigation } ) {
         </View>
         {isPrivate}
         <View style={styles.buttonContainer}>
-          <ButtonSlider textL="Private" textR="Public" toggleFn={deleteGroup(groupData)}/>
+          <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
         </View>
         <InterestList></InterestList>
         <View style={styles.deleteGroupContainer}>
-          <MainButton text={"Delete Group"} onPressFn={() => navigation.push("CreateGroup1")}/>
+          <MainButton text={"Delete Group"} onPressFn={() => deleteGroup(groupData)}/>
         </View>
       </ScrollView>
     </View>

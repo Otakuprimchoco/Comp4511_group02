@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
   tagContainer: { 
     backgroundColor: "#D3D3D3", 
     paddingLeft: 10, 
-    paddingTop: 10, 
-    marginTop: 30, 
+    paddingVertical: 10, 
+    // marginTop: 10, 
     borderRadius: 10
   }, 
   buttonContainer: {

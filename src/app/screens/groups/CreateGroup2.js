@@ -12,6 +12,7 @@ import {
 import SwitchButton from 'switch-button-react-native'
 import GroupCard from '../../assets/Cards/GroupCard/GroupCard'
 import { ListItem, List, Icon, Header, Avatar } from 'react-native-elements'
+import Header1 from "../../assets/Header/Header1";
 
 import InterestList from "../../assets/SelectionList/InterestList";
 
@@ -19,23 +20,11 @@ export default function CreateGroup2({route, navigation}) {
   const { groupName } = route.params;
   return (
     <View style={styles.container}>
-      <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          barStyle="light-content" // or directly
-
-          containerStyle={{
-            backgroundColor: '#66B2B2',
-            justifyContent: 'space-around',
-          }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' }, 
-            onPress: () => {navigation.pop()} }}
-          centerComponent={{ text: groupName, style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-        />
+      <Header1 title="New Group" nav={navigation}/>
       <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}}>
         <InterestList></InterestList>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate("CreatedGroupPage")}>
+          <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate("GroupPage", {isOwner:  true})}>
             <Text style={styles.nextText}>Confirm</Text>
           </TouchableOpacity>
         </View>
@@ -47,9 +36,6 @@ export default function CreateGroup2({route, navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    
-    alignItems: "center",
-    justifyContent: "center",
     flex: 1,
   },
   inputView: {

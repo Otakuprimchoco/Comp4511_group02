@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  onBlur, StyleSheet,
+  onBlur, ScrollView, StyleSheet,
   Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { Avatar, Header } from 'react-native-elements';
@@ -8,6 +8,7 @@ import SwitchButton from 'switch-button-react-native';
 import MainButton from "../../assets/buttons/MainButton";
 import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent';
 import ButtonSlider from "../../assets/FormInput/ButtonSlider";
+import Header1 from "../../assets/Header/Header1";
 
 
 export default function CreateGroup1 ( { navigation } ) {
@@ -17,58 +18,47 @@ export default function CreateGroup1 ( { navigation } ) {
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-        containerStyle={{
-          backgroundColor: '#66B2B2',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{
-          icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' },
-          onPress: () => { navigation.pop() }
-        }}
-        centerComponent={{ text: 'New Group', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
-      />
-      <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
-        <ImagePickerExample></ImagePickerExample>
-      </View>
-      <View style={styles.inputView}>
-        <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 14, }}>Group Name</Text>
-          <Text style={{ color: 'red' }}> *</Text>
+      <Header1 title="New Group" nav={navigation}/>
+      <ScrollView>
+        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
+          <ImagePickerExample></ImagePickerExample>
         </View>
-        <TextInput
-          style={styles.nameInput}
-          placeholder= "Enter your group name"
-          placeholderTextColor="#003f5c"
-          onChangeText={( name ) => setName( name )}
-          value={name}
-          onBlur={onBlur}
-        />
-        <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 14, }}>About Group</Text>
-          <Text style={{ color: 'red' }}> *</Text>
+        <View style={styles.inputView}>
+          <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
+            <Text style={{ fontWeight: 'bold', fontSize: 14, }}>Group Name</Text>
+            <Text style={{ color: 'red' }}> *</Text>
+          </View>
+          <TextInput
+            style={styles.nameInput}
+            placeholder= "Enter your group name"
+            placeholderTextColor="#003f5c"
+            onChangeText={( name ) => setName( name )}
+            value={name}
+            onBlur={onBlur}
+          />
+          <View style={{ flexDirection: 'row', paddingBottom: 5 }}>
+            <Text style={{ fontWeight: 'bold', fontSize: 14, }}>About Group</Text>
+            <Text style={{ color: 'red' }}> *</Text>
+          </View>
+          <TextInput
+            style={styles.descriptionInput}
+            placeholder="Enter a group description"
+            placeholderTextColor="#003f5c"
+            placeholderStyle={{ colour: 'red' }}
+            onChangeText={( description ) => setDescription( description )}
+            value={description}
+            onBlur={onBlur}
+            multiline={true}
+          />
         </View>
-        <TextInput
-          style={styles.descriptionInput}
-          placeholder="Enter a group description"
-          placeholderTextColor="#003f5c"
-          placeholderStyle={{ colour: 'red' }}
-          onChangeText={( description ) => setDescription( description )}
-          value={description}
-          onBlur={onBlur}
-          multiline={true}
-        />
-      </View>
-      {isPrivate}
-      <View style={styles.buttonContainer}>
-        <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
-      </View>
-      <View style={styles.buttonContainer}>
-        <MainButton text={"Next"} onPressFn={() => navigation.navigate( "CreateGroup2", { groupName: name } )}/>
-      </View>
+        {isPrivate}
+        <View style={styles.buttonContainer}>
+          <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
+        </View>
+        <View style={styles.buttonContainer}>
+          <MainButton text={"Next"} onPressFn={() => navigation.navigate( "CreateGroup2", { groupName: name } )}/>
+        </View>
+      </ScrollView>
     </View>
   );
 }

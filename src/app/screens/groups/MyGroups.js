@@ -44,7 +44,7 @@ export default function MyGroups({route, navigation}) {
             <GroupCard 
               key={i} name={item.name} 
               subtitleL={`${item.members.length} Members`} subtitleR={item.publicGroup ? "Public" : "Private"}
-              onPressFn={() => {navigation.navigate("GroupPage")}}
+              onPressFn={() => {navigation.navigate("GroupPage", {isOwner: true})}}
               isOwner={true}
               />
           ))
@@ -54,7 +54,7 @@ export default function MyGroups({route, navigation}) {
             <GroupCard 
               key={i} name={item.name} 
               subtitleL={`${item.members.length} Members`} subtitleR={item.publicGroup ? "Public" : "Private"}
-              onPressFn={() => {navigation.navigate("GroupPage")}}
+              onPressFn={() => {navigation.navigate("GroupPage", {isOwner: false})}}
               isOwner={false}
               />
           ))

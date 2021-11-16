@@ -10,6 +10,7 @@ import JoinPopup from "../../assets/popups/JoinEvent/JoinEventPopup";
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
 import LiveEventButton from "../../assets/buttons/LiveEventButton";
 import Root from "../../assets/popups/JoinEvent/Root";
+import MemberList from '../../assets/memberList/MemberList'
 
 export default function JoinEvent({navigation, EventId}) {
   const eventData = data[1]
@@ -17,7 +18,44 @@ export default function JoinEvent({navigation, EventId}) {
   const [isOwner, setIsOwner] = useState(true);
   const [isJoinEvent, setisJoinEvent] = useState(false);
   const [isMembersPopup, setisMembersPopup] = useState(false);
-
+  const list = [
+    {
+      key: 1,
+      name: 'Full Name',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Full Name',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+  {
+    key: 3,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: true,
+    },
+    {
+      key: 4,
+      name: 'Full Name',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: true,
+    },
+    {
+      key: 5,
+      name: 'Full Name',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: true,
+    },
+  ]
+  
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -112,9 +150,12 @@ export default function JoinEvent({navigation, EventId}) {
           </View>
 
           <View style={styles.membersContainer}>
-            <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
+            <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
               <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
+              <Text style={{fontSize: 14, color: 'grey'}}> ({eventData.numMembers})</Text>
             </View>
+            <MemberList navigation={navigation} members={list}/>
+
             <View style={styles.followButtonContainer}>
 
               <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
@@ -155,11 +196,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: 'black',
     borderWidth: 1,
-    height: 100,
+    height: 120,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10, 
-    flexDirection:'row',
 
   },
   spacer: {
@@ -209,8 +249,7 @@ const styles = StyleSheet.create({
   },
   followButtonContainer: {
     alignItems: 'flex-end',
-    paddingHorizontal: 130,
-    paddingBottom: 10
+    marginTop: -120
   },
   followButton: {
     backgroundColor: '#66B2B2',
