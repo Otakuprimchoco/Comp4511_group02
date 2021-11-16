@@ -11,7 +11,7 @@ import EventSubNavigation from './EventSubNavigation';
 const Tab = createBottomTabNavigator();
 
 const Tabs = ({route}) => {
-
+    const {userToken} = route.params
     return (
 
         <Tab.Navigator
@@ -50,7 +50,7 @@ const Tabs = ({route}) => {
                     ),
                 }} />
             <Tab.Screen name="Groups" component={GroupsSubNavigation} 
-             initialParams={{userToken: route.params.userToken}}
+             initialParams={{userToken: userToken}}
                 options={{
                     tabBarIcon: ( { focused } ) => (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>

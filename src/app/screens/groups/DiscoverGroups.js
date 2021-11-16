@@ -13,6 +13,8 @@ import SwitchButton from 'switch-button-react-native'
 import GroupCard from '../../assets/Cards/GroupCard/GroupCard'
 import { ListItem, List, Icon } from 'react-native-elements'
 import profileIcon from '../../assets/icons/profileicon.png'
+import SearchAndFilter from "../../assets/SearchAndFilter/SearchAndFilter";
+
 
 const list = [
   {
@@ -72,6 +74,7 @@ export default function DiscoverGroups({navigation}) {
       <View style={styles.groupsContainer}>
         <View style={{paddingBottom: 10, paddingLeft: 5}}>
           <Text style={{fontSize: 14, fontWeight: 'bold'}}>New Groups for You</Text>
+          <SearchAndFilter/>
         </View>
         < ScrollView style={styles.groupsList}>
         {

@@ -13,6 +13,7 @@ import pending from '../../assets/icons/pending.png';
 import MemberList from '../../assets/memberList/MemberList'
 import Header1 from "../../assets/Header/Header1";
 import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
+import InviteMembers from "../../assets/popups/InviteMembersPopup";
 
 const list = [
   {
@@ -55,7 +56,7 @@ const list = [
 export default function GroupPage({route, navigation}) {
   const groupData = data[1]
   const eventData = data2[1]
-  const [isFollowing, setIsFollowing] = useState(true);
+  const [isFollowing, setIsFollowing] = useState(false);
   const [isOwner, setIsOwner] = useState(route.params.isOwner);
   // setIsOwner(route.params.isOwner)
   const [isAboutPopupVisible, setIsAboutPopupVisible] = useState(false);
@@ -127,10 +128,12 @@ export default function GroupPage({route, navigation}) {
           <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
             <Text style={{fontSize: 14, fontWeight: 'bold'}}>Members</Text>
             <Text style={{fontSize: 14, color: 'grey'}}> ({groupData.numMembers})</Text>
-            <View style={styles.inviteContainer}>
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                onPressFn={() => {setisMembersPopup(true)}}/>
-            </View>  
+            {(isOwner || isFollowing) && 
+              <View style={styles.inviteContainer}>
+                <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                  onPressFn={() => {setisMembersPopup(true)}}/>
+              </View>  
+            }
           </View>
           <MemberList navigation={navigation} members={list}/>
         </View>

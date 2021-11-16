@@ -79,124 +79,126 @@ export default function EventSelected({navigation, EventId}) {
           rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
         />
         <View style={styles.eventHeader}>
-          <View>
-            <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
-            <View style={styles.photoOverlay} />
+            <View>
+              <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
+              <View style={styles.photoOverlay} />
+            </View>
+
+            <View style={styles.eventNameConatiner}>
+              <Text style={styles.eventName}>{eventData.eventName}</Text>
+            </View>
+
+            <View style={styles.headerIconContainer}>
+              {
+                isOwner ?
+                  <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={() => {navigation.push("GroupSettings")}}/>
+                  :
+                  <Icon name={'info'} color='white' size={30} onPress={() => {setisMembersPopup(true)}}/>
+              }
+              {liked ? (
+                  <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
+                    <Icon name='heart' type='font-awesome' color='#F97171'/>
+                </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
+                <Icon name='heart-o' type='font-awesome' color='white'/>
+                </TouchableOpacity>
+                )}
+            </View>
           </View>
 
-          <View style={styles.eventNameConatiner}>
-            <Text style={styles.eventName}>{eventData.eventName}</Text>
-          </View>
-
-          <View style={styles.headerIconContainer}>
-            {
-              isOwner ?
-                <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={() => {navigation.push("GroupSettings")}}/>
-                :
-                <Icon name={'info'} color='white' size={30} onPress={() => {setisMembersPopup(true)}}/>
+          <View style={styles.contentContainer}>
+          <ScrollView>
+            {isMembersPopup &&
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isMembersPopup}
+                onRequestClose={() => {
+                  setisMembersPopup(false);
+                }}
+              >
+              <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
+              </Modal>
             }
-            {liked ? (
-                <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
-                  <Icon name='heart' type='font-awesome' color='#F97171'/>
-              </TouchableOpacity>
-              ) : (
-                <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
-              <Icon name='heart-o' type='font-awesome' color='white'/>
-              </TouchableOpacity>
-              )}
-          </View>
-        </View>
 
-        <View style={styles.contentContainer}>
-          {isMembersPopup &&
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={isMembersPopup}
-              onRequestClose={() => {
-                setisMembersPopup(false);
-              }}
-            >
-            <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
-            </Modal>
-          }
-
-            {/*
-          {isConfirmPopupVisible &&
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={isConfirmPopupVisible}
-              onRequestClose={() => {
-                setIsConfirmPopupVisible(false);
-              }}
-            >
-            <BookingConfirmation description={eventData.description} closePopupFn={() => {setIsConfirmPopupVisible(false)}}/>
-            </Modal>
-          }
-        */}
-          
-          <View style={{padding: 10}}>
-            <Text style={{fontWeight: "bold"}}>Description: </Text>
-            <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
-          </View>
-          <View style={{padding: 10}}>
-            <Text style={{fontWeight: "bold"}}>Time:
-            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
-          </View>
-          <View style={{padding: 10}}>
-            <Text style={{fontWeight: "bold"}}>Capacity:
-            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
-          </View>
-
-          <View style={styles.membersContainer}>
-            <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
-              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
-              <Text style={{fontSize: 14, color: 'grey'}}> ({eventData.numMembers})</Text>
+              {/*
+            {isConfirmPopupVisible &&
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isConfirmPopupVisible}
+                onRequestClose={() => {
+                  setIsConfirmPopupVisible(false);
+                }}
+              >
+              <BookingConfirmation description={eventData.description} closePopupFn={() => {setIsConfirmPopupVisible(false)}}/>
+              </Modal>
+            }
+          */}
+            
+            <View style={{padding: 10}}>
+              <Text style={{fontWeight: "bold"}}>Description: </Text>
+              <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
             </View>
-            <MemberList navigation={navigation} members={list}/>
-
-            <View style={styles.followButtonContainer}>
-
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                onPressFn={() => {setisMembersPopup(true)}}/>
-
-          </View>  
-
-          </View>
-          <View style={styles.spacer}/>
-          <View>
-            <View style={{paddingBottom: 10, paddingLeft: 5}}>
-              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+            <View style={{padding: 10}}>
+              <Text style={{fontWeight: "bold"}}>Time:
+              <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
             </View>
-            <ScrollView style={styles.eventsList}>
-              <View>
-            <BoothsGrid/>
+            <View style={{padding: 10}}>
+              <Text style={{fontWeight: "bold"}}>Capacity:
+              <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
             </View>
-            </ScrollView>
-          </View>
-          <View style={{marginLeft: "28%", marginTop: 10}}>
-            <MainButton text={"Book Event"} onPressFn={() =>
-                BookingConfirmation.show({
-                  type: 'UserProfilePopUp',
-                  title: "eventName",
-                  nav: navigation,
-                  textBody: [
-                    {
-                      boothName: 'Booth Name 1',
-                    },
-                    {
-                      boothName: 'Booth Name 2',
-                    },
-                    {
-                      boothName: 'Booth Name 3',
-                    },
-                ],
-                  friends: true,
-                  callback: () => BookingConfirmation.hide(),
-              })}
-            />
-          </View>
+
+            <View style={styles.membersContainer}>
+              <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
+                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
+                <Text style={{fontSize: 14, color: 'grey'}}> ({eventData.numMembers})</Text>
+              </View>
+              <MemberList navigation={navigation} members={list}/>
+
+              <View style={styles.followButtonContainer}>
+
+                <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                  onPressFn={() => {setisMembersPopup(true)}}/>
+
+            </View>  
+
+            </View>
+            <View style={styles.spacer}/>
+            <View>
+              <View style={{paddingBottom: 10, paddingLeft: 5}}>
+                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+              </View>
+              <ScrollView style={styles.eventsList}>
+                <View>
+              <BoothsGrid/>
+              </View>
+              </ScrollView>
+            </View>
+            <View style={{marginLeft: "28%", marginTop: 10}}>
+              <MainButton text={"Book Event"} onPressFn={() =>
+                  BookingConfirmation.show({
+                    type: 'UserProfilePopUp',
+                    title: "eventName",
+                    nav: navigation,
+                    textBody: [
+                      {
+                        boothName: 'Booth Name 1',
+                      },
+                      {
+                        boothName: 'Booth Name 2',
+                      },
+                      {
+                        boothName: 'Booth Name 3',
+                      },
+                  ],
+                    friends: true,
+                    callback: () => BookingConfirmation.hide(),
+                })}
+              />
+            </View>
+          </ScrollView>
         </View>
       </View>
     </Root>

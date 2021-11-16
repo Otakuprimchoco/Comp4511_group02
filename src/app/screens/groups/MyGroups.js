@@ -9,27 +9,30 @@ import list from '../../assets/sampleUserData/sample_groupsData'
 import { AuthContext } from "../../services/Context";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Groups} from '../../model/groups'
+import SearchAndFilter from "../../assets/SearchAndFilter/SearchAndFilter";
 
 
+// AsyncStorage.clear();
 
 export default function MyGroups({route, navigation}) {
   // Retrieve user details
-  const userToken = route.params.userToken;
+  const {userToken} = route.params;
   const foundUser = Users.filter( item => {
     return userToken == item.userToken;
   })[0];
   // console.log(foundUser.myGroups)
+  const {signOut} = useContext(AuthContext);
   
   const myGroups = Groups.filter(item => {
     return item.ownerId == foundUser.id
   })
   const followedGroups = Groups.filter(item => {
+    // return item.ownerId != foundUser.id
     return foundUser.followedGroups.includes(item.id) && item.ownerId != foundUser.id
   })
 
   return (
     <View style={styles.container}>
-      
       <View style={styles.createGroupContainer}>
         <MainButton text={"Create Group"} onPressFn={() => navigation.push("CreateGroup1")}/>
       </View>
@@ -37,6 +40,7 @@ export default function MyGroups({route, navigation}) {
       <View style={styles.groupsContainer}>
         <View style={{paddingBottom: 10, paddingLeft: 5}}>
           <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Groups</Text>
+          <SearchAndFilter/>
         </View>
         < ScrollView style={styles.groupsList}>
         {

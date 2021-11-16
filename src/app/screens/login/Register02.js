@@ -41,7 +41,7 @@ export default function Register02({route, navigation}) {
       bookedEvents: [], //event id list
       favoriteEvents: [],  //event id list
       myGroups: [], //group id
-      followingGroups: [], //group id,
+      followedGroups: [], //group id,
       friends: [], //user id
     });
     console.log(Users);

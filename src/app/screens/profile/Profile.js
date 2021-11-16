@@ -48,9 +48,9 @@ export default function Profile({route, navigation}) {
   const [image, setImage] = useState(foundUser[0].image);
 
   useEffect (() => {
-    console.log(Users.filter( item => {
-      return userToken == item.userToken;
-    }));
+    // console.log(Users.filter( item => {
+    //   return userToken == item.userToken;
+    // }));
     foundUser[0].publicACC = publicACC;
     foundUser[0].groupNotif = groupNotif;
     foundUser[0].eventNotif = eventNotif;
