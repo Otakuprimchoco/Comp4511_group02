@@ -9,6 +9,7 @@ import MainButton from "../../../assets/buttons/MainButton";
 import profileIcon from  '../../../assets/icons/profileicon.png'
 import InviteMembers from "../../../assets/popups/InviteMembersPopup";
 import AddBoothPopup from "../../../assets/popups/AddBoothPopup";
+import Header1 from "../../../assets/Header/Header1";
 
 export default function CreatedEvent({navigation}) {
   const eventData = data[1]
@@ -25,19 +26,8 @@ export default function CreatedEvent({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
+      <Header1 title='Events' nav={navigation}></Header1>
 
-        containerStyle={{
-          backgroundColor: '#8fcbbc',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
-          onPress: () => {navigation.pop()} }}
-        centerComponent={{ text: 'Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-      />
       <View style={styles.eventHeader}>
         <View>
           <Image source={sampleUserPhoto} style={styles.headerPhoto}/>

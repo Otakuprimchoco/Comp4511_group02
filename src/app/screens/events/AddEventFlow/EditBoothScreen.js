@@ -8,6 +8,7 @@ import ModalDatePicker from "./ModalDatePicker";
 import NumberPlease from "react-native-number-please";
 import ModalTimePicker from "./ModalTimePicker";
 import ChangeBoothTile from "../../../assets/ChangePhoto/ChangeBoothTile";
+import Header1 from "../../../assets/Header/Header1";
 
 export default function EditBoothScreen ( { navigation } ) {
   const [name, setName] = useState( "" );
@@ -19,20 +20,8 @@ export default function EditBoothScreen ( { navigation } ) {
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content"
-        containerStyle={{
-          backgroundColor: '#8fcbbc',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{
-          icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' },
-          onPress: () => { navigation.pop() }
-        }}
-        centerComponent={{ text: 'Edit Booth', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
-      />
+      <Header1 title='Edit Booth' nav={navigation}></Header1>
+
       <ScrollView>
       {/* <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
         <ImagePickerExample></ImagePickerExample>
