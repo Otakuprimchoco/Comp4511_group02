@@ -1,10 +1,9 @@
 import React, { useState, setState } from "react";
-import {
-  Image, ScrollView, StyleSheet,
-  Text, TouchableOpacity, View
-} from "react-native";
+import {  View, Text, TouchableOpacity, StyleSheet, Image, Animated, Dimensions, Alert, ScrollView} from "react-native";
 import { Header, Icon } from 'react-native-elements';
-import MainButton from "../buttons/MainButton";
+
+const WIDTH = Dimensions.get('screen').width
+const HEIGHT = Dimensions.get('screen').height
 
 
 export default function JoinEventPopup({nav, description, closePopupFn}) {
@@ -27,9 +26,9 @@ export default function JoinEventPopup({nav, description, closePopupFn}) {
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>insert microphone and video buttons</Text>
             </View>
-            <View style={{margin: 20}}>
+            <View style={{alignItems: 'center'}}>
                 <TouchableOpacity style={styles.createBtn} onPress={() => {liveEvent()}}>
-                    <Text style={styles.createText}>Logout</Text>
+                    <Text style={styles.createText}>Join Event</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         fontSize: 24,
-        color: '#006666',
+        color: 'black',
         fontWeight: 'bold'
     },
     descriptionContainer: {
@@ -76,13 +75,12 @@ const styles = StyleSheet.create({
         right: 0
     },
     createBtn: {
-      width: 160,
-      height: 70,
-      borderRadius: 10,
+      width: 122,
+      height: 52,
+      borderRadius: 5,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: "#008080",
-      padding: 20,
     },
     createText: {
       color: 'white',

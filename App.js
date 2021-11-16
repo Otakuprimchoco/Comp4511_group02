@@ -27,6 +27,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreatedGroupPage from './src/app/screens/groups/CreatedGroupPage';
 import Notifications from './src/app/screens/notifications/Notifications';
 import LiveEvent from './src/app/screens/liveEvent/LiveEvent';
+import UserListPage from './src/app/screens/userList/UserList';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -170,6 +171,7 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="Notifications" component={Notifications} />
                 <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
                 <Stack.Screen options={{ headerShown: false }} name="LiveEvent" component={LiveEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="UserListPage" component={UserListPage} />
                 <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{ userToken: loginState.userToken }} />
               </Stack.Navigator>
             ) : (
