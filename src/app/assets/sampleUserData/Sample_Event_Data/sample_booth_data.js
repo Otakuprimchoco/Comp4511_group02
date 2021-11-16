@@ -5,12 +5,13 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddBoothPopup from '../../popups/AddBoothPopup';
 import data from '../../sampleUserData/Sample_Event_Data/sample_createdEventData'
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function BoothsGridSample() {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [isAddBoothPopup, setIsAddBoothPopup] = useState(false);
   const eventData = data[1]
+  const navigation = useNavigation(); 
   const [items, setItems] = React.useState([
     { name: '+', boxColor: '#1abc9c' },
     { name: '+', boxColor: '#2ecc71' },
@@ -41,15 +42,15 @@ export default function BoothsGridSample() {
           <AddBoothPopup description={eventData.description} closePopupFn={() => {setIsAddBoothPopup(false)}}/>
           </Modal>
         }  
-          <TouchableOpacity onPress={() => {setIsAddBoothPopup(true)}}>
+          <TouchableOpacity onPress={() => {navigation.navigate('AddBoothScreen')}}>
           <Text style={styles.itemName}>{item.name}</Text>
           </TouchableOpacity>
-          <BouncyCheckbox
+          {/* <BouncyCheckbox
             size={20}
             fillColor="black"
             unfillColor="#FFFFFF"
             iconStyle={{ borderColor: "black" }}
-          />
+          /> */}
         </View>
       )}
     />
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center', 
     textAlignVertical: 'center', 
-    paddingVertical: 10
+    paddingVertical: 30
 
   },
   itemboxColor: {
