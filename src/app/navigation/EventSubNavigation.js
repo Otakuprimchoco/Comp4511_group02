@@ -7,40 +7,14 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import MyEvents from '../screens/events/MainScreens/MyEvents';
 import DiscoverEvents from '../screens/events/MainScreens/DiscoverEvents'
 import PastEvents from '../screens/events/MainScreens/PastEvents';
+import Header2 from '../assets/Header/Header2';
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function EventSubNavigation({navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-        <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          barStyle="light-content" // or directly
-
-          containerStyle={{
-            backgroundColor: '#66B2B2',
-            justifyContent: 'space-around',
-          }}
-          leftComponent={{ icon: 'search', color: 'darkcyan', iconStyle: { color: '#fff' } }}
-          centerComponent={{ text: 'Events', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={<View style={styles.Header}>
-            <Icon
-              name='notifications-none'
-              color='#00aced'
-              iconStyle={{ color: '#fff' }}
-              onPress={() => {
-                this.setState( { visible: true } );
-              }}
-            />
-            <Icon
-              name='account-circle'
-              type='MaterialCommunityIcons'
-              color='#517fa4'
-              iconStyle={{ color: '#fff' }}
-              onPress={() => navigation.navigate( 'Profile' )}
-            />
-          </View>}
-        />  
+      <Header2 title='Events' nav={navigation}></Header2>
       <Tab.Navigator
       initialRouteName="DiscoverEvents"
       screenOptions={{
