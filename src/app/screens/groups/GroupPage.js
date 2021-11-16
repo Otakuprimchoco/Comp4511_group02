@@ -52,21 +52,21 @@ const list = [
   },
 ]
 
-export default function GroupPage({route, navigation}) {
+export default function GroupPage ( { route, navigation } ) {
   const groupData = data[1]
   const eventData = data2[1]
-  const [isFollowing, setIsFollowing] = useState(true);
-  const [isOwner, setIsOwner] = useState(route.params.isOwner);
+  const [isFollowing, setIsFollowing] = useState( true );
+  const [isOwner, setIsOwner] = useState( route.params.isOwner );
   // setIsOwner(route.params.isOwner)
-  const [isAboutPopupVisible, setIsAboutPopupVisible] = useState(false);
-  const [isMembersPopup, setisMembersPopup] = useState(false);
+  const [isAboutPopupVisible, setIsAboutPopupVisible] = useState( false );
+  const [isMembersPopup, setisMembersPopup] = useState( false );
 
   return (
     <View style={styles.container}>
       <Header1 title='Groups' nav={navigation}></Header1>
       <View style={styles.groupHeader}>
         <View>
-          <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
+          <Image source={sampleUserPhoto} style={styles.headerPhoto} />
           <View style={styles.photoOverlay} />
         </View>
 
@@ -75,12 +75,12 @@ export default function GroupPage({route, navigation}) {
         </View>
 
         <View style={styles.headerIconContainer}>
-          <Icon name='ios-share' color='white' size={30} style={styles.headerIcon}/>
+          <Icon name='ios-share' color='white' size={30} style={styles.headerIcon} />
           {
             isOwner ?
-              <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
+              <Icon name={'settings'} color='white' size={30} onPress={() => { navigation.push( "GroupSettings" ) }} />
               :
-              <Icon name={'info'} color='white' size={30} onPress={() => {setIsAboutPopupVisible(true)}}/>
+              <Icon name={'info'} color='white' size={30} onPress={() => { setIsAboutPopupVisible( true ) }} />
           }
         </View>
       </View>
@@ -92,10 +92,10 @@ export default function GroupPage({route, navigation}) {
             transparent={true}
             visible={isAboutPopupVisible}
             onRequestClose={() => {
-              setIsAboutPopupVisible(false);
+              setIsAboutPopupVisible( false );
             }}
           >
-          <AboutGroupPopup description={groupData.description} closePopupFn={() => {setIsAboutPopupVisible(false)}}/>
+            <AboutGroupPopup description={groupData.description} closePopupFn={() => { setIsAboutPopupVisible( false ) }} />
           </Modal>
         }
         {isMembersPopup &&
@@ -104,59 +104,59 @@ export default function GroupPage({route, navigation}) {
             transparent={true}
             visible={isMembersPopup}
             onRequestClose={() => {
-              setisMembersPopup(false);
+              setisMembersPopup( false );
             }}
           >
-          <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
+            <InviteMembers description={eventData.description} closePopupFn={() => { setisMembersPopup( false ) }} />
           </Modal>
         }
 
-        { !isOwner &&
+        {!isOwner &&
           <View style={styles.followButtonContainer}>
-          {
-            isFollowing ?
-            <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'} 
-              onPressFn={() => {setIsFollowing(false)}}/>
-            :
-            <SubButton text={"Follow Group"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {setIsFollowing(true)}}/>
-          }
+            {
+              isFollowing ?
+                <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'}
+                  onPressFn={() => { setIsFollowing( false ) }} />
+                :
+                <SubButton text={"Follow Group"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                  onPressFn={() => { setIsFollowing( true ) }} />
+            }
 
-        </View>}
+          </View>}
         <View style={styles.membersContainer}>
-          <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Members</Text>
-            <Text style={{fontSize: 14, color: 'grey'}}> ({groupData.numMembers})</Text>
+          <View style={{ paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Members</Text>
+            <Text style={{ fontSize: 14, color: 'grey' }}> ({groupData.numMembers})</Text>
             <View style={styles.inviteContainer}>
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                onPressFn={() => {setisMembersPopup(true)}}/>
-            </View>  
+              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                onPressFn={() => { setisMembersPopup( true ) }} />
+            </View>
           </View>
-          <MemberList navigation={navigation} members={list}/>
+          <MemberList navigation={navigation} members={list} />
         </View>
 
-        <View style={styles.spacer}/>
+        <View style={styles.spacer} />
 
         <View style={styles.eventsContainer}>
-          <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row'}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Upcoming Events</Text>
-            { isOwner &&
+          <View style={{ paddingBottom: 10, paddingLeft: 5, flexDirection: 'row' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Upcoming Events</Text>
+            {isOwner &&
               <View style={styles.createEventContainer}>
-                <SubButton text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                  onPressFn={() => {navigation.push("AddEvent")}}/>
-              </View> 
+                <SubButton text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                  onPressFn={() => { navigation.push( "AddEvent" ) }} />
+              </View>
             }
           </View>
           < ScrollView style={styles.eventsList}>
-          {
-            groupData.events.map((item, i) => (
-              <EventCard 
-                key={i} name={item.name} 
-                subtitle={`In ${item.timeToEvent}`}
-                onPressFn={() => {}}
+            {
+              groupData.events.map( ( item, i ) => (
+                <EventCard
+                  key={i} name={item.name}
+                  subtitle={`In ${ item.timeToEvent }`}
+                  onPressFn={() => { }}
                 />
-            ))
-          }
+              ) )
+            }
           </ScrollView>
         </View>
       </View>
@@ -165,7 +165,7 @@ export default function GroupPage({route, navigation}) {
 }
 
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     flex: 1,
   },
@@ -187,11 +187,11 @@ const styles = StyleSheet.create({
   },
   inviteContainer: {
     marginLeft: 100,
-    // paddingBottom: 10, 
+    // paddingBottom: 10,
   },
   createEventContainer: {
     marginLeft: 100,
-    // paddingBottom: 10, 
+    // paddingBottom: 10,
   },
   spacer: {
     height: 10,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   groupName: {
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily:  'Roboto',
+    fontFamily: 'Roboto',
     color: 'white',
     textShadowColor: 'black',//'#006666',
     textShadowRadius: 10
@@ -257,7 +257,4 @@ const styles = StyleSheet.create({
   unfollowButton: {
     backgroundColor: '#A6A6A6',
   },
-});
-
-
-  
+} );
