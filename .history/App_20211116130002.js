@@ -26,13 +26,16 @@ import { AuthContext } from './src/app/services/Context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreatedGroupPage from './src/app/screens/groups/CreatedGroupPage';
 import Notifications from './src/app/screens/notifications/Notifications';
+<<<<<<< HEAD
 import BoothAddedCreatedEvent from './src/app/screens/events/AddEventFlow/BoothAddedCreatedEvent';
 import AddBoothScreen from './src/app/screens/events/AddEventFlow/AddBoothScreen';
 import BoothGridAddBooth from './src/app/screens/events/MainScreens/BoothGridAddBooth';
 import EditBoothScreen from './src/app/screens/events/AddEventFlow/EditBoothScreen';
+=======
 import LiveEvent from './src/app/screens/liveEvent/LiveEvent';
 import UserListPage from './src/app/screens/userList/UserList';
 
+>>>>>>> 3a51a378bc723559eec794ddbc688694230b5485
 const Stack = createStackNavigator();
 const App = () => {
   const ref = React.useRef( null );
