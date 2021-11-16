@@ -56,13 +56,8 @@ const list = [
 export default function GroupPage ( { route, navigation } ) {
   const groupData = data[1]
   const eventData = data2[1]
-<<<<<<< HEAD
   const [isFollowing, setIsFollowing] = useState(false);
   const [isOwner, setIsOwner] = useState(route.params.isOwner);
-=======
-  const [isFollowing, setIsFollowing] = useState( true );
-  const [isOwner, setIsOwner] = useState( route.params.isOwner );
->>>>>>> ecc0f3d0c52c216370a1eb5ea3166a9f0b9eac57
   // setIsOwner(route.params.isOwner)
   const [isAboutPopupVisible, setIsAboutPopupVisible] = useState( false );
   const [isMembersPopup, setisMembersPopup] = useState( false );
