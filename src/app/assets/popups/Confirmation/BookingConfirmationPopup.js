@@ -152,7 +152,7 @@ class BookingConfirmation extends Component {
 					</View>
 					<View style={{alignItems: 'center', marginTop: 20, }}>
                         <Text style={styles.Title}>Your Booked Booths!</Text>
-                        <ScrollView style={{width: '85%', height: '30%',marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10, borderWidth: 1, borderColor: 'black', borderRadius: 5}}>
+                        <ScrollView style={{width: '85%', height: '25%',marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10, borderWidth: 1, borderColor: 'black', borderRadius: 5}}>
                         {list.map((l, i) => (
                             <View>
                                 <TouchableOpacity style={{padding: 10, alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}} /*onPress={()=> {nav.navigate('UserListPage')}}*/>
