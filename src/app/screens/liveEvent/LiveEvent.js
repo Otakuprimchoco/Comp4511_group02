@@ -24,10 +24,14 @@ import Constants from 'expo-constants';
 import { AuthContext } from "../../services/Context";
 import LiveEventHeader from "../../assets/Header/LiveEventHeader";
 
+import Root from '../../assets/popups/ShareScreen/Root';
+import Broadcast from '../../assets/popups/ShareScreen/Broadcast';
+
 export default function LiveEvent({navigation}) {
     const [mic, setMic] = useState(true);
     const [cam, setCam] = useState(true);
     return(
+      <Root>
         <View style={styles.container}>
           <View style={styles.header}>
             <LiveEventHeader nav={navigation} title="UNSW Engineering Career Fair" booth="Telstra"></LiveEventHeader>
@@ -63,7 +67,15 @@ export default function LiveEvent({navigation}) {
                   <Text style={styles.navText}>Chat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.icons} >
+                <TouchableOpacity style={styles.icons} onPress={() =>
+                  Broadcast.show({
+                    type: 'UserProfilePopUp',
+                    title: "eventName",
+                    nav: navigation,
+                    textBody: "hello",
+                    friends: true,
+                    callback: () => Broadcast.hide(),
+                })}>
                   <Icon name='mobile-screen-share' type='material' size={40}  color='white'/>
                   <Text style={styles.navText}>Share Screen</Text>
                 </TouchableOpacity>
@@ -71,6 +83,7 @@ export default function LiveEvent({navigation}) {
               </View>
             </View>
         </View>
+      </Root>
     );
 }
 
