@@ -2,7 +2,6 @@ import React, { Component, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image, Animated, Dimensions, Alert, Divider, ScrollView } from 'react-native'
 import { Avatar, Icon } from 'react-native-elements';
 import pending from '../../icons/pending.png';
-import MemberList from '../../memberList/MemberList'
 
 const WIDTH = Dimensions.get('screen').width
 const HEIGHT = Dimensions.get('screen').height
@@ -26,6 +25,7 @@ const list = [
 		about: 'About section for interests etc',
 		followed: true,
 	  },
+
 ]
 
 class JoinPopup extends Component {
@@ -160,7 +160,19 @@ class JoinPopup extends Component {
 					</View>
 					<View style={{alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}}>
 						<Text style={styles.Title}>Members on Call</Text>
-						<MemberList members={list}/>
+						<ScrollView horizontal={true} style={{marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10}}>
+						{list.map((l, i) => (
+							<View style={{margin:5, alignItems: 'center'}}>
+								<Avatar i={i}  size="medium" rounded source={{uri: l.avatar_url}}  />
+								<Text>{l.name}</Text>
+							</View>
+						))}
+						<View>
+							<TouchableOpacity style={{margin:5, alignItems: 'center'}} onPress={()=> {nav.navigate('UserListPage1')}}>
+								<Avatar size="medium" rounded source={pending} />
+							</TouchableOpacity>
+						</View>
+						</ScrollView>
 					</View>
 					<View style={{alignItems: 'center', marginTop: 20, }}>
 						<Text style={styles.Title}>Join Call With</Text>
