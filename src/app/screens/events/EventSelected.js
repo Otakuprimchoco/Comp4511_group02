@@ -10,6 +10,7 @@ import MainButton from "../../assets/buttons/MainButton";
 import BookingConfirmation from "../../assets/popups/Confirmation/BookingConfirmationPopup";
 import Root from "../../assets/popups/Confirmation/Root"
 import MemberList from '../../assets/memberList/MemberList'
+import Header1 from '../../assets/Header/Header1'
 
 export default function EventSelected({navigation, EventId}) {
   const eventData = data[1]
@@ -65,19 +66,8 @@ export default function EventSelected({navigation, EventId}) {
   return (
     <Root>
       <View style={styles.container}>
-        <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          barStyle="light-content"
+      <Header1 title='Events' nav={navigation}></Header1>
 
-          containerStyle={{
-            backgroundColor: '#8fcbbc',
-            justifyContent: 'space-around',
-          }}
-          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
-            onPress: () => {navigation.pop()} }}
-          centerComponent={{ text: 'Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-          rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-        />
         <View style={styles.eventHeader}>
           <View>
             <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
