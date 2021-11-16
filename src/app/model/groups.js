@@ -1,7 +1,7 @@
 export const Groups = [
     {
         id: 1,
-        name: 'group1',
+        name: 'UNSW Engineering Society',
         publicGroup: true,
         about: "",
         image: 'https://picsum.photos/id/237/200/300',
@@ -12,7 +12,7 @@ export const Groups = [
     },
     {
         id: 2,
-        name: 'group2',
+        name: 'Software Engineering Society',
         publicGroup: true,
         about: "",
         image: 'https://picsum.photos/id/237/200/300',
@@ -23,7 +23,7 @@ export const Groups = [
     },
     {
         id: 3,
-        name: 'group3',
+        name: 'Discussion Group - SENG',
         publicGroup: false,
         about: "",
         image: 'https://picsum.photos/id/237/200/300',

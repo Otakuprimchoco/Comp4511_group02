@@ -17,51 +17,45 @@ import profileIcon from '../../assets/icons/profileicon.png'
 const list = [
   {
     key: 0,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'UNSW Engineering Society',
+    subtitleL: '(1456)',
     subtitleR: 'Public'
   },
   {
     key: 1,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'Frontend Developers Club',
+    subtitleL: '(1100)',
     subtitleR: 'Private'
   },
   {
     key: 2,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'Robotics Club',
+    subtitleL: '(766)',
     subtitleR: 'Public'
   },
   {
     key: 3,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'Software Engineering Society',
+    subtitleL: '(1755)',
     subtitleR: 'Private'
   },
   {
     key: 4,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'International Business Group',
+    subtitleL: '(652)',
     subtitleR: 'Public'
   },
   {
     key: 5,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'Architecture Society',
+    subtitleL: '(900)',
     subtitleR: 'Private'
   },
   {
     key: 6,
-    name: 'Group Name',
-    subtitleL: '# Members',
+    name: 'Law School Group',
+    subtitleL: '(898)',
     subtitleR: 'Public'
-  },
-  {
-    key: 7,
-    name: 'Group Name',
-    subtitleL: '# Members',
-    subtitleR: 'Private'
   },
 ]
 

@@ -9,13 +9,10 @@ const HEIGHT = Dimensions.get('screen').height
 
 const list = [
     {
-      boothName: 'Booth Name 1',
+      boothName: 'Aurecon',
     },
     {
-      boothName: 'Booth Name 2',
-    },
-    {
-      boothName: 'Booth Name 3',
+      boothName: 'Teslstra',
     },
 ]
 
