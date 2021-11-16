@@ -1,13 +1,17 @@
 import React, { useState, setState } from "react";
-import {
-  Image, ScrollView, StyleSheet,
-  Text, TouchableOpacity, View
-} from "react-native";
+import {  View, Text, TouchableOpacity, StyleSheet, Image, Animated, Dimensions, Alert, ScrollView} from "react-native";
 import { Header, Icon } from 'react-native-elements';
-import MainButton from "../buttons/MainButton";
+
+const WIDTH = Dimensions.get('screen').width
+const HEIGHT = Dimensions.get('screen').height
 
 
-export default function JoinEventPopup({description, closePopupFn}) {
+export default function JoinEventPopup({nav, description, closePopupFn}) {
+
+    const liveEvent = () => {
+        nav.navigate('LiveEvent');
+        closePopupFn();
+    }
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -22,8 +26,10 @@ export default function JoinEventPopup({description, closePopupFn}) {
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>insert microphone and video buttons</Text>
             </View>
-            <View style={{alignItems: "center"}}>
-            <MainButton text={"Join Event"}/>
+            <View style={{alignItems: 'center'}}>
+                <TouchableOpacity style={styles.createBtn} onPress={() => {liveEvent()}}>
+                    <Text style={styles.createText}>Join Event</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         fontSize: 24,
-        color: '#006666',
+        color: 'black',
         fontWeight: 'bold'
     },
     descriptionContainer: {
@@ -67,5 +73,19 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 10,
         right: 0
-    }
+    },
+    createBtn: {
+      width: 122,
+      height: 52,
+      borderRadius: 5,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#008080",
+    },
+    createText: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 20,
+      textAlign: 'center',
+    },
 })

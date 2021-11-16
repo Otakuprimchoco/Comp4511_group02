@@ -7,9 +7,10 @@ import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage'
 import BoothsGrid from "./BoothsGrid";
 import MainButton from "../../assets/buttons/MainButton";
-import JoinEventPopup from "../../assets/popups/JoinEventPopup";
+import JoinPopup from "../../assets/popups/JoinEvent/JoinEventPopup";
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
 import LiveEventButton from "../../assets/buttons/LiveEventButton";
+import Root from "../../assets/popups/JoinEvent/Root";
 
 export default function JoinEvent({navigation, EventId}) {
   const eventData = data[1]
@@ -25,116 +26,118 @@ export default function JoinEvent({navigation, EventId}) {
   }, [liked]);
 
   return (
-    <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content"
+    <Root>
+      <View style={styles.container}>
+        <Header
+          statusBarProps={{ barStyle: 'light-content' }}
+          barStyle="light-content"
 
-        containerStyle={{
-          backgroundColor: '#8fcbbc',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
-          onPress: () => {navigation.pop()} }}
-        centerComponent={{ text: 'Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-      />
-      <View style={styles.eventHeader}>
-        <View>
-          <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
-          <View style={styles.photoOverlay} />
+          containerStyle={{
+            backgroundColor: '#8fcbbc',
+            justifyContent: 'space-around',
+          }}
+          leftComponent={{ icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' }, 
+            onPress: () => {navigation.pop()} }}
+          centerComponent={{ text: 'Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
+          rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
+        />
+        <View style={styles.eventHeader}>
+          <View>
+            <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
+            <View style={styles.photoOverlay} />
+          </View>
+
+          <View style={styles.eventNameConatiner}>
+            <Text style={styles.eventName}>{eventData.eventName}</Text>
+          </View>
+
+          <View style={styles.headerIconContainer}>
+            {
+              isOwner ?
+                <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={() => {navigation.push("GroupSettings")}}/>
+                :
+                <Icon name={'info'} color='white' size={30} onPress={() => {setisJoinEvent(true)}}/>
+            }
+            {liked ? (
+                <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
+                  <Icon name='heart' type='font-awesome' color='#F97171'/>
+              </TouchableOpacity>
+              ) : (
+                <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
+              <Icon name='heart-o' type='font-awesome' color='white'/>
+              </TouchableOpacity>
+              )}
+          </View>
         </View>
 
-        <View style={styles.eventNameConatiner}>
-          <Text style={styles.eventName}>{eventData.eventName}</Text>
-        </View>
-
-        <View style={styles.headerIconContainer}>
-          {
-            isOwner ?
-              <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={() => {navigation.push("GroupSettings")}}/>
-              :
-              <Icon name={'info'} color='white' size={30} onPress={() => {setisJoinEvent(true)}}/>
+        <View style={styles.contentContainer}>
+        {isMembersPopup &&
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={isMembersPopup}
+              onRequestClose={() => {
+                setisMembersPopup(false);
+              }}
+            >
+            <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
+            </Modal>
           }
-          {liked ? (
-              <TouchableOpacity  activeOpacity={0.5} onPress={() => (setLiked(false))}>
-                <Icon name='heart' type='font-awesome' color='#F97171'/>
-            </TouchableOpacity>
-            ) : (
-              <TouchableOpacity  activeOpacity={0.5} onPress={() => setLiked(true)}>
-            <Icon name='heart-o' type='font-awesome' color='white'/>
-            </TouchableOpacity>
-            )}
+
+          <View style={{marginLeft: "28%", marginTop: 10}}>
+            <LiveEventButton text={"On Live!\nJoin it now"} onPressFn={() =>
+              JoinPopup.show({
+                type: 'UserProfilePopUp',
+                title: "user",
+                nav: navigation,
+                textBody: "user",
+                friends: true,
+                callback: () => JoinPopup.hide(),
+              })
+            }
+            //onPressFn={() => {setisJoinEvent(true)}}
+            />
+          </View>
+
+          <View style={{padding: 10}}>
+            <Text style={{fontWeight: "bold"}}>Description: </Text>
+            <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
+          </View>
+          <View style={{padding: 10}}>
+            <Text style={{fontWeight: "bold"}}>Time:
+            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
+          </View>
+          <View style={{padding: 10}}>
+            <Text style={{fontWeight: "bold"}}>Capacity:
+            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
+          </View>
+
+          <View style={styles.membersContainer}>
+            <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
+              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
+            </View>
+            <View style={styles.followButtonContainer}>
+
+              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                onPressFn={() => {setisMembersPopup(true)}}/>
+
+          </View>  
+
+          </View>
+          <View style={styles.spacer}/>
+          <View>
+            <View style={{paddingBottom: 10, paddingLeft: 5}}>
+              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+            </View>
+            <ScrollView style={styles.eventsList}>
+              <View>
+            <BoothsGrid/>
+            </View>
+            </ScrollView>
+          </View>
         </View>
       </View>
-
-      <View style={styles.contentContainer}>
-      {isMembersPopup &&
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isMembersPopup}
-            onRequestClose={() => {
-              setisMembersPopup(false);
-            }}
-          >
-          <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
-          </Modal>
-        }
-        {isJoinEvent &&
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isJoinEvent}
-            onRequestClose={() => {
-              setisJoinEvent(false);
-            }}
-          >
-          <JoinEventPopup description={eventData.description} closePopupFn={() => {setisJoinEvent(false)}}/>
-          </Modal>
-        }
-        
-        <View style={{marginLeft: "28%", marginTop: 10}}>
-        <LiveEventButton text={"  On Live!\nJoin it now"} onPressFn={() => {setisJoinEvent(true)}}/>
-        </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Description: </Text>
-          <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
-        </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Time:
-          <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
-        </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Capacity:
-          <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
-        </View>
-
-        <View style={styles.membersContainer}>
-          <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
-          </View>
-          <View style={styles.followButtonContainer}>
-
-            <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {setisMembersPopup(true)}}/>
-
-        </View>  
-
-        </View>
-        <View style={styles.spacer}/>
-        <View>
-          <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
-          </View>
-          <ScrollView style={styles.eventsList}>
-            <View>
-          <BoothsGrid/>
-          </View>
-          </ScrollView>
-        </View>
-      </View>
-    </View>
+    </Root>
   );
 }
 

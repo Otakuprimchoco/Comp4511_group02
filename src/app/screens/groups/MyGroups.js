@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   ScrollView, StyleSheet,
   Text, TouchableOpacity, View
@@ -6,11 +6,30 @@ import {
 import GroupCard from '../../assets/Cards/GroupCard/GroupCard';
 import MainButton from "../../assets/buttons/MainButton";
 import list from '../../assets/sampleUserData/sample_groupsData'
+import { AuthContext } from "../../services/Context";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Groups} from '../../model/groups'
 
 
-export default function MyGroups({navigation}) {
+
+export default function MyGroups({route, navigation}) {
+  // Retrieve user details
+  const userToken = route.params.userToken;
+  const foundUser = Users.filter( item => {
+    return userToken == item.userToken;
+  })[0];
+  // console.log(foundUser.myGroups)
+  
+  const myGroups = Groups.filter(item => {
+    return item.ownerId == foundUser.id
+  })
+  const followedGroups = Groups.filter(item => {
+    return foundUser.followedGroups.includes(item.id) && item.ownerId != foundUser.id
+  })
+
   return (
     <View style={styles.container}>
+      
       <View style={styles.createGroupContainer}>
         <MainButton text={"Create Group"} onPressFn={() => navigation.push("CreateGroup1")}/>
       </View>
@@ -21,11 +40,22 @@ export default function MyGroups({navigation}) {
         </View>
         < ScrollView style={styles.groupsList}>
         {
-          list.map((item, i) => (
+          myGroups.map((item, i) => (
             <GroupCard 
               key={i} name={item.name} 
-              subtitleL={item.subtitleL} subtitleR={item.subtitleR}
+              subtitleL={`${item.members.length} Members`} subtitleR={item.publicGroup ? "Public" : "Private"}
               onPressFn={() => {navigation.navigate("GroupPage")}}
+              isOwner={true}
+              />
+          ))
+        }
+        {
+          followedGroups.map((item, i) => (
+            <GroupCard 
+              key={i} name={item.name} 
+              subtitleL={`${item.members.length} Members`} subtitleR={item.publicGroup ? "Public" : "Private"}
+              onPressFn={() => {navigation.navigate("GroupPage")}}
+              isOwner={false}
               />
           ))
         }

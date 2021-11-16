@@ -1,4 +1,4 @@
-export default Groups = [
+export const Groups = [
     {
         id: 1,
         name: 'group1',
@@ -6,7 +6,8 @@ export default Groups = [
         about: "",
         image: 'https://picsum.photos/id/237/200/300',
         interests: ['frontend'], //list of strings
-        members: [], //user id
+        members: [1, 2, 3], //user id
+        ownerId: 1,
         upcomingEvents: [],  //event id list
     },
     {
@@ -17,6 +18,7 @@ export default Groups = [
         image: 'https://picsum.photos/id/237/200/300',
         interests: ['frontend'], //list of strings
         members: [], //user id
+        ownerId: 1,
         upcomingEvents: [],  //event id list
     },
     {
@@ -26,7 +28,8 @@ export default Groups = [
         about: "",
         image: 'https://picsum.photos/id/237/200/300',
         interests: ['frontend'], //list of strings
-        members: [], //user id
+        members: [1], //user id
+        ownerId: 3,
         upcomingEvents: [],  //event id list
     },
 ];

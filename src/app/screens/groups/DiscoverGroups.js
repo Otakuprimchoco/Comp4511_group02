@@ -80,6 +80,7 @@ export default function DiscoverGroups({navigation}) {
               key={i} name={item.name} 
               subtitleL={item.subtitleL} subtitleR={item.subtitleR}
               onPressFn={() => {navigation.push("GroupPage")}}
+              isOwner={item.isOwner}
               />
           ))
         }

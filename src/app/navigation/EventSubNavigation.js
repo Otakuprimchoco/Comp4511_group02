@@ -45,7 +45,7 @@ export default function EventSubNavigation({navigation}) {
       initialRouteName="DiscoverEvents"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: { fontSize: 10, fontWeight: 'bold' },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,

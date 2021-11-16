@@ -14,18 +14,19 @@ export default function LiveEventButton({text, onPressFn}) {
 
 const styles = StyleSheet.create( {
   createBtn: {
-    width: 173,
-    height: 52,
-    borderRadius: 10,
-    height: 50,
+    borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FC5353"
+    backgroundColor: "#FC5353",
+    borderWidth: 1,
+    borderColor: 'white',
+    height: 26,
+    width: 50,
+    marginLeft: 13,
   },
   createText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center'
+    fontSize: 15,
   },
 });
