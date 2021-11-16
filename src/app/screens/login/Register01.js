@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
+import Header3 from '../../assets/Header/Header3';
 
 export default function Register01( {navigation}) {
   const [email, setEmail] = useState("");
@@ -51,12 +52,7 @@ export default function Register01( {navigation}) {
   return (
     <ScrollView style={styles.container}>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-    </Appbar.Header>
+    <Header3 nav={navigation} title={'Register 1/2'}></Header3>
 
       <View style={styles.inputView}>
         <View style={{flexDirection: 'row', paddingBottom: 5}}>

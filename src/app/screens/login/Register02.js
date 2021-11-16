@@ -13,6 +13,7 @@ import {
 import { Appbar } from 'react-native-paper';
 import InterestList from "../../assets/SelectionList/JustInterestList";
 import Users from '../../model/users';
+import Header3 from '../../assets/Header/Header3';
 
 
 import { AuthContext } from "../../services/Context";
@@ -60,12 +61,7 @@ export default function Register02({route, navigation}) {
   return (
     <View>
 
-    <Appbar.Header style={{ backgroundColor: '#66B2B2' }}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-    </Appbar.Header>
+    <Header3 nav={navigation} title={'Register 2/2'}></Header3>
 
     <View style={styles.question}>
         <View style={{flexDirection: 'row', paddingBottom: 5}}>
