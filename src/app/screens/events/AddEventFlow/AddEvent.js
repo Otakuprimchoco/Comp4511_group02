@@ -7,6 +7,7 @@ import ButtonSlider from "../../../assets/FormInput/ButtonSlider";
 import ModalDatePicker from "./ModalDatePicker";
 import NumberPlease from "react-native-number-please";
 import ModalTimePicker from "./ModalTimePicker";
+import Header1 from "../../../assets/Header/Header1";
 
 export default function AddEvent ( { navigation } ) {
   const [name, setName] = useState( "" );
@@ -18,20 +19,8 @@ export default function AddEvent ( { navigation } ) {
 
   return (
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content"
-        containerStyle={{
-          backgroundColor: '#8fcbbc',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{
-          icon: 'keyboard-arrow-left', color: 'darkcyan', iconStyle: { color: '#fff' },
-          onPress: () => { navigation.pop() }
-        }}
-        centerComponent={{ text: 'Add Event', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff' }}
-      />
+      <Header1 title='Add Events' nav={navigation}></Header1>
+
       <ScrollView>
       <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
         <ImagePickerExample></ImagePickerExample>

@@ -18,7 +18,6 @@ export default function AboutGroupPopup({description, closePopupFn}) {
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>{description}</Text>
             </View>
-
         </View>
     )
 }

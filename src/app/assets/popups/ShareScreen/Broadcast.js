@@ -7,16 +7,7 @@ import pending from '../../icons/pending.png';
 const WIDTH = Dimensions.get('screen').width
 const HEIGHT = Dimensions.get('screen').height
 
-const list = [
-    {
-      boothName: 'Aurecon',
-    },
-    {
-      boothName: 'Teslstra',
-    },
-]
-
-class BookingConfirmation extends Component {
+class BroadCast extends Component {
 	static popupInstance
 
 	static show({ ...config }) {
@@ -113,7 +104,7 @@ class BookingConfirmation extends Component {
 		if (this.state.button) {
 			el = 
 			<TouchableOpacity style={styles.createBtn} onPress={callback}>
-				<Text style={styles.createText}>Confirm</Text>
+				<Text style={styles.createText}>Start Broadcasting</Text>
 			</TouchableOpacity>
 		}
 		else {
@@ -146,23 +137,24 @@ class BookingConfirmation extends Component {
 							<Image source={require('../../icons/closePopup.png')}/>
 						</TouchableOpacity>
 					</View>
+
 					<View style={{alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}}>
-						<Text style={styles.Title}>You have made a booking!</Text>
-                        <Text style={styles.Desc}>{'You booked the event: ' + title}</Text>
+                        <View>
+						    <Text style={styles.Desc}>Everything on your device screen will now be recorded</Text>
+                        </View>
+                        <View>
+                            <Icon name='broadcast' type='octicon' size={30}  color='#66B2B2'/>
+                            <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 5, marginBottom: 15}}>Screen Broadcast</Text>
+                        </View>
 					</View>
-					<View style={{alignItems: 'center', marginTop: 20, }}>
-                        <Text style={styles.Title}>Your Booked Booths!</Text>
-                        <ScrollView style={{width: '85%', height: '30%',marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10, borderWidth: 1, borderColor: 'black', borderRadius: 5}}>
-                        {list.map((l, i) => (
-                            <View>
-                                <TouchableOpacity style={{padding: 10, alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}} /*onPress={()=> {nav.navigate('UserListPage')}}*/>
-                                    <Text i={i}  style={{color: '#008080', fontSize: 16,}}>{l.boothName}</Text>
-                                </TouchableOpacity>
-                            </View>
-						))}
-						</ScrollView>
-					</View>
-					<View style={{alignItems: 'center', justifyContent: 'flex-end'}}>
+                    <TouchableOpacity style={{padding: 10, alignItems: 'flex-start', borderBottomColor: '#DADADA', borderBottomWidth: 1,}} /*onPress={()=> {nav.navigate('UserListPage')}}*/>
+                        <View style={{alignItems: 'center', flexDirection: 'row'}}>
+                            <Image source={require('../../logos/logo.png')} style={{width: 40, height: 40, margin: 10}}/>
+                            <Text style={{color: '#008080', fontSize: 16, marginLeft: 10}}>UniNet</Text>
+                        </View>
+                    </TouchableOpacity>
+
+					<View style={{alignItems: 'center', justifyContent: 'flex-end', marginTop: 30,}}>
 						{el}
 					</View>
 				</Animated.View>
@@ -219,9 +211,13 @@ const styles = StyleSheet.create({
 	},
 	Desc: {
 		textAlign: 'center',
-		color: '#008080',
+		color: 'black',
 		fontSize: 16,
-        margin: 20,
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 15,
+        fontWeight: 'bold',
 	},
 	Button: {
 		borderRadius: 10,
@@ -247,7 +243,7 @@ const styles = StyleSheet.create({
 		elevation: 11
 	},
     createBtn: {
-		width: 122,
+		width: 222,
 		height: 52,
 		borderRadius: 5,
 		alignItems: "center",
@@ -262,4 +258,4 @@ const styles = StyleSheet.create({
 	  },
 })
 
-export default BookingConfirmation;
+export default BroadCast;
