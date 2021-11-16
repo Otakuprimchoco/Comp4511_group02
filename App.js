@@ -26,7 +26,10 @@ import { AuthContext } from './src/app/services/Context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreatedGroupPage from './src/app/screens/groups/CreatedGroupPage';
 import Notifications from './src/app/screens/notifications/Notifications';
-
+import BoothAddedCreatedEvent from './src/app/screens/events/AddEventFlow/BoothAddedCreatedEvent';
+import AddBoothScreen from './src/app/screens/events/AddEventFlow/AddBoothScreen';
+import BoothGridAddBooth from './src/app/screens/events/MainScreens/BoothGridAddBooth';
+import EditBoothScreen from './src/app/screens/events/AddEventFlow/EditBoothScreen';
 const Stack = createStackNavigator();
 const App = () => {
   const ref = React.useRef( null );
@@ -151,9 +154,13 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="AddEvent" component={AddEvent} />
                 <Stack.Screen options={{ headerShown: false }} name="AddEvent2" component={AddEvent2} />
                 <Stack.Screen options={{ headerShown: false }} name="CreatedEvent" component={CreatedEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="AddBoothScreen" component={AddBoothScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="EventSettings" component={EventSettings} />
                 <Stack.Screen options={{ headerShown: false }} name="JoinEvent" component={JoinEvent} />
                 <Stack.Screen options={{ headerShown: false }} name="CreatedGroupPage" component={CreatedGroupPage} />
+                <Stack.Screen options={{ headerShown: false }} name="BoothAddedCreatedEvent" component={BoothAddedCreatedEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="BoothGridAddBooth" component={BoothGridAddBooth} />
+                <Stack.Screen options={{ headerShown: false }} name="EditBoothScreen" component={EditBoothScreen} />
                 <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
                   options={( { route } ) => ( {
                     title: route.params.userName,
