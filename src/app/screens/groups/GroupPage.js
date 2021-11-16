@@ -3,16 +3,54 @@ import {
   Image, ScrollView, StyleSheet,
   Text, TouchableOpacity, View, Modal
 } from "react-native";
-import { Header, Icon } from 'react-native-elements';
+import { Avatar, Header, Icon } from 'react-native-elements';
 import EventCard from "../../assets/Cards/EventCard/EventCard";
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
 import AboutGroupPopup from "../../assets/popups/AboutGroupPopup";
 import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/sample_groupPageData'
+import pending from '../../assets/icons/pending.png';
+import MemberList from '../../assets/memberList/MemberList'
 
+const list = [
+  {
+    key: 1,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: true,
+  },
+  {
+    key: 2,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/id/237/200/300',
+    about: 'About section for interests etc',
+    followed: false,
+  },
+{
+  key: 3,
+  name: 'Full Name',
+  avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+  about: 'About section for interests etc',
+  followed: true,
+  },
+  {
+    key: 4,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: true,
+  },
+  {
+    key: 5,
+    name: 'Full Name',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: true,
+  },
+]
 
-
-export default function GroupPage({navigation, groupId}) {
+export default function GroupPage({route, navigation}) {
   const groupData = data[1]
   const [isFollowing, setIsFollowing] = useState(true);
   const [isOwner, setIsOwner] = useState(true);
@@ -80,11 +118,11 @@ export default function GroupPage({navigation, groupId}) {
 
         </View>
         <View style={styles.membersContainer}>
-          <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
+          <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
             <Text style={{fontSize: 14, fontWeight: 'bold'}}>Members</Text>
             <Text style={{fontSize: 14, color: 'grey'}}> ({groupData.numMembers})</Text>
           </View>
-
+          <MemberList navigation={navigation} members={list}/>
         </View>
         <View style={styles.spacer}/>
         <View style={styles.eventsContainer}>
@@ -124,7 +162,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     // flex: 1,
-    height: 100,
+    height: 135,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10
