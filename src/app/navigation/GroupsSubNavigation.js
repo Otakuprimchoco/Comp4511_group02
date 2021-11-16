@@ -23,7 +23,7 @@ import DiscoverGroupsScreen from '../screens/groups/DiscoverGroups'
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function GroupSubNavigation({navigation}) {
+export default function GroupSubNavigation({route, navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
         <Header
@@ -58,7 +58,7 @@ export default function GroupSubNavigation({navigation}) {
       initialRouteName="DiscoverGroups"
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: 'bold' },
           tabBarIndicatorStyle: {backgroundColor: '#EDE98C'},
           tabBarStyle: { backgroundColor: '#66B2B2' },
           tabBarAllowFontScaling: true,
@@ -67,11 +67,13 @@ export default function GroupSubNavigation({navigation}) {
         <Tab.Screen
           name="DiscoverGroups"
           component={DiscoverGroupsScreen}
+          initialParams={{userToken: route.params.userToken}}
           options={{ tabBarLabel: 'Discover Groups', tabBarAccessibilityLabel: 'Discover Groups' }}
         />
         <Tab.Screen
           name="MyGroups"
           component={MyGroupsScreen}
+          initialParams={{userToken: route.params.userToken}}
           options={{ tabBarLabel: 'My Groups', tabBarAccessibilityLabel: 'My Groups' }}
         />
       </Tab.Navigator>

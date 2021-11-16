@@ -20,7 +20,7 @@ export default Users = [
         bookedEvents: [], //event id list
         favoriteEvents: [],  //event id list
         myGroups: [], //group id
-        followingGroups: [], //group id,
+        followedGroups: [1, 2, 3], //group id,
         friends: [], //user id
     },
     {
@@ -44,7 +44,7 @@ export default Users = [
         bookedEvents: [], //event id list
         favoriteEvents: [],  //event id list
         myGroups: [], //group id
-        followingGroups: [], //group id,
+        followedGroups: [], //group id,
         friends: [], //user id
     },
     {
@@ -68,7 +68,7 @@ export default Users = [
         bookedEvents: [], //event id list
         favoriteEvents: [],  //event id list
         myGroups: [], //group id
-        followingGroups: [], //group id,
+        followedGroups: [], //group id,
         friends: [], //user id
     },
 ];
