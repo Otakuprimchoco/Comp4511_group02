@@ -6,12 +6,13 @@ import {
 import { Avatar, Header, Icon } from 'react-native-elements';
 import EventCard from "../../assets/Cards/EventCard/EventCard";
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
-import AboutGroupPopup from "../../assets/popups/AboutGroupPopup";
+import AboutGroupPopup from "../../assets/popups/AboutGroup/AboutGroupPopup";
 import SubButton from "../../assets/buttons/SubButton";
 import data from '../../assets/sampleUserData/sample_groupPageData'
 import pending from '../../assets/icons/pending.png';
 import MemberList from '../../assets/memberList/MemberList'
 
+<<<<<<< HEAD
 const list = [
   {
     key: 1,
@@ -51,6 +52,9 @@ const list = [
 ]
 
 export default function GroupPage({route, navigation}) {
+=======
+export default function GroupPage({navigation, groupId}) {
+>>>>>>> 7238b9e769e4f5b44f6b2539778bb57f1fcc67ca
   const groupData = data[1]
   const [isFollowing, setIsFollowing] = useState(true);
   const [isOwner, setIsOwner] = useState(true);

@@ -5,19 +5,18 @@ import {
 } from "react-native";
 import { Header, Icon } from 'react-native-elements';
 
-// NO LONGER BEING IMPLEMENTED
 
-export default function AddBoothPopup({description, closePopupFn}) {
+export default function AboutGroupPopup({description, closePopupFn}) {
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                <Text style={styles.headerText}>Add Booth:</Text>
+                <Text style={styles.headerText}>About</Text>
                 <View style={styles.closeButton}>
                     <Icon name={'close'} color='black' size={30} onPress={closePopupFn}/>
                 </View>
             </View>
             <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>Display add booth form</Text>
+                <Text style={styles.descriptionText}>{description}</Text>
             </View>
 
         </View>
