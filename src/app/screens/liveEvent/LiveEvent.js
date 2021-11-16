@@ -62,7 +62,7 @@ export default function LiveEvent({navigation}) {
                   <Text style={styles.navText}>Microphone</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.icons} >
+                <TouchableOpacity style={styles.icons} onPress={()=> navigation.navigate("ChatRoom", "User1")}>
                   <Icon name='forum'type='material' size={40}  color='white' underlayColor='pink'/>
                   <Text style={styles.navText}>Chat</Text>
                 </TouchableOpacity>
