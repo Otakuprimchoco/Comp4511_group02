@@ -8,7 +8,7 @@ export default function MemberList({navigation, members}) {
     const displayMembers = members.slice(0, 4)
     return (
         // <View>
-        <View style={{alignItems: 'center', flexDirection: 'row', alignContent: 'center', paddingVertical: 10}}>
+        <View style={{alignItems: 'center', flexDirection: 'row', alignContent: 'center', paddingVertical: 5}}>
                 {displayMembers.map((l, i) => (
                     <View style={{margin:5, alignItems: 'center'}}>
                         <Avatar i={i}  size="medium" rounded source={{uri: l.avatar_url}}  />

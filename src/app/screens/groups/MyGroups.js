@@ -20,14 +20,13 @@ export default function MyGroups({route, navigation}) {
   const foundUser = Users.filter( item => {
     return userToken == item.userToken;
   })[0];
-  // console.log(foundUser.myGroups)
-  const {signOut} = useContext(AuthContext);
+
+  
   
   const myGroups = Groups.filter(item => {
     return item.ownerId == foundUser.id
   })
   const followedGroups = Groups.filter(item => {
-    // return item.ownerId != foundUser.id
     return foundUser.followedGroups.includes(item.id) && item.ownerId != foundUser.id
   })
 
@@ -38,10 +37,7 @@ export default function MyGroups({route, navigation}) {
       </View>
       
       <View style={styles.groupsContainer}>
-        <View style={{paddingBottom: 10, paddingLeft: 5}}>
-          <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Groups</Text>
-          <SearchAndFilter/>
-        </View>
+        <SearchAndFilter/>
         < ScrollView style={styles.groupsList}>
         {
           myGroups.map((item, i) => (
@@ -79,18 +75,19 @@ const styles = StyleSheet.create({
   groupsContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
     flex: 1,
-    paddingVertical: 10,
+    // paddingVertical: 10,
     paddingHorizontal: 10
   },
   groupsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3'
   },
   createGroupContainer: {
-    paddingBottom: 10,
+    paddingTop: 10,
     alignSelf: 'center'
   },
   image: {

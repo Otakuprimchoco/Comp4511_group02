@@ -23,7 +23,8 @@ export default function DiscoverEvents({navigation}) {
             EventData.popular_events.map((item, i) => (
               <EventCard 
                 key={i} name={item.name}
-                subtitle={`In ${item.description}`} 
+                descSubtitle={item.description} 
+                timeSubtitle={item.timeSubtitle} 
                 onPressFn={() => navigation.push("EventSelected")}
                 />
             ))
@@ -40,17 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 10
-  },
-  groupsContainer: {
-    alignContent: 'center',
-    borderRadius: 20,
-    flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 10
-  },
-  groupsList: {
-    borderRadius: 20,
-    borderWidth: 2
   },
   createGroupContainer: {
     paddingBottom: 10,

@@ -57,7 +57,8 @@ export default function GroupPage ( { route, navigation } ) {
   const groupData = data[1]
   const eventData = data2[1]
   const [isFollowing, setIsFollowing] = useState(false);
-  const [isOwner, setIsOwner] = useState(route.params.isOwner);
+  // const [isOwner, setIsOwner] = useState(route.params.isOwner);
+  const [isOwner, setIsOwner] = useState(false);
   // setIsOwner(route.params.isOwner)
   const [isAboutPopupVisible, setIsAboutPopupVisible] = useState( false );
   const [isMembersPopup, setisMembersPopup] = useState( false );
@@ -116,20 +117,22 @@ export default function GroupPage ( { route, navigation } ) {
           <View style={styles.followButtonContainer}>
             {
               isFollowing ?
-                <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'}
+                <SubButton text={"Unfollow"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'}
                   onPressFn={() => { setIsFollowing( false ) }} />
                 :
-                <SubButton text={"Follow Group"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                <SubButton text={"Follow"} color={styles.followButton.backgroundColor} icon={'add-circle'}
                   onPressFn={() => { setIsFollowing( true ) }} />
             }
 
           </View>}
         <View style={styles.membersContainer}>
-          <View style={{ paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
-            <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Members</Text>
-            <Text style={{ fontSize: 14, color: 'grey' }}> ({groupData.numMembers})</Text>
+          <View style={styles.subContainerHeaderRow}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Members</Text>
+              <Text style={{ fontSize: 18, color: 'grey' }}> ({groupData.numMembers})</Text>
+            </View>
             <View style={styles.inviteContainer}>
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+              <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'}
                 onPressFn={() => { setisMembersPopup( true ) }} />
             </View>
           </View>
@@ -139,20 +142,23 @@ export default function GroupPage ( { route, navigation } ) {
         <View style={styles.spacer} />
 
         <View style={styles.eventsContainer}>
-          <View style={{ paddingBottom: 10, paddingLeft: 5, flexDirection: 'row' }}>
-            <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Upcoming Events</Text>
+          <View style={styles.subContainerHeaderRow}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Upcoming Events</Text>
+            <View style={styles.createEventContainer}>
             {isOwner &&
-              <View style={styles.createEventContainer}>
-                <SubButton text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'}
-                  onPressFn={() => { navigation.push( "AddEvent" ) }} />
-              </View>
+              <SubButton text={"Create"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                onPressFn={() => { navigation.push( "AddEvent" ) }} />
             }
+            </View>
           </View>
           < ScrollView style={styles.eventsList}>
             {
               groupData.events.map( ( item, i ) => (
                 <EventCard
                   key={i} name={item.name}
+                  
+                  descSubtitle={item.description} 
+                  timeSubtitle={item.timeSubtitle} 
                   subtitle={`In ${ item.timeToEvent }`}
                   onPressFn={() => { }}
                 />
@@ -181,17 +187,23 @@ const styles = StyleSheet.create( {
     borderColor: 'black',
     borderWidth: 1,
     // flex: 1,
-    height: 135,
+    height: 140,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10
   },
+  subContainerHeaderRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    // paddingBottom: 10
+  },
   inviteContainer: {
-    marginLeft: 100,
+    marginRight: 5,
     // paddingBottom: 10,
   },
   createEventContainer: {
-    marginLeft: 100,
+    marginRight: 5,
     // paddingBottom: 10,
   },
   spacer: {
@@ -209,7 +221,11 @@ const styles = StyleSheet.create( {
   },
   eventsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3',
+    marginTop: 10
   },
   groupHeader: {
     width: 500,

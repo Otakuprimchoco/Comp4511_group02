@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     subtitleView: {
-        fontSize: 10,
+        fontSize: 14,
         paddingTop: 7, 
         color: "grey"
     },
@@ -13,4 +13,9 @@ export default StyleSheet.create({
     iconView: {
         paddingBottom: 2,
     },
+    listItem: {
+      borderColor: 'lightgrey',
+      borderWidth: 0.2,
+      backgroundColor: '#F2F2F3',
+    }
   });
