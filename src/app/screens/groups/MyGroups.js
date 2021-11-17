@@ -51,10 +51,10 @@ export default function MyGroups({route, navigation}) {
         }
         {
           followedGroups.map((item, i) => (
-            <GroupCard 
+              <GroupCard 
               key={i} name={item.name} 
               subtitleL={`${item.members.length} Members`} subtitleR={item.publicGroup ? "Public" : "Private"}
-              onPressFn={() => {navigation.navigate("GroupPage", {isOwner: false})}}
+              onPressFn={() => {navigation.navigate("GroupPage", {isOwner: false, isFollowing: true})}}
               isOwner={false}
               />
           ))
