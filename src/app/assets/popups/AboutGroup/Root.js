@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Popup from './JoinEventPopup';
+import AboutGroupPopup from './AboutGroupPopup';
 
 class Root extends Component {
   render() {
@@ -13,9 +13,9 @@ class Root extends Component {
         {...this.props}
       >
         {this.props.children}
-        <Popup
+        <AboutGroupPopup
           ref={c => {
-            if (c) Popup.popupInstance = c
+            if (c) AboutGroupPopup.popupInstance = c
           }}
         />
       </View>
