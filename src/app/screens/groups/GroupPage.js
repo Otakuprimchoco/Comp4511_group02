@@ -13,6 +13,7 @@ import pending from '../../assets/icons/pending.png';
 import MemberList from '../../assets/memberList/MemberList'
 import Header1 from "../../assets/Header/Header1";
 import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
+import Root from "../../assets/popups/AboutGroup/Root";
 
 const list = [
   {
@@ -62,6 +63,7 @@ export default function GroupPage({route, navigation}) {
   const [isMembersPopup, setisMembersPopup] = useState(false);
 
   return (
+    <Root>
     <View style={styles.container}>
       <Header1 title='Groups' nav={navigation}></Header1>
       <View style={styles.groupHeader}>
@@ -80,7 +82,16 @@ export default function GroupPage({route, navigation}) {
             isOwner ?
               <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
               :
-              <Icon name={'info'} color='white' size={30} onPress={() => {setIsAboutPopupVisible(true)}}/>
+              <Icon name={'info'} color='white' size={30} onPress={() => 
+                AboutGroupPopup.show({
+                  type: 'UserProfilePopUp',
+                  title: "user",
+                  nav: navigation,
+                  textBody: groupData.description,
+                  friends: true,
+                  callback: () => AboutGroupPopup.hide(),
+                })
+              }/>
           }
         </View>
       </View>
@@ -161,6 +172,7 @@ export default function GroupPage({route, navigation}) {
         </View>
       </View>
     </View>
+    </Root>
   );
 }
 
