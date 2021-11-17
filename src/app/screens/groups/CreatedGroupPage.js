@@ -12,6 +12,7 @@ import data from '../../assets/sampleUserData/sample_created_pageData'
 import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
 import { Row } from "react-bootstrap";
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
+import Root from "../../assets/popups/AboutGroup/Root";
 
 export default function CreatedGroupPage({navigation, groupId}) {
   const groupData = data[1]
@@ -23,6 +24,7 @@ export default function CreatedGroupPage({navigation, groupId}) {
 
 
   return (
+    <Root>
     <View style={styles.container}>
       <Header
         statusBarProps={{ barStyle: 'light-content' }}
@@ -53,13 +55,22 @@ export default function CreatedGroupPage({navigation, groupId}) {
             isOwner ?
               <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
               :
-              <Icon name={'info'} color='white' size={30} onPress={() => {setIsAboutPopupVisible(true)}}/>
+              <Icon name={'info'} color='white' size={30} onPress={() => 
+                AboutGroupPopup.show({
+                  type: 'UserProfilePopUp',
+                  title: "user",
+                  nav: navigation,
+                  textBody: groupData.description,
+                  friends: true,
+                  callback: () => AboutGroupPopup.hide(),
+                })
+              }/>
           }
         </View>
       </View>
 
       <View style={styles.contentContainer}>
-        {isAboutPopupVisible &&
+        {/* isAboutPopupVisible &&
           <Modal
             animationType="slide"
             transparent={true}
@@ -70,7 +81,8 @@ export default function CreatedGroupPage({navigation, groupId}) {
           >
           <AboutGroupPopup description={groupData.description} closePopupFn={() => {setIsAboutPopupVisible(false)}}/>
           </Modal>
-        }
+          */}
+          
         {isMembersPopup &&
           <Modal
             animationType="slide"
@@ -132,6 +144,7 @@ export default function CreatedGroupPage({navigation, groupId}) {
         </View>
       </View>
     </View>
+    </Root>
   );
 }
 

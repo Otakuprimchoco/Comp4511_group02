@@ -10,7 +10,8 @@ import {
   Alert
 } from "react-native";
 import EventCard from '../../assets/Cards/EventCard/EventCard';
-import NotificationsHeader from '../../assets/Header/NotificationsHeader'
+import NotificationsHeader from '../../assets/Header/NotificationsHeader';
+import { ListItem, Icon } from 'react-native-elements';
 
 export default function Notifications({ navigation }) {
     const list = [
@@ -30,74 +31,79 @@ export default function Notifications({ navigation }) {
         <View>
             <NotificationsHeader nav={navigation} ></NotificationsHeader>
             <View>
-                {
-                    list.map((l, i) => (
-                    <EventCard i={i} name={l.name} subtitle={l.subtitle} state={l.state}/>
-                    ))
-                }
+            <ListItem bottomDivider button onPress={() => navigation.navigate("JoinEvent")}>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.titleEventStartView}>Your event "UNSW Career Fair" is starting</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center'}}>
+                  <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
                 </View>
+            </ListItem>
+
+            <ListItem bottomDivider>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.titleView}>"Kevin Lane" requested to join "IOT Developers"</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+                  <TouchableOpacity  activeOpacity={0.5}>
+                    <Icon name='check-circle' type='material' color={"#66B2B2"} size={33} style={{marginRight: 10}}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity  activeOpacity={0.5}>
+                    <Icon name='cancel' type='material' color={"#A6A6A6"} size={33} style={{marginLeft: 10}}/>
+                  </TouchableOpacity>
+                </View>
+              </ListItem>
+              <ListItem bottomDivider>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.titleView}>"Anika Days" wants to be your friend</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+                  <TouchableOpacity  activeOpacity={0.5}>
+                    <Icon name='check-circle' type='material' color={"#66B2B2"} size={33} style={{marginRight: 10}}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity  activeOpacity={0.5}>
+                    <Icon name='cancel' type='material' color={"#A6A6A6"} size={33} style={{marginLeft: 10}}/>
+                  </TouchableOpacity>
+                </View>
+              </ListItem>
+
+            <ListItem bottomDivider button>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.titleView}>"UNSW Engineering Society" listed a new event</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center'}}>
+                  <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
+                </View>
+              </ListItem>
+              <ListItem bottomDivider button>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.titleView}>"Ben Higgins and two others" booked your event: "TechFest21"</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center'}}>
+                  <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
+                </View>
+              </ListItem>
+            </View>
         </View>
         
       );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
+  subtitleView: {
+    fontSize: 10,
+    paddingTop: 7, 
+    color: "grey"
   },
-
-  image: {
-    marginBottom: 40,
-    width: 200, 
-    height: 200,
+  titleView: {
+      fontSize: 16,
   },
-
-  inputView: {
-    alignItems: "flex-start",
-    margin: 20,
+  titleEventStartView: {
+    fontSize: 16,
+    color: 'red',
+    fontWeight: 'bold'
   },
-
-  TextInput: {
-    height: 50,
-    paddingLeft: 20,
-    borderWidth: 1,
-    width: "100%",
-    borderRadius: 10,
+  iconView: {
+      paddingBottom: 2,
   },
-  TextInput1: {
-    height: 50,
-    paddingLeft: 20,
-    width: "85%",
-    borderRadius: 10,
-  },
-  inputBorder: {
-    borderWidth: 1,
-    width: "100%",
-    borderRadius: 10, flexDirection: 'row'
-  },
-
-  forgot_button: {
-    fontWeight: 'bold',
-    color: '#66B2B2',
-    fontSize: 15,
-  },
-
-  loginBtn: {
-    width: 94,
-    height: 52,
-    borderRadius: 10,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 60,
-    backgroundColor: "#008080",
-  },
-
-  loginText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
-  }
 });
