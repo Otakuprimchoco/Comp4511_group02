@@ -29,28 +29,28 @@ const list = [
     name: 'Sean Fox',
     avatar_url: 'https://picsum.photos/id/237/200/300',
     about: 'About section for interests etc',
-    followed: false,
+    followed: true,
   },
   {
     key: 3,
     name: 'Al Pear',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
     about: 'About section for interests etc',
-    followed: false,
+    followed: true,
   },
   {
     key: 4,
     name: 'Tony Angus',
     about: 'About section for interests etc',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    followed: false,
+    followed: true,
   },
   {
     key: 5,
     name: 'Amy Top',
     about: 'About section for interests etc',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    followed: false,
+    followed: true,
   },
 ]
 
@@ -64,7 +64,7 @@ const list2 = [
   },
   {
     key: 2,
-    name: 'Arya Triv',
+    name: 'Sean Fox',
     avatar_url: 'https://picsum.photos/id/237/200/300',
     about: 'About section for interests etc',
     followed: false,
@@ -91,6 +91,7 @@ const list2 = [
     followed: false,
   },
 ]
+
 
 export default function GroupPage ( { route, navigation } ) {
   const groupData = data[1]

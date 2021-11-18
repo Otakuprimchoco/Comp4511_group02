@@ -59,6 +59,45 @@ export default function BoothAddedCreatedEvent({navigation}) {
     },
   ]
 
+  const list2 = [
+    {
+      key: 1,
+      name: 'Jack Poll',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Sean Fox',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 3,
+      name: 'Cart Chen',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 4,
+      name: 'Came Hors',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+    {
+      key: 5,
+      name: 'Man Mon',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+  ]
+
+
   const onPress = () =>
     ActionSheetIOS.showShareActionSheetWithOptions(
       {
