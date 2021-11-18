@@ -12,6 +12,8 @@ import Root from "../../assets/popups/Confirmation/Root"
 import MemberList from '../../assets/memberList/MemberList'
 import Header1 from '../../assets/Header/Header1'
 
+import Root2 from '../../assets/popups/BoothInfo/Root'
+
 export default function EventSelected({navigation, EventId}) {
   const eventData = data[1]
   const [inviteMembers, setinviteMembers] = useState(false);
@@ -124,6 +126,7 @@ export default function EventSelected({navigation, EventId}) {
 
   return (
     <Root>
+      <Root2>
       <View style={styles.container}>
       <Header1 title='Events' nav={navigation}></Header1>
 
@@ -221,6 +224,7 @@ export default function EventSelected({navigation, EventId}) {
           </View>
         {/* </View> */}
       </View>
+      </Root2>
     </Root>
   );
 }

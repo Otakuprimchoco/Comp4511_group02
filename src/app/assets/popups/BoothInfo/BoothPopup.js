@@ -2,21 +2,12 @@ import React, { Component, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image, Animated, Dimensions, Alert, Divider, ScrollView } from 'react-native'
 import { Avatar, Icon } from 'react-native-elements';
 import pending from '../../icons/pending.png';
-
+import MemberList from '../../memberList/MemberList'
 
 const WIDTH = Dimensions.get('screen').width
 const HEIGHT = Dimensions.get('screen').height
 
-const list = [
-    {
-      boothName: 'Aurecon',
-    },
-    {
-      boothName: 'Telstra',
-    },
-]
-
-class BookingConfirmation extends Component {
+class BoothPopup extends Component {
 	static popupInstance
 
 	static show({ ...config }) {
@@ -109,17 +100,6 @@ class BookingConfirmation extends Component {
 
 	render() {
 		const { title, type, nav, textBody, button, friends, callback, background } = this.state
-		let el = null;
-		if (this.state.button) {
-			el = 
-			<TouchableOpacity style={styles.createBtn} onPress={callback}>
-				<Text style={styles.createText}>Confirm</Text>
-			</TouchableOpacity>
-		}
-		else {
-			el = <Text></Text>
-		}
-
 		return (
 			<Animated.View
 				ref={c => this._root = c}
@@ -147,23 +127,21 @@ class BookingConfirmation extends Component {
 						</TouchableOpacity>
 					</View>
 					<View style={{alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}}>
-						<Text style={styles.Title}>You have made a booking!</Text>
-                        <Text style={styles.Desc}>{'You booked the event: ' + title}</Text>
+						<Text style={styles.Title}>{title}</Text>
 					</View>
-					<View style={{alignItems: 'center', marginTop: 20, }}>
-                        <Text style={styles.Title}>Your Booked Booths!</Text>
-                        <ScrollView style={{width: '85%', height: '25%',marginTop: 20, marginBottom: 20, marginLeft: 10, marginRight: 10, borderWidth: 1, borderColor: 'black', borderRadius: 5}}>
-                        {list.map((l, i) => (
-                            <View>
-                                <TouchableOpacity style={{padding: 10, alignItems: 'center', borderBottomColor: '#DADADA', borderBottomWidth: 1}} /*onPress={()=> {nav.navigate('UserListPage')}}*/>
-                                    <Text i={i}  style={{color: '#008080', fontSize: 16,}}>{l.boothName}</Text>
-                                </TouchableOpacity>
-                            </View>
-						))}
+					<View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+                        <Text style={styles.Desc}>Description:</Text>
+						<ScrollView style={{margin: 10, borderWidth: 1, borderColor: '#666', borderRadius: 5, width: 300, height: 200}}>
+							<Text style={{marginLeft: 10, marginBottom: 10}}>{textBody}</Text>
 						</ScrollView>
 					</View>
-					<View style={{alignItems: 'center', justifyContent: 'flex-end'}}>
-						{el}
+					<View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+						<Text style={styles.Desc}>Presenter:</Text>
+						<Text style={{marginLeft: 10, marginBottom: 10}}>Lauren Myers</Text>
+					</View>
+					<View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+						<Text style={styles.Desc}>Booth Time:</Text>
+						<Text style={{marginLeft: 10, marginBottom: 40}}>15:00 - 16:00 pm</Text>
 					</View>
 				</Animated.View>
 			</Animated.View>
@@ -190,10 +168,9 @@ const styles = StyleSheet.create({
 	Message: {
 		maxWidth: 329,
 		width: 329,
-		minHeight: 369,
+		minHeight: 250,
 		backgroundColor: '#fff',
 		borderRadius: 30,
-		overflow: 'hidden',
 		position: 'absolute',
 		display: 'flex', 
 	},
@@ -213,15 +190,16 @@ const styles = StyleSheet.create({
 	},
 	Title: {
 		fontWeight: 'bold',
-		fontSize: 18,
-		color: '#333',
-        textAlign: 'center',
+		fontSize: 25,
+		color: '#008080',
+        marginBottom: 10,
 	},
 	Desc: {
-		textAlign: 'center',
-		color: '#008080',
-		fontSize: 16,
-        margin: 20,
+		color: '#666',
+        marginTop: 20,
+		fontSize: 18,
+		marginLeft: 10,
+		fontWeight: 'bold'
 	},
 	Button: {
 		borderRadius: 10,
@@ -262,4 +240,4 @@ const styles = StyleSheet.create({
 	  },
 })
 
-export default BookingConfirmation;
+export default BoothPopup
