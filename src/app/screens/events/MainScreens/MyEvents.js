@@ -18,7 +18,7 @@ export default function MyEvents({navigation}) {
     <View style={styles.container}>
         <View style={styles.eventsContainer}>
           <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Booked Events</Text>
+            {/* <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Booked Events</Text> */}
             <SearchAndFilter/>
           </View>
           < ScrollView style={styles.eventsList}>
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
   groupsContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 10
@@ -64,15 +62,16 @@ const styles = StyleSheet.create({
   eventsContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 10
   },
   eventsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2, 
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3'
   },
   spacer:{
     paddingTop: 10

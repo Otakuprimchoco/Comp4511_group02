@@ -33,6 +33,7 @@ import EditBoothScreen from './src/app/screens/events/AddEventFlow/EditBoothScre
 import LiveEvent from './src/app/screens/liveEvent/LiveEvent';
 import UserListPage from './src/app/screens/userList/UserList';
 import UserListPage1 from './src/app/screens/userList/UserList1';
+import ShareScreen from './src/app/screens/liveEvent/ShareScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -149,7 +150,7 @@ const App = () => {
           {( loginState.userToken != null ) ?
             (
               <Stack.Navigator initialRouteName="Login" >
-                <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} initialParams={{userToken: loginState.userToken}}/>
+                <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} initialParams={{ userToken: loginState.userToken }} />
                 <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{ userToken: loginState.userToken }} />
                 <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
                 <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
@@ -172,14 +173,16 @@ const App = () => {
                     headerTintColor: '#fff',
                     headerTitleStyle: {
                       fontWeight: 'bold',
+                      fontSize: 23
                     },
                     headerStyle: {
-                      backgroundColor: '#8fcbbc',
+                      backgroundColor: '#66B2B2',
                     }
                   } )} />
                 <Stack.Screen options={{ headerShown: false }} name="Notifications" component={Notifications} />
                 <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
                 <Stack.Screen options={{ headerShown: false }} name="LiveEvent" component={LiveEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="ShareScreen" component={ShareScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="UserListPage" component={UserListPage} />
                 <Stack.Screen options={{ headerShown: false }} name="UserListPage1" component={UserListPage1} />
                 <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{ userToken: loginState.userToken }} />

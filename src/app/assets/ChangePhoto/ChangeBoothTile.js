@@ -35,10 +35,10 @@ export default function ImagePickerExample() {
 
   return (
     <View>
-      <Avatar size="large" source={{ uri: image }} containerStyle={{marginLeft: "9%", marginTop: 40}}/>
+      <Avatar size="xlarge" source={{ uri: image }} containerStyle={{marginLeft: "7%", marginTop: 40}}/>
       <View style={{padding: 10 }}>
         <TouchableOpacity style={styles.createBtn} onPress={pickImage}>
-          <Text style={styles.createText}>Upload Booth Image</Text>
+          <Text style={styles.createText}>Change Photo</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -52,20 +52,19 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100,
-    marginLeft: 50
+    marginLeft: 70
   },
   createBtn: {
-    width: 113,
-    height: 22,
+    width: 173,
+    height: 52,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#008080", 
-
+    backgroundColor: "#008080"
   },
   createText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 10,
+    fontSize: 20,
   },
 });

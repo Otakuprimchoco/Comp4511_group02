@@ -110,7 +110,7 @@ export default function JoinEvent({navigation, EventId}) {
             <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
             </Modal>
           }
-
+          <ScrollView>
           <View style={{marginLeft: "28%", marginTop: 10}}>
             <LiveEventButton text={"On Live!\nJoin it now"} onPressFn={() =>
               JoinPopup.show({
@@ -126,15 +126,15 @@ export default function JoinEvent({navigation, EventId}) {
             />
           </View>
 
-          <View style={{padding: 10}}>
+          <View style={{padding: 10, marginTop: 5}}>
             <Text style={{fontWeight: "bold"}}>Description: </Text>
             <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
           </View>
-          <View style={{padding: 10}}>
+          <View style={{padding: 10, marginTop: 5}}>
             <Text style={{fontWeight: "bold"}}>Time:
             <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
           </View>
-          <View style={{padding: 10}}>
+          <View style={{padding: 10, marginTop: 5}}>
             <Text style={{fontWeight: "bold"}}>Capacity:
             <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
           </View>
@@ -165,6 +165,7 @@ export default function JoinEvent({navigation, EventId}) {
             </View>
             </ScrollView>
           </View>
+          </ScrollView>
         </View>
       </View>
     </Root>
@@ -184,12 +185,14 @@ const styles = StyleSheet.create({
   membersContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
+    borderColor: 'lightgrey',
     borderWidth: 1,
+    backgroundColor: '#F2F2F3',
     height: 120,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10, 
+    marginTop: 10
 
   },
   spacer: {
@@ -198,7 +201,8 @@ const styles = StyleSheet.create({
   },
   eventsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2, 
+    marginTop: 10
   },
   eventHeader: {
     width: 500,
@@ -243,6 +247,14 @@ const styles = StyleSheet.create({
   },
   followButton: {
     backgroundColor: '#66B2B2',
+  },
+  eventsList: {
+    borderRadius: 20,
+    borderWidth: 2, 
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3'
+
   },
 });
 

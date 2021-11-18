@@ -16,10 +16,9 @@ import ImagePickerExample from  '../../assets/ChangePhoto/ChangePhotoComponent'
 import InterestList from "../../assets/SelectionList/InterestList";
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Profile({navigation}) {
+export default function TwoOptionButton({navigation}) {
   const [publicACC, setPublicACC] = useState(true);
   return (
-    <ScrollView style={styles.container}>
 
     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
       <TouchableOpacity style={publicACC ? styles.buttonOn : styles.buttonOff} onPress={() => setPublicACC(true)}>
@@ -29,15 +28,12 @@ export default function Profile({navigation}) {
           <Text style={publicACC ? styles.buttonTextOff : styles.buttonTextOn}>Private Account </Text>
       </TouchableOpacity>
     </View>
-
-    </ScrollView>
     
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
   },
   buttonOff: {

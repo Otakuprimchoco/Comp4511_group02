@@ -90,8 +90,8 @@ class BroadCast extends Component {
 
 	defaultCallback() {
 		return Alert.alert(
-			'Callback!',
-			'Callback complete!',
+			'Share Screen',
+			'Not sharing Screen',
 			[
 				{ text: 'Ok', onPress: () => this.hidePopup() }
 			]
@@ -103,7 +103,7 @@ class BroadCast extends Component {
 		let el = null;
 		if (this.state.button) {
 			el = 
-			<TouchableOpacity style={styles.createBtn} onPress={callback}>
+			<TouchableOpacity style={styles.createBtn} onPressIn={callback} onPress={() => {nav.navigate('ShareScreen')}}>
 				<Text style={styles.createText}>Start Broadcasting</Text>
 			</TouchableOpacity>
 		}
