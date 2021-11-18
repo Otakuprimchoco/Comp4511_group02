@@ -22,29 +22,78 @@ export default function EventSelected({navigation, EventId}) {
     {
       key: 1,
       name: 'Jack Poll',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
     },
     {
       key: 2,
-      name: 'Scott Allen',
+      name: 'Sean Fox',
       avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: true,
     },
     {
       key: 3,
       name: 'Al Pear',
-      avatar_url: 'https://picsum.photos/seed/picsum/200/300'
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: true,
     },
     {
       key: 4,
       name: 'Tony Angus',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
     },
     {
       key: 5,
       name: 'Amy Top',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
     },
   ]
+
+  const list2 = [
+    {
+      key: 1,
+      name: 'Jack Poll',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Sean Fox',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 3,
+      name: 'Cart Chen',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 4,
+      name: 'Came Hors',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+    {
+      key: 5,
+      name: 'Man Mon',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+  ]
+
   
 
   const [liked, setLiked] = useState(false);
@@ -89,34 +138,6 @@ export default function EventSelected({navigation, EventId}) {
 
           <View style={styles.contentContainer}>
           <ScrollView>
-            {isMembersPopup &&
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={isMembersPopup}
-                onRequestClose={() => {
-                  setisMembersPopup(false);
-                }}
-              >
-              <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
-              </Modal>
-            }
-
-              {/*
-            {isConfirmPopupVisible &&
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={isConfirmPopupVisible}
-                onRequestClose={() => {
-                  setIsConfirmPopupVisible(false);
-                }}
-              >
-              <BookingConfirmation description={eventData.description} closePopupFn={() => {setIsConfirmPopupVisible(false)}}/>
-              </Modal>
-            }
-          */}
-            
             <View style={{paddingBottom: 10}}>
               <View style={{padding: 10}}>
                 <Text style={{fontSize: 18, fontWeight: "bold"}}>Description: </Text>
@@ -139,11 +160,10 @@ export default function EventSelected({navigation, EventId}) {
                   <Text style={{fontSize: 18, color: 'grey'}}> ({eventData.numMembers})</Text>
                 </View>
                 <View style={styles.followButtonContainer}>
-                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                    onPressFn={() => {setisMembersPopup(true)}}/>
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
                 </View>  
               </View>
-              <MemberList navigation={navigation} members={list}/>
+              <MemberList navigation={navigation} members={list2}/>
             </View>
 
 

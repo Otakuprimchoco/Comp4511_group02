@@ -24,6 +24,44 @@ export default function CreatedEvent({navigation}) {
     setLiked(liked);
   }, [liked]);
 
+  const list = [
+    {
+      key: 1,
+      name: 'Jack Poll',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Sean Fox',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 3,
+      name: 'Al Pear',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 4,
+      name: 'Tony Angus',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+    {
+      key: 5,
+      name: 'Amy Top',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+  ]
+
   return (
     <View style={styles.container}>
       <Header1 title='Events' nav={navigation}></Header1>
@@ -100,7 +138,7 @@ export default function CreatedEvent({navigation}) {
           <View style={styles.followButtonContainer}>
 
             <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {setisMembersPopup(true)}}/>
+              onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
         </View>  
         </View>
         <View style={styles.spacer}/>

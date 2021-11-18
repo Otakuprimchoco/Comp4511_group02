@@ -15,31 +15,80 @@ import Header1 from "../../assets/Header/Header1";
 import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
 import Root from "../../assets/popups/AboutGroup/Root";
+
 const list = [
   {
     key: 1,
     name: 'Jack Poll',
+    about: 'About section for interests etc',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: true,
   },
   {
     key: 2,
-    name: 'Scott Allen',
+    name: 'Sean Fox',
     avatar_url: 'https://picsum.photos/id/237/200/300',
+    about: 'About section for interests etc',
+    followed: false,
   },
   {
     key: 3,
     name: 'Al Pear',
-    avatar_url: 'https://picsum.photos/seed/picsum/200/300'
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: false,
   },
   {
     key: 4,
     name: 'Tony Angus',
+    about: 'About section for interests etc',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: false,
   },
   {
     key: 5,
     name: 'Amy Top',
+    about: 'About section for interests etc',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: false,
+  },
+]
+
+const list2 = [
+  {
+    key: 1,
+    name: 'Jack Poll',
+    about: 'About section for interests etc',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: true,
+  },
+  {
+    key: 2,
+    name: 'Arya Triv',
+    avatar_url: 'https://picsum.photos/id/237/200/300',
+    about: 'About section for interests etc',
+    followed: false,
+  },
+  {
+    key: 3,
+    name: 'Cart Chen',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    about: 'About section for interests etc',
+    followed: false,
+  },
+  {
+    key: 4,
+    name: 'Came Hors',
+    about: 'About section for interests etc',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: false,
+  },
+  {
+    key: 5,
+    name: 'Man Mon',
+    about: 'About section for interests etc',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+    followed: false,
   },
 ]
 
@@ -133,10 +182,10 @@ export default function GroupPage ( { route, navigation } ) {
             </View>
             <View style={styles.inviteContainer}>
               <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'}
-                onPressFn={() => { setisMembersPopup( true ) }} />
+                onPressFn={() => {navigation.navigate('MemberList', {members: list})}} />
             </View>
           </View>
-          <MemberList navigation={navigation} members={list} />
+          <MemberList navigation={navigation} members={list2} />
         </View>
 
         <View style={styles.spacer} />

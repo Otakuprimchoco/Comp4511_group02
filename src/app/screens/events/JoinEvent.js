@@ -23,27 +23,75 @@ export default function JoinEvent({navigation, EventId}) {
     {
       key: 1,
       name: 'Jack Poll',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
     },
     {
       key: 2,
-      name: 'Scott Allen',
+      name: 'Sean Fox',
       avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: true,
     },
     {
       key: 3,
       name: 'Al Pear',
-      avatar_url: 'https://picsum.photos/seed/picsum/200/300'
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: true,
     },
     {
       key: 4,
       name: 'Tony Angus',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
     },
     {
       key: 5,
       name: 'Amy Top',
+      about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+  ]
+
+  const list2 = [
+    {
+      key: 1,
+      name: 'Jack Poll',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Arya Triv',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 3,
+      name: 'Cart Chen',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 4,
+      name: 'Came Hors',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+    {
+      key: 5,
+      name: 'Man Mon',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
     },
   ]
   
@@ -134,27 +182,21 @@ export default function JoinEvent({navigation, EventId}) {
             <View style={styles.membersContainer}>
               <View style={styles.subContainerHeaderRow}>
                 <View style={{flexDirection: 'row'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold'}}>Attendees</Text>
-                  <Text style={{fontSize: 18, color: 'grey'}}> ({eventData.numMembers})</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: -10}}>Attendees</Text>
+                  <Text style={{fontSize: 18, color: 'grey', marginTop: -10}}> ({eventData.numMembers})</Text>
                 </View>
                 <View style={styles.followButtonContainer}>
-                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                    onPressFn={() => {setisMembersPopup(true)}}/>
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
                 </View>  
               </View>
-              <MemberList navigation={navigation} members={list}/>
+              <MemberList navigation={navigation} members={list2}/>
             </View>
-
-            <View style={styles.followButtonContainer}>
-                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                    onPressFn={() => {setisMembersPopup(true)}}/>
-                </View>  
 
           {/* </View> */}
           <View style={styles.spacer}/>
             <View>
               <View style={{paddingBottom: 10, paddingLeft: 5}}>
-                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+                <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 10}}>Booths</Text>
               </View>
               <ScrollView style={styles.eventsList}>
                 <View>
@@ -240,7 +282,7 @@ const styles = StyleSheet.create({
   },
   followButtonContainer: {
     alignItems: 'flex-end',
-    marginTop: -120
+    marginTop: -25
   },
   followButton: {
     backgroundColor: '#66B2B2',

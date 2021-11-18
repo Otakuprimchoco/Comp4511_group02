@@ -35,6 +35,7 @@ import UserListPage from './src/app/screens/userList/UserList';
 import UserListPage1 from './src/app/screens/userList/UserList1';
 import ShareScreen from './src/app/screens/liveEvent/ShareScreen';
 import FriendsList from './src/app/screens/chat/FriendsList';
+import MemberList from './src/app/screens/userList/MemberList'
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -167,6 +168,7 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="BoothAddedCreatedEvent" component={BoothAddedCreatedEvent} />
                 <Stack.Screen options={{ headerShown: false }} name="BoothGridAddBooth" component={BoothGridAddBooth} />
                 <Stack.Screen options={{ headerShown: false }} name="EditBoothScreen" component={EditBoothScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="MemberList" component={MemberList} />
                 <Stack.Screen options={{ headerShown: true }} name="ChatRoom" component={ChatRoom}
                   options={( { route } ) => ( {
                     title: route.params.userName,
