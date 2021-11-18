@@ -40,7 +40,7 @@ export default function Notifications({ navigation }) {
                 </View>
             </ListItem>
 
-            <ListItem bottomDivider>
+            <ListItem bottomDivider button onPress={() => navigation.navigate("ChatRoom", { userName: "Sean Fox"})}>
                 <ListItem.Content>
                     <ListItem.Title style={styles.titleView}>You are now friends with "Sean Fox"</ListItem.Title>
                 </ListItem.Content>
