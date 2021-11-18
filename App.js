@@ -33,6 +33,7 @@ import EditBoothScreen from './src/app/screens/events/AddEventFlow/EditBoothScre
 import LiveEvent from './src/app/screens/liveEvent/LiveEvent';
 import UserListPage from './src/app/screens/userList/UserList';
 import UserListPage1 from './src/app/screens/userList/UserList1';
+import ShareScreen from './src/app/screens/liveEvent/ShareScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -180,6 +181,7 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="Notifications" component={Notifications} />
                 <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
                 <Stack.Screen options={{ headerShown: false }} name="LiveEvent" component={LiveEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="ShareScreen" component={ShareScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="UserListPage" component={UserListPage} />
                 <Stack.Screen options={{ headerShown: false }} name="UserListPage1" component={UserListPage1} />
                 <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{ userToken: loginState.userToken }} />

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ImageBackground,
   Image,
   TextInput,
   Button,
@@ -22,23 +23,30 @@ import ToggleSwitch from 'rn-toggle-switch';
 import Constants from 'expo-constants';
 
 import { AuthContext } from "../../services/Context";
-import LiveEventHeader from "../../assets/Header/LiveEventHeader";
+import ShareScreenHeader from "../../assets/Header/ShareScreenHeader";
 
 import Root from '../../assets/popups/ShareScreen/Root';
 import Broadcast from '../../assets/popups/ShareScreen/Broadcast';
 
-export default function LiveEvent({navigation}) {
+export default function ShareScreen({navigation}) {
     const [mic, setMic] = useState(true);
     const [cam, setCam] = useState(true);
     return(
       <Root>
         <View style={styles.container}>
-          <View style={styles.header}>
-            <LiveEventHeader nav={navigation} title="UNSW Engineering Career Fair" booth="Telstra"></LiveEventHeader>
+          <View>
+            <ShareScreenHeader nav={navigation} title="UNSW Engineering Career Fair"></ShareScreenHeader>
           </View>
 
           <View style={styles.midContainer}>
+            <ImageBackground source={require('../../assets/shareScreen.png')} resizeMode="cover" style={styles.image}>
+            </ImageBackground>
+          </View>
 
+          <View style={styles.header}>
+              <TouchableOpacity style={styles.shareScreenButton} onPress={()=> navigation.navigate("LiveEvent")}>
+                <Text style={styles.shareScreenText}>Stop Sharing Screen</Text>
+              </TouchableOpacity>
           </View>
           
             <View style={styles.navContainer}>
@@ -67,15 +75,7 @@ export default function LiveEvent({navigation}) {
                   <Text style={styles.navText}>Chat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.icons} onPress={() =>
-                  Broadcast.show({
-                    type: 'UserProfilePopUp',
-                    title: "eventName",
-                    nav: navigation,
-                    textBody: "hello",
-                    friends: true,
-                    callback: () => Broadcast.hide(),
-                })}>
+                <TouchableOpacity style={styles.icons}>
                   <Icon name='mobile-screen-share' type='material' size={40}  color='white'/>
                   <Text style={styles.navText}>Share Screen</Text>
                 </TouchableOpacity>
@@ -93,9 +93,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   midContainer: {
-    backgroundColor: "grey",
     width: '100%',
     flex: 1,
+    borderWidth: 2,
+    borderColor: 'red',
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
   },
   navContainer: {
     backgroundColor: 'rgba(0,0,0, 0.4)',
@@ -106,10 +111,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    justifyContent: 'flex-start'
+    alignItems: 'center',
+    width: '100%',
+    position: 'absolute',
+    top: 110
   },
   navView: {
-    flexDirection: 'row', margin: 20,
+    flexDirection: 'row', 
+    margin: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -119,5 +128,19 @@ const styles = StyleSheet.create({
   },
   icons: {
     margin: 13,
+  },
+  shareScreenButton: {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '90%',
+    borderRadius: 13,
+    height: 33,
+    borderWidth: 1,
+    borderColor: 'white',
+  },
+  shareScreenText: {
+    color: 'red',
+    fontSize: 20
   }
 });
