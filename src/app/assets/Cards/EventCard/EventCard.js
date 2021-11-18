@@ -24,7 +24,7 @@ const EventCard = ({i, name, descSubtitle, timeSubtitle, state, onPressFn, subTe
         // paddingBottom: 15,
     },
     iconView: {
-        paddingBottom: 2,
+        paddingBottom: 20,
     },
     listItem: {
       borderColor: 'lightgrey',

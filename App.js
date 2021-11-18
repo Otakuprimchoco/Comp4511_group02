@@ -150,7 +150,7 @@ const App = () => {
           {( loginState.userToken != null ) ?
             (
               <Stack.Navigator initialRouteName="Login" >
-                <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} initialParams={{userToken: loginState.userToken}}/>
+                <Stack.Screen options={{ headerShown: false }} name="Main" component={Main} initialParams={{ userToken: loginState.userToken }} />
                 <Stack.Screen options={{ headerShown: false }} name="Profile" component={Profile} initialParams={{ userToken: loginState.userToken }} />
                 <Stack.Screen options={{ headerShown: false }} name="CreateGroup1" component={CreateGroup1} />
                 <Stack.Screen options={{ headerShown: false }} name="CreateGroup2" component={CreateGroup2} />
@@ -173,9 +173,10 @@ const App = () => {
                     headerTintColor: '#fff',
                     headerTitleStyle: {
                       fontWeight: 'bold',
+                      fontSize: 23
                     },
                     headerStyle: {
-                      backgroundColor: '#8fcbbc',
+                      backgroundColor: '#66B2B2',
                     }
                   } )} />
                 <Stack.Screen options={{ headerShown: false }} name="Notifications" component={Notifications} />

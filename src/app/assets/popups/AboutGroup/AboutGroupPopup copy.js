@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'center'
     },
     descriptionText: {
-        fontSize: 16
+        fontSize: 18
     },
     closeButton: {
         position: 'absolute',

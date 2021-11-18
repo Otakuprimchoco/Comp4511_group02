@@ -19,38 +19,28 @@ import Root from "../../assets/popups/AboutGroup/Root";
 const list = [
   {
     key: 1,
-    name: 'Full Name',
+    name: 'Jack Poll',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
   },
   {
     key: 2,
-    name: 'Full Name',
+    name: 'Scott Allen',
     avatar_url: 'https://picsum.photos/id/237/200/300',
-    about: 'About section for interests etc',
-    followed: false,
   },
   {
     key: 3,
-    name: 'Full Name',
-    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
+    name: 'Al Pear',
+    avatar_url: 'https://picsum.photos/seed/picsum/200/300'
   },
   {
     key: 4,
-    name: 'Full Name',
+    name: 'Tony Angus',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
   },
   {
     key: 5,
-    name: 'Full Name',
+    name: 'Amy Top',
     avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
   },
 ]
 
@@ -277,7 +267,7 @@ const styles = StyleSheet.create( {
     paddingBottom: 5,
   },
   followButtonContainer: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     paddingBottom: 10
   },
   followButton: {
