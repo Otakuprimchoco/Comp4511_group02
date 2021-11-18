@@ -21,38 +21,28 @@ export default function EventSelected({navigation, EventId}) {
   const list = [
     {
       key: 1,
-      name: 'Full Name',
+      name: 'Jack Poll',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
     {
       key: 2,
-      name: 'Full Name',
+      name: 'Scott Allen',
       avatar_url: 'https://picsum.photos/id/237/200/300',
-      about: 'About section for interests etc',
-      followed: false,
     },
-  {
-    key: 3,
-    name: 'Full Name',
-    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
+    {
+      key: 3,
+      name: 'Al Pear',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300'
     },
     {
       key: 4,
-      name: 'Full Name',
+      name: 'Tony Angus',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
     {
       key: 5,
-      name: 'Full Name',
+      name: 'Amy Top',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
   ]
   

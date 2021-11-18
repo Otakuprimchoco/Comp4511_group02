@@ -15,7 +15,6 @@ import Header1 from "../../assets/Header/Header1";
 import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpage';
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
 import Root from "../../assets/popups/AboutGroup/Root";
-
 const list = [
   {
     key: 1,
@@ -157,11 +156,10 @@ export default function GroupPage ( { route, navigation } ) {
               groupData.events.map( ( item, i ) => (
                 <EventCard
                   key={i} name={item.name}
-                  
                   descSubtitle={item.description} 
                   timeSubtitle={item.timeSubtitle} 
                   subtitle={`In ${ item.timeToEvent }`}
-                  onPressFn={() => { }}
+                  onPressFn={() => {navigation.push("EventSelected") }}
                 />
               ) )
             }

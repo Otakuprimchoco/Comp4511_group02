@@ -22,38 +22,28 @@ export default function JoinEvent({navigation, EventId}) {
   const list = [
     {
       key: 1,
-      name: 'Full Name',
+      name: 'Jack Poll',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
     {
       key: 2,
-      name: 'Full Name',
+      name: 'Scott Allen',
       avatar_url: 'https://picsum.photos/id/237/200/300',
-      about: 'About section for interests etc',
-      followed: false,
     },
-  {
-    key: 3,
-    name: 'Full Name',
-    avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-    about: 'About section for interests etc',
-    followed: true,
+    {
+      key: 3,
+      name: 'Al Pear',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300'
     },
     {
       key: 4,
-      name: 'Full Name',
+      name: 'Tony Angus',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
     {
       key: 5,
-      name: 'Full Name',
+      name: 'Amy Top',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
     },
   ]
   
@@ -126,25 +116,34 @@ export default function JoinEvent({navigation, EventId}) {
             />
           </View>
 
-          <View style={{padding: 10, marginTop: 5}}>
-            <Text style={{fontWeight: "bold"}}>Description: </Text>
-            <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
-          </View>
-          <View style={{padding: 10, marginTop: 5}}>
-            <Text style={{fontWeight: "bold"}}>Time:
-            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
-          </View>
-          <View style={{padding: 10, marginTop: 5}}>
-            <Text style={{fontWeight: "bold"}}>Capacity:
-            <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
-          </View>
-
-          <View style={styles.membersContainer}>
-            <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
-              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
-              <Text style={{fontSize: 14, color: 'grey'}}> ({eventData.numMembers})</Text>
+          <View style={{paddingBottom: 10}}>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Description: </Text>
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Time:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Capacity:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
+              </View>
             </View>
-            <MemberList navigation={navigation} members={list}/>
+
+            <View style={styles.membersContainer}>
+              <View style={styles.subContainerHeaderRow}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={{fontSize: 18, fontWeight: 'bold'}}>Attendees</Text>
+                  <Text style={{fontSize: 18, color: 'grey'}}> ({eventData.numMembers})</Text>
+                </View>
+                <View style={styles.followButtonContainer}>
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                    onPressFn={() => {setisMembersPopup(true)}}/>
+                </View>  
+              </View>
+              <MemberList navigation={navigation} members={list}/>
+            </View>
 
             <View style={styles.followButtonContainer}>
 
@@ -153,18 +152,18 @@ export default function JoinEvent({navigation, EventId}) {
 
           </View>  
 
-          </View>
+          {/* </View> */}
           <View style={styles.spacer}/>
-          <View>
-            <View style={{paddingBottom: 10, paddingLeft: 5}}>
-              <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+            <View>
+              <View style={{paddingBottom: 10, paddingLeft: 5}}>
+                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+              </View>
+              <ScrollView style={styles.eventsList}>
+                <View>
+                  <BoothsGrid/>
+                </View>
+              </ScrollView>
             </View>
-            <ScrollView style={styles.eventsList}>
-              <View>
-            <BoothsGrid/>
-            </View>
-            </ScrollView>
-          </View>
           </ScrollView>
         </View>
       </View>

@@ -1,5 +1,6 @@
 export const Groups = [
     {
+        key: 1,
         id: 1,
         name: 'UNSW Engineering Society',
         publicGroup: true,
@@ -11,6 +12,7 @@ export const Groups = [
         upcomingEvents: [],  //event id list
     },
     {
+        key: 2,
         id: 2,
         name: 'Software Engineering Society',
         publicGroup: true,
@@ -22,6 +24,7 @@ export const Groups = [
         upcomingEvents: [],  //event id list
     },
     {
+        key: 3,
         id: 3,
         name: 'Discussion Group - SENG',
         publicGroup: false,
