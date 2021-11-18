@@ -2,12 +2,37 @@ import React, { useState, useEffect } from 'react';
 import {
   TouchableOpacity,
   View,
+  StyleSheet
 } from 'react-native';
 import { ListItem, Icon } from 'react-native-elements';
-import styles from "./EventCard.styles";
 
-const EventCard = ({i, name, subtitle, state, onPressFn}) => {
 
+const EventCard = ({i, name, descSubtitle, timeSubtitle, state, onPressFn, subTextRed}) => {
+  const styles = StyleSheet.create({
+    descView: {
+        fontSize: 14,
+        paddingTop: 4, 
+        color: "grey"
+    },
+    timeView: {
+      fontSize: 14,
+      paddingTop: 4, 
+      color: "red"
+    },
+    titleView: {
+        fontSize: 16,
+        // paddingBottom: 15,
+    },
+    iconView: {
+        paddingBottom: 2,
+    },
+    listItem: {
+      borderColor: 'lightgrey',
+      borderWidth: 0.2,
+      backgroundColor: '#F2F2F3',
+    }
+  });
+  
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -17,10 +42,11 @@ const EventCard = ({i, name, subtitle, state, onPressFn}) => {
   return (
     <View>
       <ListItem key={i} bottomDivider button 
-      onPress={onPressFn}>
+      onPress={onPressFn} style={styles.listItem} subtitleNumberOfLines={2}>
         <ListItem.Content>
             <ListItem.Title style={styles.titleView}>{name}</ListItem.Title>
-            <ListItem.Subtitle  style={styles.subtitleView}>{subtitle}</ListItem.Subtitle>
+            <ListItem.Subtitle  style={styles.timeView}>{timeSubtitle}</ListItem.Subtitle>
+            <ListItem.Subtitle  style={styles.descView} numberOfLines={2}>{descSubtitle}</ListItem.Subtitle>
         </ListItem.Content>
         
         <View style={{justifyContent: 'center'}}>

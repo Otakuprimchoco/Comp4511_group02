@@ -10,7 +10,7 @@ import profileIcon from  '../../icons/profileicon.png'
 export default function GroupCard({i, name, subtitleL, subtitleR, onPressFn, isOwner}) {
   return (
     <ListItem key={i} button bottomDivider
-      onPress={onPressFn}>
+      onPress={onPressFn} style={styles.listItem}>
       {/* <Image style={styles.image} source={profileIcon} /> */}
       <Icon
         name='account-circle'
@@ -22,17 +22,17 @@ export default function GroupCard({i, name, subtitleL, subtitleR, onPressFn, isO
       />
       <ListItem.Content>
           <ListItem.Title>{name}</ListItem.Title>
-          <ListItem.Subtitle  style={{fontSize: 12}}>{subtitleL}</ListItem.Subtitle>
+          <ListItem.Subtitle  style={{fontSize: 14}}>{subtitleL}</ListItem.Subtitle>
         {
           isOwner && 
-          <ListItem.Subtitle  style={{fontSize: 12}}>
+          <ListItem.Subtitle  style={{fontSize: 14}}>
             (Admin)
           </ListItem.Subtitle>
         }
       </ListItem.Content>
       <View style={{justifyContent: 'center'}}>
-        <ListItem.Chevron style={{paddingBottom: 5}}/>
-        <ListItem.Subtitle  style={{fontSize: 12}}>{}{subtitleR}</ListItem.Subtitle>
+        <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
+        <ListItem.Subtitle  style={{fontSize: 14}}>{}{subtitleR}</ListItem.Subtitle>
       </View>
     </ListItem>
   );
@@ -44,4 +44,12 @@ const styles = StyleSheet.create({
     width: 30, 
     height: 30,
   },
+  iconView: {
+    paddingBottom: 10,
+  },
+  listItem: {
+    borderColor: 'lightgrey',
+    borderWidth: 0.2,
+    backgroundColor: '#F2F2F3',
+  }
   });

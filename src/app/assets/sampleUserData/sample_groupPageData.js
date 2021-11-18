@@ -15,16 +15,19 @@ export default {
         'Rob Maxwell'
       ],
       'events': [
+        // TODO: replace with event IDs
         {
           name: 'UNSW Engineering Career Fair',
-          timeToEvent: '2 hours',
+          description: 'Our Careers Fair virtually brings students and employers together to discuss graduate employment, vacation placements and scholarship opportunities.',
+          timeSubtitle: 'In 1 day',
           isLiked: true
         },
         {
-          name: 'Student Career Fair 2021',
-          timeToEvent: '5 days',
+          name: 'UQ Employment Camp',
+          description: 'UQ’s Employment camp is the perfect way to hone your skills and organise your job application process to yield the best possible opportunities for students.',
+          timeSubtitle: 'In 5 days',
           isLiked: false
-        }
+        },
       ]
     }
   }

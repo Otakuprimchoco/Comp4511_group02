@@ -127,38 +127,40 @@ export default function EventSelected({navigation, EventId}) {
             }
           */}
             
-            <View style={{padding: 10}}>
-              <Text style={{fontWeight: "bold"}}>Description: </Text>
-              <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
-            </View>
-            <View style={{padding: 10}}>
-              <Text style={{fontWeight: "bold"}}>Time:
-              <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
-            </View>
-            <View style={{padding: 10}}>
-              <Text style={{fontWeight: "bold"}}>Capacity:
-              <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
+            <View style={{paddingBottom: 10}}>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Description: </Text>
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Time:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Capacity:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
+              </View>
             </View>
 
             <View style={styles.membersContainer}>
-              <View style={{paddingBottom: 0, paddingLeft: 5, flexDirection: 'row', }}>
-                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
-                <Text style={{fontSize: 14, color: 'grey'}}> ({eventData.numMembers})</Text>
+              <View style={styles.subContainerHeaderRow}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={{fontSize: 18, fontWeight: 'bold'}}>Attendees</Text>
+                  <Text style={{fontSize: 18, color: 'grey'}}> ({eventData.numMembers})</Text>
+                </View>
+                <View style={styles.followButtonContainer}>
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                    onPressFn={() => {setisMembersPopup(true)}}/>
+                </View>  
               </View>
               <MemberList navigation={navigation} members={list}/>
-
-              <View style={styles.followButtonContainer}>
-
-                <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                  onPressFn={() => {setisMembersPopup(true)}}/>
-
-            </View>  
-
             </View>
+
+
             <View style={styles.spacer}/>
             <View>
               <View style={{paddingBottom: 10, paddingLeft: 5}}>
-                <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+                <Text style={{fontSize: 18, fontWeight: 'bold'}}>Booths</Text>
               </View>
               <ScrollView style={styles.eventsList}>
                 <View>
@@ -209,11 +211,17 @@ const styles = StyleSheet.create({
     borderColor: 'lightgrey',
     borderWidth: 1,
     backgroundColor: '#F2F2F3',
-    height: 120,
+    height: 140,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10, 
 
+  },
+  subContainerHeaderRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    // paddingBottom: 10
   },
   spacer: {
     height: 10,
@@ -261,8 +269,8 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   followButtonContainer: {
-    alignItems: 'flex-end',
-    marginTop: -120
+    // alignItems: 'flex-end',
+    // marginTop: -120
   },
   followButton: {
     backgroundColor: '#66B2B2',
