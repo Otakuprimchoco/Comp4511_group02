@@ -42,6 +42,15 @@ export default function Notifications({ navigation }) {
 
             <ListItem bottomDivider>
                 <ListItem.Content>
+                    <ListItem.Title style={styles.titleView}>You are now friends with "Sean Fox"</ListItem.Title>
+                </ListItem.Content>
+                <View style={{justifyContent: 'center'}}>
+                  <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
+                </View>
+              </ListItem>
+
+            <ListItem bottomDivider>
+                <ListItem.Content>
                     <ListItem.Title style={styles.titleView}>"Kevin Lane" requested to join "IOT Developers"</ListItem.Title>
                 </ListItem.Content>
                 <View style={{justifyContent: 'center', flexDirection: 'row'}}>
