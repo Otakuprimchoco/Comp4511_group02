@@ -15,19 +15,7 @@ export default function MemberList({route, navigation}) {
     <Header1 nav={navigation} title={'Friends'}></Header1>
     <View>
       {members.map((l, i) => (
-        <TouchableOpacity
-          onPress={() =>
-            Popup.show({
-              type: 'UserProfilePopUp',
-              title: l.name,
-              avatar_url: l.avatar_url,
-              textBody: l.about,
-              friends: l.followed,
-              callback: () => Popup.hide(),
-            })
-          }>
-          <UserList i={i} name={l.name} avatar_url={l.avatar_url} followed={l.followed}/>
-        </TouchableOpacity>
+          <UserList i={i} name={l.name} avatar_url={l.avatar_url} followed={false}/>
       ))
       }
     </View>
