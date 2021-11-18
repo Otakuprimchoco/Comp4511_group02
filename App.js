@@ -32,6 +32,7 @@ import BoothGridAddBooth from './src/app/screens/events/MainScreens/BoothGridAdd
 import EditBoothScreen from './src/app/screens/events/AddEventFlow/EditBoothScreen';
 import LiveEvent from './src/app/screens/liveEvent/LiveEvent';
 import UserListPage from './src/app/screens/userList/UserList';
+import ShareScreen from './src/app/screens/liveEvent/ShareScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -179,6 +180,7 @@ const App = () => {
                 <Stack.Screen options={{ headerShown: false }} name="Notifications" component={Notifications} />
                 <Stack.Screen options={{ headerShown: false }} name="GroupPage" component={GroupPage} />
                 <Stack.Screen options={{ headerShown: false }} name="LiveEvent" component={LiveEvent} />
+                <Stack.Screen options={{ headerShown: false }} name="ShareScreen" component={ShareScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="UserListPage" component={UserListPage} />
                 <Stack.Screen options={{ headerShown: false }} name="ChangePassword" component={ChangePassword1} initialParams={{ userToken: loginState.userToken }} />
               </Stack.Navigator>
