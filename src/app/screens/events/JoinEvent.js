@@ -146,11 +146,9 @@ export default function JoinEvent({navigation, EventId}) {
             </View>
 
             <View style={styles.followButtonContainer}>
-
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                onPressFn={() => {setisMembersPopup(true)}}/>
-
-          </View>  
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                    onPressFn={() => {setisMembersPopup(true)}}/>
+                </View>  
 
           {/* </View> */}
           <View style={styles.spacer}/>
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F3',
     height: 120,
     width: undefined,
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 10, 
     marginTop: 10
 

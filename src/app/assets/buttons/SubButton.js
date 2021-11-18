@@ -8,7 +8,7 @@ import { Header, Icon } from 'react-native-elements';
 export default function SubButton({text, onPressFn, icon, color}) {
   const styles = StyleSheet.create( {
     button: {
-      width: 135,
+      width: 105,
       height: 35,
       backgroundColor: color,
       justifyContent: 'center',
@@ -31,7 +31,7 @@ export default function SubButton({text, onPressFn, icon, color}) {
       flex: 1
     },
     iconContainer: {
-      paddingHorizontal: 10
+      paddingHorizontal: 5
     }
   });  
   

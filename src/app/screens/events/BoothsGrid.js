@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     height: 100,
   },
   itemName: {
-    fontSize: 13,
+    fontSize: 15,
     color: '#fff',
     fontWeight: '600',
     textAlign: 'center', 

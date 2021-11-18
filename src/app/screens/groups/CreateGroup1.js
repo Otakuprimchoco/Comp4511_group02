@@ -9,6 +9,7 @@ import MainButton from "../../assets/buttons/MainButton";
 import ImagePickerExample from '../../assets/ChangePhoto/ChangePhotoComponent';
 import ButtonSlider from "../../assets/FormInput/ButtonSlider";
 import Header1 from "../../assets/Header/Header1";
+import TwoOptionButton from "../../assets/buttons/TwoOptionButtons";
 
 
 export default function CreateGroup1 ( { navigation } ) {
@@ -53,7 +54,7 @@ export default function CreateGroup1 ( { navigation } ) {
         </View>
         {isPrivate}
         <View style={styles.buttonContainer}>
-          <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
+          <TwoOptionButton toggleFn={() => setIsPrivate(!isPrivate)}/>
         </View>
         <View style={styles.buttonContainer}>
           <MainButton text={"Next"} onPressFn={() => navigation.navigate( "CreateGroup2", { groupName: name } )}/>
@@ -92,6 +93,7 @@ const styles = StyleSheet.create( {
   },
   buttonContainer: {
     paddingBottom: 10,
-    alignSelf: 'center'
+    alignSelf: 'center', 
+    marginTop: 15,
   },
 } );

@@ -20,26 +20,25 @@ export default class InterestList extends React.Component {
     
     // Change this data based on the page
     const data = [
-      { id: 1,  label: 'Technology' },
-      { id: 2,  label: 'Interest/goal 2' },
-      { id: 3,  label: 'Interest/Goal  3' },
-      { id: 4,  label: 'Interest 4' },
-      { id: 5,  label: 'Interest/Goal 5' },
-      { id: 6,  label: 'Frontend dev' },
-      { id: 7,  label: 'Interest 7' },
-      { id: 8,  label: 'Interest/Career Goal 8' },
-      { id: 9,  label: 'Interest 9' },
-      { id: 10, label: 'Interest/Career 10' },
-      { id: 11, label: 'IInternship' },
-      { id: 12, label: 'Technology' },
-      { id: 13, label: 'Interest/goal 2' },
-      { id: 14, label: 'Interest/Goal  3' },
-      { id: 15, label: 'Interest 4' },
-      { id: 16, label: 'Interest/Goal 5' },
-      { id: 17, label: 'Frontend dev' },
-      { id: 18, label: 'Interest 7' },
-      { id: 19, label: 'Interest/Career Goal 8' },
-      { id: 20, label: 'Interest 9' },
+      { id: 1,  label: 'Engineering' },
+      { id: 2,  label: 'FrontEnd Development' },
+      { id: 3,  label: 'Business Studies' },
+      { id: 4,  label: 'Backend Studies' },
+      { id: 5,  label: 'Software' },
+      { id: 6,  label: 'Law Studies' },
+      { id: 7,  label: 'Architecture' },
+      { id: 8,  label: 'Media Marketing' },
+      { id: 9,  label: 'Sales' },
+      { id: 10, label: 'Leadership Development' },
+      { id: 11, label: 'Arts & Design' },
+      { id: 12, label: 'Technical Drawing' },
+      { id: 13, label: 'Mechatronic Engineering' },
+      { id: 14, label: 'Medicine' },
+      { id: 15, label: 'Data Science' },
+      { id: 16, label: 'Paleontology' },
+      { id: 17, label: 'History & Civic Studies' },
+      { id: 18, label: 'Science' },
+      { id: 19, label: 'Mathematics' },
     ];
 
     return (
@@ -47,6 +46,7 @@ export default class InterestList extends React.Component {
         <View style={styles.titleHeader}>
           <View style={{flexDirection: 'row', paddingBottom: 5}}>
           <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>Please select at least one interest</Text>
+          <Text style={{color: "red"}}> * </Text>
         </View> 
         </View>
         <SearchAndFilter/>

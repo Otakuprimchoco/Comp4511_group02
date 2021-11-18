@@ -99,7 +99,7 @@ export default function CreatedEvent({navigation}) {
           </View>
           <View style={styles.followButtonContainer}>
 
-            <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+            <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
               onPressFn={() => {setisMembersPopup(true)}}/>
         </View>  
         </View>
