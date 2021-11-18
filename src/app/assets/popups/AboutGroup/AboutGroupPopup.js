@@ -7,27 +7,6 @@ import MemberList from '../../memberList/MemberList'
 const WIDTH = Dimensions.get('screen').width
 const HEIGHT = Dimensions.get('screen').height
 
-const list = [
-    {
-      name: 'Full Name',
-      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      about: 'About section for interests etc',
-      followed: true,
-    },
-    {
-      name: 'Full Name',
-      avatar_url: 'https://picsum.photos/id/237/200/300',
-      about: 'About section for interests etc',
-      followed: false,
-    },
-	{
-		name: 'Full Name',
-		avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-		about: 'About section for interests etc',
-		followed: true,
-	  },
-]
-
 class AboutGroupPopup extends Component {
 	static popupInstance
 
@@ -210,6 +189,8 @@ const styles = StyleSheet.create({
 		margin: 10,
         marginTop: 25,
         lineHeight: 25,
+		fontSize: 18,
+		paddingBottom: 10
 	},
 	Button: {
 		borderRadius: 10,

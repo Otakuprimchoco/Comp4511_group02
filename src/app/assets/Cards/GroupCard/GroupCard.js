@@ -5,30 +5,42 @@ import {
 } from 'react-native';
 import { ListItem, Icon} from 'react-native-elements';
 // import styles from "./GroupCard.styles";
-import profileIcon from  '../../icons/profileicon.png'
+import groupIcon from '../../../assets/icons/Groups_small.png'
 
 export default function GroupCard({i, name, subtitleL, subtitleR, onPressFn, isOwner}) {
   return (
     <ListItem key={i} button bottomDivider
       onPress={onPressFn} style={styles.listItem}>
-      {/* <Image style={styles.image} source={profileIcon} /> */}
-      <Icon
-        name='account-circle'
-        type='MaterialCommunityIcons'
-        color='#66B2B2'
-        size={35}
-        iconStyle={{ color: '#66B2B2'}}
-        onPress={() => navigation.navigate( 'Profile' )}
+      <View style={{
+        borderColor: '#66B2B2',
+        borderRadius: 100,
+        borderWidth: 2,
+        width: 40,
+        height: 40,
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#B2D8D8'
+      }}>
+      <Image
+        source={groupIcon}
+        resizeMode="contain"
+        style={{
+            width: 30,
+            height: 30,
+            tintColor: '#008080',
+            marginBottom: 5,
+        }}
       />
+      </View>
       <ListItem.Content>
-          <ListItem.Title>{name}</ListItem.Title>
-          <ListItem.Subtitle  style={{fontSize: 14}}>{subtitleL}</ListItem.Subtitle>
+        <ListItem.Title>{name}</ListItem.Title>
         {
           isOwner && 
-          <ListItem.Subtitle  style={{fontSize: 14}}>
-            (Admin)
+          <ListItem.Subtitle  style={{fontSize: 14, color: 'red'}}>
+            Admin
           </ListItem.Subtitle>
         }
+        <ListItem.Subtitle  style={{fontSize: 14}}>{subtitleL}</ListItem.Subtitle>
       </ListItem.Content>
       <View style={{justifyContent: 'center'}}>
         <ListItem.Chevron color={"black"} size={26} iconStyle={styles.iconView}/>
