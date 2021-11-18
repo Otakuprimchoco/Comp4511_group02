@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal} from "react-native";
+import { ActionSheetIOS, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal} from "react-native";
 import { Header, Icon } from 'react-native-elements';
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
 import SubButton from "../../assets/buttons/SubButton";
@@ -97,6 +97,27 @@ export default function JoinEvent({navigation, EventId}) {
   
   const [liked, setLiked] = useState(false);
 
+  const onPress = () =>
+    ActionSheetIOS.showShareActionSheetWithOptions(
+      {
+        // url: './assets/logos/logo2.png',
+        subject: eventData.eventName,
+        message: eventData.eventName,
+        excludedActivityTypes: [
+          'com.apple.UIKit.activity.PostToTwitter'
+        ]
+      },
+      (error) => alert(error),
+      (completed, method) => {
+        var text;
+        if (completed) {
+          text = `Shared via ${method}`;
+        } else {
+          text = 'You didn\'t share';
+        }
+      }
+    );
+
   useEffect(() => {
     setLiked(liked);
   }, [liked]);
@@ -119,7 +140,7 @@ export default function JoinEvent({navigation, EventId}) {
           <View style={styles.headerIconContainer}>
             {
               isOwner ?
-                <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={() => {navigation.push("GroupSettings")}}/>
+                <Icon name={'ios-share'} color='white' size={30} style={{paddingBottom: 10, marginTop: -3}} onPress={onPress}/>
                 :
                 <Icon name={'info'} color='white' size={30} onPress={() => {setisJoinEvent(true)}}/>
             }

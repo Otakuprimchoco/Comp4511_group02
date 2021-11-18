@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Image, ScrollView, StyleSheet,
+  ActionSheetIOS, Image, ScrollView, StyleSheet,
   Text, TouchableOpacity, View, Modal
 } from "react-native";
 import { Header, Icon } from 'react-native-elements';
@@ -60,6 +60,27 @@ export default function CreatedGroupPage({navigation, groupId}) {
     },
   ]
 
+  const onPress = () =>
+    ActionSheetIOS.showShareActionSheetWithOptions(
+      {
+        // url: './assets/logos/logo2.png',
+        subject: groupData.groupName,
+        message: groupData.groupName,
+        excludedActivityTypes: [
+          'com.apple.UIKit.activity.PostToTwitter'
+        ]
+      },
+      (error) => alert(error),
+      (completed, method) => {
+        var text;
+        if (completed) {
+          text = `Shared via ${method}`;
+        } else {
+          text = 'You didn\'t share';
+        }
+      }
+    );
+
   return (
     <Root>
     <View style={styles.container}>
@@ -87,7 +108,7 @@ export default function CreatedGroupPage({navigation, groupId}) {
         </View>
 
         <View style={styles.headerIconContainer}>
-          <Icon name='ios-share' color='white' size={30} style={styles.headerIcon}/>
+          <Icon name='ios-share' color='white' size={30} style={styles.headerIcon} onPress={onPress}/>
           {
             isOwner ?
               <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
