@@ -144,19 +144,25 @@ export default class MessagesScreen extends Component {
             borderColor: 'rgba(0,0,0,0.2)',
             alignItems: 'center',
             justifyContent: 'center',
-            width: 100,
+            width: 80,
             position: 'absolute',
             bottom: 10,
             right: 10,
-            height: 100,
+            height: 80,
             backgroundColor: '#fff',
             borderRadius: 100,
+            shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 8,
+              },
+              shadowOpacity: 0.46,
+              shadowRadius: 11.14,
           }}
 
           onPress = {() => navigation.navigate("FriendsList")}
         >
           <Icon name='add-comment' type='material' size={45} color='#01a699' />
-          <Text style={{color: '#01a699'}}>New Chat</Text>
         </TouchableOpacity>
 
 
