@@ -60,6 +60,7 @@ export default class InterestList extends React.Component {
 
             // used to set the maximum number of selections possible
             max={100}
+            min={1}
             ref={(tag) => {
               this.tag = tag;
             }}

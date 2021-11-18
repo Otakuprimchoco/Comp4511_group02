@@ -1,11 +1,14 @@
 # Comp4511_group02
 
 ## To Lavanya:
-- using iphone12
+- using iphone12 (ios simulator)
 - please run both npm install and expo install
 - starting page is in App.js
-- User details are: email: User1@email.com password: Password
+- Main User details are: email: User1@email.com | password: Password
 
+If you are finding errors it is most likely cause expo is saving the state so please just reset the current simulator (this is due to user authentication being in use)
+
+## To Team:
 ---
 
 PLS KEEP NODE JS at Version 14.18.1

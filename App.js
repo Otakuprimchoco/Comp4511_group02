@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useReducer } from 'react';
-import { StyleSheet, View, ActivityIndicator, Button } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, Button, LogBox } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -141,6 +141,8 @@ const App = () => {
       </View>
     );
   }
+
+  LogBox.ignoreAllLogs();
 
   return (
     <AuthContext.Provider value={authContext}>

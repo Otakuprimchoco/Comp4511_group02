@@ -204,7 +204,7 @@ export default function EventSelected({navigation, EventId}) {
             </View>
             </ScrollView>
           </View>
-          <View style={{marginLeft: "28%", marginTop: 10}}>
+          <View style={{marginLeft: "28%", marginTop: 10, marginBottom: 10}}>
             <MainButton text={"Book Event"} onPressFn={() =>
                 BookingConfirmation.show({
                   type: 'UserProfilePopUp',
