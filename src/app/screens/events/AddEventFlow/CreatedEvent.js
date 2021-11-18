@@ -37,25 +37,63 @@ export default function CreatedEvent({navigation}) {
       name: 'Sean Fox',
       avatar_url: 'https://picsum.photos/id/237/200/300',
       about: 'About section for interests etc',
-      followed: false,
+      followed: true,
     },
     {
       key: 3,
       name: 'Al Pear',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
       about: 'About section for interests etc',
-      followed: false,
+      followed: true,
     },
     {
       key: 4,
       name: 'Tony Angus',
       about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
-      followed: false,
+      followed: true,
     },
     {
       key: 5,
       name: 'Amy Top',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+  ]
+
+  const list2 = [
+    {
+      key: 1,
+      name: 'Jack Poll',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: true,
+    },
+    {
+      key: 2,
+      name: 'Sean Fox',
+      avatar_url: 'https://picsum.photos/id/237/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 3,
+      name: 'Cart Chen',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      about: 'About section for interests etc',
+      followed: false,
+    },
+    {
+      key: 4,
+      name: 'Came Hors',
+      about: 'About section for interests etc',
+      avatar_url: 'https://picsum.photos/seed/picsum/200/300',
+      followed: false,
+    },
+    {
+      key: 5,
+      name: 'Man Mon',
       about: 'About section for interests etc',
       avatar_url: 'https://picsum.photos/seed/picsum/200/300',
       followed: false,
@@ -138,34 +176,37 @@ export default function CreatedEvent({navigation}) {
           <AddBoothPopup description={eventData.description} closePopupFn={() => {setIsAddBoothPopup(false)}}/>
           </Modal>
         }    
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Description: </Text>
-          <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
-        </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Time:
-          <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
-        </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontWeight: "bold"}}>Capacity:
-          <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
-        </View>
+          <ScrollView>
+            <View style={{paddingBottom: 10}}>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Description: </Text>
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Time:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
+              </View>
+              <View style={{padding: 10}}>
+                <Text style={{fontSize: 18, fontWeight: "bold"}}>Capacity:
+                <Text style={{fontSize: 14, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
+              </View>
+            </View>
 
-        <View style={styles.membersContainer}>
-          
-          <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
-          </View>
-          <View style={styles.followButtonContainer}>
-
-            <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
-        </View>  
-        </View>
+            <View style={styles.membersContainer}>
+              <View style={styles.subContainerHeaderRow}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={{fontSize: 18, fontWeight: 'bold'}}>Attendees</Text>
+                  <Text style={{fontSize: 18, color: 'grey'}}> ({eventData.numMembers})</Text>
+                </View>
+                <View style={styles.followButtonContainer}>
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
+                </View>  
+              </View>
+            </View>
         <View style={styles.spacer}/>
         <View>
           <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Booths</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold'}}>Booths</Text>
           </View>
           < ScrollView style={styles.eventsList}>
             <View>
@@ -173,11 +214,11 @@ export default function CreatedEvent({navigation}) {
           </View>
           </ScrollView>
         </View>
+        </ScrollView>
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -194,12 +235,17 @@ const styles = StyleSheet.create({
     borderColor: 'lightgrey',
     borderWidth: 1,
     backgroundColor: '#F2F2F3',
-    height: 100,
+    height: 140,
     width: undefined,
     paddingVertical: 10,
     paddingHorizontal: 10, 
-    flexDirection:'row',
 
+  },
+  subContainerHeaderRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    // paddingBottom: 10
   },
   spacer: {
     height: 10,
@@ -238,24 +284,20 @@ const styles = StyleSheet.create({
   eventName: {
     fontSize: 22,
     fontWeight: 'bold',
+    fontFamily:  'Roboto',
     color: 'white',
-    textShadowColor: 'black',
+    textShadowColor: 'black',//'#006666',
     textShadowRadius: 10
   },
   headerIcon: {
     paddingBottom: 5,
   },
   followButtonContainer: {
-    alignItems: 'flex-end',
-    paddingHorizontal: 130,
-    paddingBottom: 10
+    // alignItems: 'flex-end',
+    // marginTop: -120
   },
   followButton: {
     backgroundColor: '#66B2B2',
-  },
-  image: {
-    width: 30, 
-    height: 30,
   },
   eventsList: {
     borderRadius: 20,
@@ -263,6 +305,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgrey',
     borderWidth: 1,
     backgroundColor: '#F2F2F3'
+
   },
 });
 
