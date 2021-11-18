@@ -38,7 +38,7 @@ export default function EventSubNavigation({navigation}) {
         <Tab.Screen
           name="PastEvents"
           component={PastEvents}
-          options={{ tabBarLabel: 'Favourited', tabBarAccessibilityLabel: 'Favorites' }}
+          options={{ tabBarLabel: 'Favourites', tabBarAccessibilityLabel: 'Favorites' }}
         />
       </Tab.Navigator>
     </View>

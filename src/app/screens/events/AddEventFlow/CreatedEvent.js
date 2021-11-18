@@ -132,8 +132,9 @@ const styles = StyleSheet.create({
   membersContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
+    borderColor: 'lightgrey',
     borderWidth: 1,
+    backgroundColor: '#F2F2F3',
     height: 100,
     width: undefined,
     paddingVertical: 10,
@@ -196,6 +197,13 @@ const styles = StyleSheet.create({
   image: {
     width: 30, 
     height: 30,
+  },
+  eventsList: {
+    borderRadius: 20,
+    borderWidth: 2, 
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3'
   },
 });
 

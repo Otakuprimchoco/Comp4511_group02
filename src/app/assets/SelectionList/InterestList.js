@@ -45,10 +45,9 @@ export default class InterestList extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.titleHeader}>
-          <Text style={styles.labelText}>
-            Please select atleast one interest 
-            <Text style={{color: "red"}}> * </Text>
-          </Text>
+          <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'#008080'}}>Please select at least one interest</Text>
+        </View> 
         </View>
         <SearchAndFilter/>
         <View style={styles.tagContainer}>
@@ -60,7 +59,7 @@ export default class InterestList extends React.Component {
             itemLabelStyleSelected={styles.labelSelected}
 
             // used to set the maximum number of selections possible
-            max={5}
+            max={100}
             ref={(tag) => {
               this.tag = tag;
             }}
@@ -102,6 +101,7 @@ const styles = StyleSheet.create({
   titleHeader: {
     backgroundColor:"#B2D8D8", 
     marginTop: 30, 
+    marginBottom: 20,
     padding: 5,
   },
   labelText: {
@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10, 
     paddingVertical: 10, 
     // marginTop: 10, 
-    borderRadius: 10
+    borderRadius: 10, 
+    marginTop: 30
   }, 
   buttonContainer: {
     padding: 1,

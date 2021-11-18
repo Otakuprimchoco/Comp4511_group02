@@ -8,6 +8,7 @@ import ModalDatePicker from "./ModalDatePicker";
 import NumberPlease from "react-native-number-please";
 import ModalTimePicker from "./ModalTimePicker";
 import Header1 from "../../../assets/Header/Header1";
+import TwoOptionButton from "../../../assets/buttons/TwoOptionButtons";
 
 export default function AddEvent ( { navigation } ) {
   const [name, setName] = useState( "" );
@@ -76,7 +77,7 @@ export default function AddEvent ( { navigation } ) {
       </View>
       {isPrivate}
       <View style={styles.buttonContainer}>
-        <ButtonSlider textL="Private" textR="Public" toggleFn={() => setIsPrivate(!isPrivate)}/>
+        <TwoOptionButton/>
       </View>
       <View style={{marginLeft: 20}}>
         <Text style={{ fontWeight: 'bold', fontSize: 14 }}>Capacity:</Text>

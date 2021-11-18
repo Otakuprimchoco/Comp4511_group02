@@ -64,14 +64,16 @@ const styles = StyleSheet.create({
   eventsContainer: {
     alignContent: 'center',
     borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 10
   },
   eventsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2, 
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3'
+
   },
   });
