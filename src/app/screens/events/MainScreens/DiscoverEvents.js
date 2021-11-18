@@ -4,6 +4,7 @@ import {
   Text,
   View,
   ScrollView,
+  Alert,
   TouchableOpacity} from "react-native";
 import EventCard from "../../../assets/Cards/EventCard/EventCard";
 import SearchAndFilter from "../../../assets/SearchAndFilter/SearchAndFilter";
@@ -13,11 +14,22 @@ import SubButton1 from "../../../assets/buttons/SubButton1";
 export default function DiscoverEvents({navigation}) {
   const EventData = discoveryData[1]
 
+  const createEvent = () => {
+    navigation.navigate("CreateGroup1");
+    return Alert.alert(
+			'Creating an Event',
+			'Inorder to create an event you need to create a group! From within your group you can create an event!',
+			[
+				{ text: 'Understood' }
+			]
+		);
+  }
+
   return (
     <View style={styles.container}>
         <View style={styles.eventsContainer}>
           <View style={styles.followButtonContainer}>
-            <SubButton1 text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'} onPressFn={() => {navigation.navigate("CreateGroup1")}} />
+            <SubButton1 text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'} onPressFn={() => {createEvent()}} />
           </View>
           <View style={{paddingBottom: 5, paddingLeft: 5}}>
             <SearchAndFilter/>
