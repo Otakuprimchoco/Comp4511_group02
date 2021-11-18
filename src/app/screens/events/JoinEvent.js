@@ -126,15 +126,15 @@ export default function JoinEvent({navigation, EventId}) {
             />
           </View>
 
-          <View style={{padding: 10, marginTop: 5}}>
+          <View style={{padding: 10}}>
             <Text style={{fontWeight: "bold"}}>Description: </Text>
             <Text style={{fontSize: 10, fontWeight: "normal", marginTop: 2}}>{eventData.description}</Text>
           </View>
-          <View style={{padding: 10, marginTop: 5}}>
+          <View style={{padding: 10}}>
             <Text style={{fontWeight: "bold"}}>Time:
             <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.time}</Text></Text>
           </View>
-          <View style={{padding: 10, marginTop: 5}}>
+          <View style={{padding: 10}}>
             <Text style={{fontWeight: "bold"}}>Capacity:
             <Text style={{fontSize: 12, fontWeight: "normal", marginTop: 2}}>  {eventData.capacity}</Text></Text>
           </View>
@@ -147,11 +147,9 @@ export default function JoinEvent({navigation, EventId}) {
             <MemberList navigation={navigation} members={list}/>
 
             <View style={styles.followButtonContainer}>
-
-              <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-                onPressFn={() => {setisMembersPopup(true)}}/>
-
-          </View>  
+                  <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
+                    onPressFn={() => {setisMembersPopup(true)}}/>
+                </View>  
 
           </View>
           <View style={styles.spacer}/>
@@ -190,7 +188,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F3',
     height: 120,
     width: undefined,
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 10, 
     marginTop: 10
 

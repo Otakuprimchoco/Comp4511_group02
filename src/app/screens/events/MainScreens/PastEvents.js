@@ -18,7 +18,6 @@ export default function PastEvents({navigation}) {
     <View style={styles.container}>
         <View style={styles.eventsContainer}>
           <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>My Favorited Events</Text>
             <SearchAndFilter/>
           </View>
           < ScrollView style={styles.eventsList}>

@@ -11,7 +11,7 @@ export default {
         {
           name: 'UNSW Leadership Conclave',
           timeToEvent: 'In 1 day',
-          isLiked: true
+          isLiked: true,
         }
       ]
     }
