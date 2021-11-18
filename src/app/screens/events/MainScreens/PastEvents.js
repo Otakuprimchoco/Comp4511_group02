@@ -25,7 +25,8 @@ export default function PastEvents({navigation}) {
             Favorites.my_events.map((item, i) => (
               <EventCard 
                 key={i} name={item.name}
-                subtitle={`${item.timeToEvent}`}
+                descSubtitle={item.description} 
+                timeSubtitle={`${item.timeToEvent}`}
                 onPressFn={() => {navigation.push("EventSelected")}}
                 />
             ))
