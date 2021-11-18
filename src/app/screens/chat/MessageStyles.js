@@ -23,9 +23,10 @@ export const UserImgWrapper = styled.View`
 `;
 
 export const UserImg = styled.Image`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  border-radius: 100px;
 `;
 
 export const TextSection = styled.View`

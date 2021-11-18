@@ -1,7 +1,7 @@
 //Learn from tutorial https://www.youtube.com/watch?v=bGGeD5RkdzQ
 import React, { Component } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity, Text, Button } from 'react-native';
-import { Header, Icon } from 'react-native-elements';
+import { Header, Icon, } from 'react-native-elements';
 import {
   Container,
   Card,
@@ -16,6 +16,7 @@ import {
 } from './MessageStyles';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Header2 from "../../assets/Header/Header2";
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Messages = [
   {
@@ -57,6 +58,38 @@ const Messages = [
     messageTime: '2 days ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '6',
+    userName: 'Kmart Hey',
+    userImg: {uri: 'https://picsum.photos/id/237/200/300'},
+    messageTime: '2 days ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '7',
+    userName: 'Cameron Aarya',
+    userImg: {uri: 'https://picsum.photos/id/237/200/300'},
+    messageTime: '2 days ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '8',
+    userName: 'Arya Carter',
+    userImg: {uri: 'https://picsum.photos/id/237/200/300'},
+    messageTime: '2 days ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '9',
+    userName: 'Manpreet Mondal',
+    userImg: require( '../../assets/users/user-7.jpg' ),
+    messageTime: '2 days ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
   }
 ];
 
@@ -79,7 +112,7 @@ export default class MessagesScreen extends Component {
           <Header2 title='Chats' nav={navigation}></Header2>
         </View>
 
-        <Container>
+        <ScrollView>
           <FlatList
             data={Messages}
             keyExtractor={item => item.id}
@@ -87,7 +120,7 @@ export default class MessagesScreen extends Component {
               <Card onPress={() => navigation.navigate( 'ChatRoom', { userName: item.userName } )}>
                 <UserInfo>
                   <UserImgWrapper>
-                    <UserImg source={item.userImg} />
+                    <UserImg source={item.userImg}/>
                   </UserImgWrapper>
                   <TextSection>
                     <UserInfoText>
@@ -101,11 +134,30 @@ export default class MessagesScreen extends Component {
             )}
           />
 
-        </Container>
+        </ScrollView>
 
 
 
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderColor: 'rgba(0,0,0,0.2)',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 100,
+            position: 'absolute',
+            bottom: 10,
+            right: 10,
+            height: 100,
+            backgroundColor: '#fff',
+            borderRadius: 100,
+          }}
 
+          onPress = {() => navigation.navigate("FriendsList")}
+        >
+          <Icon name='add-comment' type='material' size={45} color='#01a699' />
+          <Text style={{color: '#01a699'}}>New Chat</Text>
+        </TouchableOpacity>
 
 
       </View >
