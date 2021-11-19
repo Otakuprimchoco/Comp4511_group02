@@ -24,7 +24,7 @@ export default function CreateGroup2({route, navigation}) {
       <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}}>
         <InterestList></InterestList>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate("GroupPage", {isOwner:  true})}>
+          <TouchableOpacity style={styles.nextBtn} onPress={() => navigation.navigate("CreatedGroupPage", {isOwner:  true})}>
             <Text style={styles.nextText}>Confirm</Text>
           </TouchableOpacity>
         </View>

@@ -32,12 +32,21 @@ export default function SubButton({text, onPressFn, icon, color}) {
     },
     iconContainer: {
       paddingHorizontal: 5
-    }
+    },
+    button2: {
+      width: 120,
+      height: 35,
+      backgroundColor: color,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 5, 
+      flexDirection: 'row'
+    },
   });  
   
   return (
     <TouchableOpacity onPress={onPressFn}>
-      <View style={styles.button} >
+      <View style={text != "Unfollow" ? styles.button : styles.button2} >
         <View style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{text}</Text>
         </View>

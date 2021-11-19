@@ -6,7 +6,7 @@
 - starting page is in App.js
 - Main User details are: email: User1@email.com | password: Password
 
-If you are finding errors it is most likely cause expo is saving the state so please just reset the current simulator (this is due to user authentication being in use)
+If you are finding errors it is most likely cause expo is saving the state so please just reset the current simulator (this is due to user authentication being in use). In-order to prevent this make sure you sign out each time before you restart the simulator.
 
 ## To Team:
 ---

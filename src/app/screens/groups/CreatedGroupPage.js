@@ -3,7 +3,7 @@ import {
   ActionSheetIOS, Image, ScrollView, StyleSheet,
   Text, TouchableOpacity, View, Modal
 } from "react-native";
-import { Header, Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import EventCard from "../../assets/Cards/EventCard/EventCard";
 import sampleUserPhoto from '../../assets/sampleUserData/sample_groupPageHeaderPhoto2.png';
 import AboutGroupPopup from "../../assets/popups/AboutGroup/AboutGroupPopup";
@@ -13,6 +13,8 @@ import data2 from '../../assets/sampleUserData/Sample_Event_Data/sample_eventpag
 import { Row } from "react-bootstrap";
 import InviteMembers from "../../assets/popups/InviteMembersPopup";
 import Root from "../../assets/popups/AboutGroup/Root";
+import MemberList from '../../assets/memberList/MemberList';
+import Header1 from "../../assets/Header/Header1";
 
 export default function CreatedGroupPage({navigation, groupId}) {
   const groupData = data[1]
@@ -122,22 +124,10 @@ export default function CreatedGroupPage({navigation, groupId}) {
   return (
     <Root>
     <View style={styles.container}>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-
-        containerStyle={{
-          backgroundColor: '#66B2B2',
-          justifyContent: 'space-around',
-        }}
-        leftComponent={{ icon: 'keyboard-arrow-left', color: '#008080', iconStyle: { color: '#fff' }, 
-          onPress: () => {navigation.pop()} }}
-        centerComponent={{ text: 'Groups', style: { color: '#fff', fontWeight: 'bold', fontSize: 18 } }}
-        rightComponent={{ icon: 'account-circle', type: 'material-community', color: '#fff'}}
-      />
+      <Header1 title='Groups' nav={navigation}></Header1>
       <View style={styles.groupHeader}>
         <View>
-          <Image source={sampleUserPhoto} style={styles.headerPhoto}/>
+          <Image source={sampleUserPhoto} style={styles.headerPhoto} />
           <View style={styles.photoOverlay} />
         </View>
 
@@ -149,7 +139,7 @@ export default function CreatedGroupPage({navigation, groupId}) {
           <Icon name='ios-share' color='white' size={30} style={styles.headerIcon} onPress={onPress}/>
           {
             isOwner ?
-              <Icon name={'settings'} color='white' size={30} onPress={() => {navigation.push("GroupSettings")}}/>
+              <Icon name={'settings'} color='white' size={30} onPress={() => { navigation.push( "GroupSettings" ) }} />
               :
               <Icon name={'info'} color='white' size={30} onPress={() => 
                 AboutGroupPopup.show({
@@ -166,76 +156,81 @@ export default function CreatedGroupPage({navigation, groupId}) {
       </View>
 
       <View style={styles.contentContainer}>
-        {/* isAboutPopupVisible &&
+        {isAboutPopupVisible &&
           <Modal
             animationType="slide"
             transparent={true}
             visible={isAboutPopupVisible}
             onRequestClose={() => {
-              setIsAboutPopupVisible(false);
+              setIsAboutPopupVisible( false );
             }}
           >
-          <AboutGroupPopup description={groupData.description} closePopupFn={() => {setIsAboutPopupVisible(false)}}/>
+            <AboutGroupPopup description={groupData.description} closePopupFn={() => { setIsAboutPopupVisible( false ) }} />
           </Modal>
-          */}
-          
+        }
         {isMembersPopup &&
           <Modal
             animationType="slide"
             transparent={true}
             visible={isMembersPopup}
             onRequestClose={() => {
-              setisMembersPopup(false);
+              setisMembersPopup( false );
             }}
           >
-          <InviteMembers description={eventData.description} closePopupFn={() => {setisMembersPopup(false)}}/>
+            <InviteMembers description={eventData.description} closePopupFn={() => { setisMembersPopup( false ) }} />
           </Modal>
         }
 
-        <View style={styles.followButtonContainer}>
-          {
-            isFollowing ?
-            <SubButton text={"Unfollow Group"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'} 
-              onPressFn={() => {setIsFollowing(false)}}/>
-            :
-            <SubButton text={"Follow Group"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {setIsFollowing(true)}}/>
-          }
+        {!isOwner &&
+          <View style={styles.followButtonContainer}>
+            {
+              isFollowing ?
+                <SubButton text={"Unfollow"} color={styles.unfollowButton.backgroundColor} icon={'remove-circle'}
+                  onPressFn={() => { setIsFollowing( false ) }} />
+                :
+                <SubButton text={"Follow"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                  onPressFn={() => { setIsFollowing( true ) }} />
+            }
 
-        </View>
+          </View>}
         <View style={styles.membersContainer}>
-        <View style={{paddingBottom: 10, paddingLeft: 5, flexDirection: 'row', }}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Attendees</Text>
+          <View style={styles.subContainerHeaderRow}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Members</Text>
+              <Text style={{ fontSize: 18, color: 'grey', paddingLeft: 10 }}>( )</Text>
+            </View>
+            <View style={styles.inviteContainer}>
+              <SubButton text={"Invite"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                onPressFn={() => {navigation.navigate('MemberList', {members: list})}} />
+            </View>
           </View>
-          <View style={styles.inviteContainer}>
-
-            <SubButton text={"Invite Members"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-              onPressFn={() => {navigation.navigate('MemberList', {members: list})}}/>
-
-        </View>  
-
+          <MemberList navigation={navigation} members={[]} />
         </View>
-        <View style={styles.spacer}/>
+
+        <View style={styles.spacer} />
+
         <View style={styles.eventsContainer}>
-            <View style={{flexDirection: "row"}}>
-          <View style={{paddingBottom: 10, paddingLeft: 5}}>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Upcoming Events</Text>
-          </View>
-          <View style={styles.createsubEventContainer}>
-            <SubButton text={"Create Event"} color={styles.followButton.backgroundColor} icon={'add-circle'} 
-            onPressFn={() => {navigation.push("AddEvent")}}/>
-          </View>
+          <View style={styles.subContainerHeaderRow}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Upcoming Events</Text>
+            <View style={styles.createEventContainer}>
+            {isOwner &&
+              <SubButton text={"Create"} color={styles.followButton.backgroundColor} icon={'add-circle'}
+                onPressFn={() => { navigation.push( "AddEvent" ) }} />
+            }
+            </View>
           </View>
           < ScrollView style={styles.eventsList}>
-          {
-            groupData.events.map((item, i) => (
-              <EventCard 
-                key={i} name={item.name} 
-                subtitle={`In ${item.timeToEvent}`}
-                onPressFn={() => {}}
+            {
+              groupData.events.map( ( item, i ) => (
+                <EventCard
+                  key={i} name={item.name}
+                  descSubtitle={item.description} 
+                  timeSubtitle={item.timeSubtitle} 
+                  subtitle={`In ${ item.timeToEvent }`}
+                  onPressFn={() => {navigation.push("EventSelected") }}
                 />
-            ))
-          }
+              ) )
+            }
           </ScrollView>
         </View>
       </View>
@@ -245,7 +240,7 @@ export default function CreatedGroupPage({navigation, groupId}) {
 }
 
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     flex: 1,
   },
@@ -259,12 +254,25 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: 'black',
     borderWidth: 1,
-    height: 100,
+    // flex: 1,
+    height: 140,
     width: undefined,
     paddingVertical: 10,
-    paddingHorizontal: 10, 
-    flexDirection:'row',
-
+    paddingHorizontal: 10
+  },
+  subContainerHeaderRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    // paddingBottom: 10
+  },
+  inviteContainer: {
+    marginRight: 5,
+    // paddingBottom: 10,
+  },
+  createEventContainer: {
+    marginRight: 5,
+    // paddingBottom: 10,
   },
   spacer: {
     height: 10,
@@ -281,7 +289,11 @@ const styles = StyleSheet.create({
   },
   eventsList: {
     borderRadius: 20,
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: 'lightgrey',
+    borderWidth: 1,
+    backgroundColor: '#F2F2F3',
+    marginTop: 10
   },
   groupHeader: {
     width: 500,
@@ -312,7 +324,7 @@ const styles = StyleSheet.create({
   groupName: {
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily:  'Roboto',
+    fontFamily: 'Roboto',
     color: 'white',
     textShadowColor: 'black',//'#006666',
     textShadowRadius: 10
@@ -321,7 +333,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   followButtonContainer: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     paddingBottom: 10
   },
   followButton: {
@@ -330,18 +342,4 @@ const styles = StyleSheet.create({
   unfollowButton: {
     backgroundColor: '#A6A6A6',
   },
-  inviteContainer: {
-        alignItems: 'flex-end',
-        paddingHorizontal: 130,
-        paddingBottom: 10, 
-  },
-  createsubEventContainer: {
-    alignItems: 'flex-end',
-    paddingHorizontal: 130,
-    paddingBottom: 10, 
-    marginLeft: -50
-}
-});
-
-
-  
+} );
